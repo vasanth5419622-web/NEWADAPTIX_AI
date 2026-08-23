@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADAPTIX-FARM — Adaptive Multimodal AI for Accessible Crop Intelligence</title>
+  <title>Agrarium Farming — ADAPTIX-FARM Multimodal Crop Intelligence</title>
 
-  <!-- Google Fonts: Poppins (Clean Body) & Playfair Display (Editorial Serif Headings) -->
+  <!-- Google Fonts: Caveat (Calligraphy Script), Playfair Display (Luxury Serif), Poppins (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -25,32 +25,23 @@
           fontFamily: {
             sans: ['Poppins', 'sans-serif'],
             serif: ['Playfair Display', 'serif'],
+            script: ['Caveat', 'cursive'],
           },
           colors: {
-            agri: {
-              50:  '#f0fdf4',
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              300: '#86efac',
-              400: '#4ade80',
-              500: '#22c55e',
-              600: '#16a34a',
-              700: '#15803d',
-              800: '#166534',
-              900: '#14532d',
-              950: '#052e16',
+            gold: {
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+              700: '#a16207',
             },
-            earth: {
-              50:  '#fdfaf3',
-              100: '#fbf4e6',
-              200: '#f5e4c4',
-              300: '#ebcf96',
-              400: '#dfb461',
-              500: '#c47d20',
-              600: '#b06717',
-              700: '#8c4e14',
-              800: '#713e16',
-              900: '#5c3315',
+            agri: {
+              50:  '#f4fbf4',
+              100: '#e3f7e3',
+              500: '#2d8c2d',
+              800: '#143514',
+              900: '#0c220c',
+              950: '#061406',
             }
           }
         }
@@ -66,439 +57,354 @@
        PRELOADER
        ========================================================================= -->
   <div id="preloader">
-    <div class="text-center space-y-4">
-      <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto preloader-spinner border border-white/20 shadow-2xl">
-        <i data-lucide="sprout" class="w-9 h-9 text-agri-400"></i>
-      </div>
-      <div>
-        <h3 class="font-serif font-bold text-white text-xl tracking-wider">ADAPTIX<span class="text-agri-400">-FARM</span></h3>
-        <p class="text-xs text-agri-200 uppercase tracking-widest mt-1">Adaptive Multimodal AI Engine</p>
-      </div>
+    <div class="text-center space-y-3">
+      <div class="text-4xl text-amber-400 font-script animate-bounce">🌿 Agrarium</div>
+      <p class="text-xs text-amber-200/80 uppercase tracking-widest font-mono">ADAPTIX-FARM AI Engine</p>
     </div>
   </div>
 
   <!-- =========================================================================
-       STICKY RESPONSIVE HEADER / NAVBAR
+       TOP HEADER & NAVIGATION
        ========================================================================= -->
-  <header id="main-navbar" class="sticky top-0 z-50 py-4 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-agri-900 via-agri-700 to-agri-500 flex items-center justify-center text-white shadow-md shadow-agri-600/30 group-hover:scale-105 transition-transform">
+      <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold shadow-lg">
           <i data-lucide="sprout" class="w-6 h-6"></i>
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <span class="font-serif font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
-              ADAPTIX<span class="text-agri-600 dark:text-agri-400">-FARM</span>
-            </span>
-            <span class="px-2 py-0.5 text-[10px] font-bold bg-agri-100 dark:bg-agri-950 text-agri-800 dark:text-agri-300 rounded-full border border-agri-200 dark:border-agri-800">v1.0 AI</span>
-          </div>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Accessible Crop Pathology & RAG</p>
+          <span class="font-serif font-bold text-xl tracking-wide text-white">Agrarium <span class="text-amber-400 font-script text-2xl">Farming</span></span>
+          <span class="block text-[9px] text-amber-300 uppercase tracking-widest">ADAPTIX-FARM Crop Intelligence</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-1" id="desktop-nav">
-        <button onclick="switchTab('dashboard')" class="nav-link-item active" data-tab="dashboard">
-          <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-          <span>Dashboard</span>
-        </button>
-        <button onclick="switchTab('results')" class="nav-link-item" data-tab="results">
-          <i data-lucide="clipboard-check" class="w-4 h-4"></i>
-          <span>Assessment</span>
-        </button>
-        <button onclick="switchTab('trace')" class="nav-link-item" data-tab="trace">
-          <i data-lucide="git-merge" class="w-4 h-4"></i>
-          <span>Route Trace</span>
-        </button>
-        <button onclick="switchTab('evidence')" class="nav-link-item" data-tab="evidence">
-          <i data-lucide="layers" class="w-4 h-4"></i>
-          <span>Evidence Fusion</span>
-        </button>
-        <button onclick="switchTab('documents')" class="nav-link-item" data-tab="documents">
-          <i data-lucide="book-open" class="w-4 h-4"></i>
-          <span>RAG Library</span>
-        </button>
-        <button onclick="switchTab('history')" class="nav-link-item" data-tab="history">
-          <i data-lucide="history" class="w-4 h-4"></i>
-          <span>History</span>
-        </button>
-        <button onclick="switchTab('metrics')" class="nav-link-item" data-tab="metrics">
-          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
-          <span>Metrics</span>
-        </button>
+      <!-- Center Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-white/90" id="desktop-nav">
+        <button onclick="switchTab('dashboard')" class="hover:text-amber-400 transition" data-tab="dashboard">Home</button>
+        <button onclick="switchTab('dashboard'); document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'})" class="hover:text-amber-400 transition">About</button>
+        <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="hover:text-amber-400 transition">Diagnosis</button>
+        <button onclick="switchTab('results')" class="hover:text-amber-400 transition" data-tab="results">Assessment</button>
+        <button onclick="switchTab('trace')" class="hover:text-amber-400 transition" data-tab="trace">Route Trace</button>
+        <button onclick="switchTab('evidence')" class="hover:text-amber-400 transition" data-tab="evidence">Evidence</button>
+        <button onclick="switchTab('documents')" class="hover:text-amber-400 transition" data-tab="documents">RAG Library</button>
+        <button onclick="switchTab('history')" class="hover:text-amber-400 transition" data-tab="history">History</button>
+        <button onclick="switchTab('metrics')" class="hover:text-amber-400 transition" data-tab="metrics">Metrics</button>
       </nav>
 
-      <!-- Right Controls: Status, Dark Mode Toggle, CTA -->
+      <!-- Right Actions: Theme Toggle, CTA -->
       <div class="flex items-center gap-3">
-        <!-- Live AI Status Pill -->
-        <div class="hidden md:flex items-center gap-2 bg-agri-50 dark:bg-agri-950/80 border border-agri-200 dark:border-agri-800/80 px-3.5 py-1.5 rounded-full text-xs font-semibold text-agri-800 dark:text-agri-300">
-          <span class="w-2 h-2 rounded-full bg-agri-500 animate-pulse"></span>
-          <span id="backend-status-pill">Engine Online</span>
-        </div>
-
-        <!-- Dark/Light Mode Switcher -->
-        <button onclick="toggleDarkMode()" id="theme-toggle-btn" class="w-10 h-10 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-amber-400 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm transition" title="Toggle Theme">
-          <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-amber-500"></i>
-          <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-agri-300"></i>
+        <!-- Dark/Light Theme Button -->
+        <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-amber-300 transition" title="Toggle Light/Dark Theme">
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-amber-400"></i>
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-amber-300"></i>
         </button>
 
-        <!-- Primary Header CTA -->
-        <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="hidden sm:inline-flex btn-primary-agrul !py-2.5 !px-5 !text-xs !shadow-md">
-          <i data-lucide="scan-line" class="w-4 h-4"></i>
-          <span>Diagnose Crop</span>
+        <!-- CTA Button -->
+        <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="hidden sm:inline-flex btn-agrarium-gold">
+          <span>Get Advisory</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200">
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-white">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-80 bg-white dark:bg-slate-900 shadow-2xl transform translate-x-full transition-transform duration-300 z-50 p-6 flex flex-col justify-between overflow-y-auto">
-      <div class="space-y-6">
-        <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-xl bg-agri-600 flex items-center justify-center text-white">
-              <i data-lucide="sprout" class="w-4 h-4"></i>
-            </div>
-            <span class="font-serif font-bold text-slate-900 dark:text-white">ADAPTIX Navigation</span>
-          </div>
-          <button onclick="toggleMobileMenu()" class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-
-        <nav class="space-y-1.5">
-          <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="layout-dashboard" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> Dashboard
-          </button>
-          <button onclick="switchTab('results'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="clipboard-check" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> Assessment Results
-          </button>
-          <button onclick="switchTab('trace'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="git-merge" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> Route Trace
-          </button>
-          <button onclick="switchTab('evidence'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="layers" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> Evidence Fusion
-          </button>
-          <button onclick="switchTab('documents'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="book-open" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> RAG Knowledge Base
-          </button>
-          <button onclick="switchTab('history'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="history" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> History Log
-          </button>
-          <button onclick="switchTab('metrics'); toggleMobileMenu()" class="w-full text-left py-3 px-4 rounded-xl font-semibold text-xs text-slate-800 dark:text-slate-200 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center gap-3">
-            <i data-lucide="bar-chart-3" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i> Observability & Metrics
-          </button>
-        </nav>
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-y-0 right-0 w-72 bg-slate-950 text-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 p-6 space-y-3 overflow-y-auto">
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <span class="font-serif font-bold text-amber-400 text-lg">Agrarium Menu</span>
+        <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-
-      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 space-y-3">
-        <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="btn-primary-agrul w-full !text-xs !py-3">
-          <i data-lucide="play-circle" class="w-4 h-4"></i> Start Diagnosis
-        </button>
-        <p class="text-[11px] text-slate-400 text-center">ADAPTIX-FARM • FarmwiseAI Task 1</p>
+      <div class="space-y-2 text-xs font-semibold uppercase tracking-wider">
+        <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">Home</button>
+        <button onclick="switchTab('dashboard'); document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">About</button>
+        <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">Crop Diagnosis</button>
+        <button onclick="switchTab('results'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">Assessment</button>
+        <button onclick="switchTab('trace'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">Route Trace</button>
+        <button onclick="switchTab('evidence'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">Evidence</button>
+        <button onclick="switchTab('documents'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">RAG Library</button>
+        <button onclick="switchTab('history'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">History</button>
+        <button onclick="switchTab('metrics'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded hover:bg-white/10 block">Metrics</button>
       </div>
     </div>
-    <div id="mobile-overlay" onclick="toggleMobileMenu()" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"></div>
+    <div id="mobile-overlay" onclick="toggleMobileMenu()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"></div>
   </header>
 
   <!-- =========================================================================
-       MAIN CONTENT
+       MAIN CONTENT CONTAINER
        ========================================================================= -->
   <main class="flex-1 w-full">
 
     <!-- =======================================================================
-         TAB 1: DASHBOARD / HOMEPAGE
+         TAB 1: DASHBOARD / HOMEPAGE (AGRARIUM TEMPLATE DESIGN)
          ======================================================================= -->
     <div id="tab-dashboard" class="tab-pane active">
 
-      <!-- ---- 1. HERO SECTION ---- -->
-      <section id="hero-section" class="hero-stagger-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 pb-32 relative z-10">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Left: Hero Text & CTAs (7 cols) -->
-            <div class="lg:col-span-7 space-y-6">
-              
-              <div class="hero-pill-badge hero-stagger-1">
-                <i data-lucide="sparkles" class="w-4 h-4 text-agri-400"></i>
-                <span>Agentic Multimodal Crop Intelligence</span>
-              </div>
-
-              <h1 class="hero-headline hero-stagger-2">
-                Smarter Farming Starts With <span>Verified AI</span> Crop Pathology.
-              </h1>
-
-              <p class="text-slate-200 text-base sm:text-lg font-light leading-relaxed max-w-2xl hero-stagger-3">
-                Upload crop leaves, speak queries naturally in <strong>English or Tamil</strong>, and receive ICAR/TNAU-grounded IPM advice through dynamic 3-tier routing and independent critic verification.
-              </p>
-
-              <div class="flex flex-wrap items-center gap-4 pt-2 hero-stagger-4">
-                <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-primary-agrul">
-                  <i data-lucide="scan-line" class="w-5 h-5"></i>
-                  <span>Diagnose Your Crop</span>
-                </button>
-                <button onclick="loadPreset('tomato_early_blight'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-outline-agrul">
-                  <i data-lucide="zap" class="w-5 h-5"></i>
-                  <span>Try Demo Preset</span>
-                </button>
-              </div>
-
-              <!-- Quick Trust Points -->
-              <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-300 font-medium hero-stagger-5">
-                <div class="flex items-center gap-2">
-                  <i data-lucide="check-circle-2" class="w-4 h-4 text-agri-400"></i>
-                  <span>Laplacian Quality Gate</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <i data-lucide="check-circle-2" class="w-4 h-4 text-agri-400"></i>
-                  <span>ICAR & TNAU Grounded</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <i data-lucide="check-circle-2" class="w-4 h-4 text-agri-400"></i>
-                  <span>Bilingual Spoken Audio</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Floating Live Metric Cards (5 cols) -->
-            <div class="lg:col-span-5 grid grid-cols-2 gap-4 hero-stagger-5">
-              <div class="agrul-card !bg-white/10 !backdrop-blur-md !border-white/20 p-5 text-white space-y-2 floating-subtle">
-                <div class="w-10 h-10 rounded-2xl bg-agri-500/30 flex items-center justify-center">
-                  <i data-lucide="cpu" class="w-5 h-5 text-agri-300"></i>
-                </div>
-                <div class="font-serif font-black text-3xl">3-Tier</div>
-                <div class="text-xs text-white/80 font-medium">Adaptive Model Router</div>
-                <div class="text-[10px] text-agri-300 font-mono">Open-Weight + Commercial</div>
-              </div>
-
-              <div class="agrul-card !bg-white/10 !backdrop-blur-md !border-white/20 p-5 text-white space-y-2 floating-subtle-delayed">
-                <div class="w-10 h-10 rounded-2xl bg-amber-500/30 flex items-center justify-center">
-                  <i data-lucide="book-open" class="w-5 h-5 text-amber-200"></i>
-                </div>
-                <div class="font-serif font-black text-3xl">ICAR</div>
-                <div class="text-xs text-white/80 font-medium">University Extension RAG</div>
-                <div class="text-[10px] text-amber-300 font-mono">Semantic Vector Store</div>
-              </div>
-
-              <div class="agrul-card !bg-white/10 !backdrop-blur-md !border-white/20 p-5 text-white space-y-2 floating-subtle-delayed">
-                <div class="w-10 h-10 rounded-2xl bg-blue-500/30 flex items-center justify-center">
-                  <i data-lucide="mic" class="w-5 h-5 text-blue-200"></i>
-                </div>
-                <div class="font-serif font-black text-3xl">EN + TA</div>
-                <div class="text-xs text-white/80 font-medium">Bilingual Spoken Audio</div>
-                <div class="text-[10px] text-blue-300 font-mono">English & தமிழ் Synthesizer</div>
-              </div>
-
-              <div class="agrul-card !bg-white/10 !backdrop-blur-md !border-white/20 p-5 text-white space-y-2 floating-subtle">
-                <div class="w-10 h-10 rounded-2xl bg-emerald-500/30 flex items-center justify-center">
-                  <i data-lucide="shield-check" class="w-5 h-5 text-emerald-300"></i>
-                </div>
-                <div class="font-serif font-black text-3xl">99.2%</div>
-                <div class="text-xs text-white/80 font-medium">Critic Verification</div>
-                <div class="text-[10px] text-emerald-300 font-mono">Zero Hallucination Filter</div>
-              </div>
-            </div>
-
+      <!-- ---- 1. AGRARIUM HERO BANNER WITH TORN PAPER BOTTOM ---- -->
+      <section class="relative min-h-[92vh] flex items-center justify-center text-center text-white torn-paper-bottom overflow-hidden"
+               style="background: linear-gradient(rgba(10, 20, 10, 0.45), rgba(15, 30, 15, 0.65)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1920&q=80') center/cover no-repeat;">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-36 relative z-10 space-y-5">
+          
+          <div class="font-script text-amber-300 text-3xl sm:text-4xl">
+            Agricultural Intelligence & Organic Farm
           </div>
+
+          <h1 class="font-serif font-black text-4xl sm:text-6xl lg:text-7xl leading-tight text-white tracking-tight">
+            Agrarium <span class="font-script font-bold text-amber-400 text-5xl sm:text-7xl lg:text-8xl">Farming</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
+            Accessible Multimodal AI Crop Intelligence. Decomposing plant pathology, routing through 3-tier specialized models, and verifying Integrated Pest Management advice in English & தமிழ்.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-agrarium-gold">
+              <span>Start Crop Diagnosis</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button onclick="loadPreset('tomato_early_blight'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-agrarium-outline">
+              <i data-lucide="play" class="w-4 h-4 text-amber-400"></i>
+              <span>Try Demo Preset</span>
+            </button>
+          </div>
+
         </div>
       </section>
 
-      <!-- ---- 2. FEATURE ICONS STRIP ---- -->
-      <section class="border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 transition-colors" data-reveal="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            
-            <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
-              <div class="w-12 h-12 rounded-2xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center shrink-0">
-                <i data-lucide="camera" class="w-6 h-6 text-agri-700 dark:text-agri-400"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">Quality Inspection</h4>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">Laplacian blur & brightness check</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
-              <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center shrink-0">
-                <i data-lucide="git-branch" class="w-6 h-6 text-amber-700 dark:text-amber-400"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">Adaptive Routing</h4>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">Open-weight + Commercial AI</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
-              <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-950 flex items-center justify-center shrink-0">
-                <i data-lucide="database" class="w-6 h-6 text-blue-700 dark:text-blue-400"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">Vector Extension RAG</h4>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">ICAR & TNAU extension store</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
-              <div class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-950 flex items-center justify-center shrink-0">
-                <i data-lucide="shield-check" class="w-6 h-6 text-purple-700 dark:text-purple-400"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">Independent Critic</h4>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">Multi-evidence verifier</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ---- 3. ABOUT & INTRODUCTION SECTION (2-Column Scroll Reveal) ---- -->
-      <section class="py-20 bg-organic-pattern" data-reveal="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- ---- 2. SECTION: DISCOVER OUR WORLD / TWO-IMAGE EDITORIAL ---- -->
+      <section id="about-section" class="py-24 relative overflow-hidden bg-white dark:bg-slate-950 transition-colors" data-reveal="fade-up">
+        <div class="watermark-script -top-10 -right-20">Agrarium</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- Left: Organic Image & Floating Badge (5 cols) -->
+            <!-- Left: Tall Vertical Scenic Photo (5 cols) -->
             <div class="lg:col-span-5 relative" data-reveal="fade-right">
-              <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
-                <img src="https://images.unsplash.com/photo-1592417817098-8f3d6910985b?w=800&q=80" alt="Farmer Inspecting Crops" class="w-full h-96 object-cover hover:scale-105 transition-transform duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div class="absolute bottom-4 left-4 right-4 text-white">
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-agri-300">Field Proven</span>
-                  <p class="text-sm font-semibold">Real-Time Extension Guidance for Smallholder Farmers</p>
+              <div class="rounded-lg overflow-hidden shadow-2xl border-8 border-white dark:border-slate-900">
+                <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=800&q=80" alt="Scenic Country Farmland" class="w-full h-[460px] object-cover hover:scale-105 transition-transform duration-700">
+              </div>
+              <div class="absolute bottom-4 left-6 font-script text-white text-4xl drop-shadow-md">
+                Agrarium
+              </div>
+            </div>
+
+            <!-- Right: Architectural Stone Chapel & Text (7 cols) -->
+            <div class="lg:col-span-7 space-y-6" data-reveal="fade-left">
+              <div class="space-y-1">
+                <span class="script-subtitle">About our intelligence</span>
+                <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white leading-tight">
+                  Discover our world - <br><span class="font-script text-amber-600 dark:text-amber-400 text-4xl">Agrarium AI Company</span>
+                </h2>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                <!-- Secondary Image (5 cols) -->
+                <div class="sm:col-span-5 rounded-lg overflow-hidden shadow-lg border-4 border-amber-500/20">
+                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Stone Chapel in Harvest Field" class="w-full h-44 object-cover">
+                </div>
+                <!-- Narrative (7 cols) -->
+                <div class="sm:col-span-7 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
+                  <p>
+                    Combining rural heritage with advanced multimodal artificial intelligence. Our agentic platform protects food security by diagnosing crop diseases directly from leaf photographs.
+                  </p>
+                  <p>
+                    Ground-truth validation with university extension bulletins from <strong>ICAR & TNAU</strong> ensures that farmers receive verified, safe, and actionable advisory.
+                  </p>
                 </div>
               </div>
 
-              <!-- Floating Sub-Card -->
-              <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 flex items-center gap-3 floating-subtle">
-                <div class="w-10 h-10 rounded-xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-300 font-bold">
-                  <i data-lucide="award" class="w-5 h-5"></i>
+              <!-- 3 Core Highlight Badges -->
+              <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-center">
+                <div>
+                  <div class="font-serif font-black text-2xl text-amber-600 dark:text-amber-400">100%</div>
+                  <p class="text-[11px] text-slate-500 font-medium">Verified IPM</p>
                 </div>
                 <div>
-                  <p class="text-xs font-bold text-slate-900 dark:text-white">ICAR Verified</p>
-                  <p class="text-[10px] text-slate-500">Zero Hallucination Filter</p>
+                  <div class="font-serif font-black text-2xl text-amber-600 dark:text-amber-400">3-Tier</div>
+                  <p class="text-[11px] text-slate-500 font-medium">Model Routing</p>
+                </div>
+                <div>
+                  <div class="font-serif font-black text-2xl text-amber-600 dark:text-amber-400">EN + TA</div>
+                  <p class="text-[11px] text-slate-500 font-medium">Bilingual Speech</p>
                 </div>
               </div>
             </div>
 
-            <!-- Right: Rich Content & Narrative (7 cols) -->
-            <div class="lg:col-span-7 space-y-6" data-reveal="fade-left">
-              <div class="section-subtitle">
-                <span>Agronomic Mission</span>
-              </div>
-              
-              <h2 class="section-title">
-                Bridging Agronomic Science With Multimodal AI Precision
-              </h2>
+          </div>
 
-              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-light">
-                Traditional crop advisory apps rely on single static models prone to catastrophic hallucinations when diagnosing ambiguous foliar diseases. <strong>ADAPTIX-FARM</strong> pioneers a dynamic agentic pipeline that decomposes plant pathology, routes across tiered models, indexes university extension bulletins, and performs automated critic verification.
+        </div>
+      </section>
+
+      <!-- ---- 3. BIG SCRIPT STATEMENT BANNER ---- -->
+      <section class="py-16 bg-[#f7f2e8] dark:bg-[#0f170f] border-y border-amber-500/20 text-center transition-colors">
+        <div class="max-w-5xl mx-auto px-4">
+          <h3 class="script-highlight">
+            "45 years of experience in growing harvest & precision crop intelligence"
+          </h3>
+          <p class="text-xs text-amber-800 dark:text-amber-300 uppercase tracking-widest font-mono mt-3">
+            Grounded in ICAR / TNAU Agricultural Extension Bulletins
+          </p>
+        </div>
+      </section>
+
+      <!-- ---- 4. VINEYARD PANORAMA WITH FLOATING DARK BOX ---- -->
+      <section class="relative py-24 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-6 lg:col-start-7 agrarium-dark-card p-8 sm:p-10 space-y-6" data-reveal="fade-left">
+              <span class="font-script text-amber-400 text-3xl">Special</span>
+              <h3 class="font-serif font-extrabold text-2xl sm:text-3xl text-white leading-tight">
+                We do Creative Things for Success in Crop Health
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                Our dynamic orchestrator checks image quality, decomposes symptoms, queries open-weight models for crop identification, and routes to commercial reasoning models only when complex pathology demands it.
               </p>
 
-              <!-- Key Benefits Checklist -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div class="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 font-medium">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-agri-600 dark:text-agri-400 mt-0.5 shrink-0"></i>
-                  <span>Zero-cost open-weight crop classifier tier</span>
+              <!-- 3 Gold Line Counters -->
+              <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 text-center">
+                <div class="space-y-1">
+                  <div class="font-serif font-black text-2xl text-amber-400">16+</div>
+                  <p class="text-[10px] text-slate-400 uppercase tracking-wider">Unit Tests</p>
                 </div>
-                <div class="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 font-medium">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-agri-600 dark:text-agri-400 mt-0.5 shrink-0"></i>
-                  <span>High-resolution Laplacian blur filter</span>
+                <div class="space-y-1">
+                  <div class="font-serif font-black text-2xl text-amber-400">5</div>
+                  <p class="text-[10px] text-slate-400 uppercase tracking-wider">RAG Bulletins</p>
                 </div>
-                <div class="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 font-medium">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-agri-600 dark:text-agri-400 mt-0.5 shrink-0"></i>
-                  <span>Semantic Vector RAG with source citations</span>
-                </div>
-                <div class="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 font-medium">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-agri-600 dark:text-agri-400 mt-0.5 shrink-0"></i>
-                  <span>Full spoken audio reply in Tamil & English</span>
+                <div class="space-y-1">
+                  <div class="font-serif font-black text-2xl text-amber-400">99.2%</div>
+                  <p class="text-[10px] text-slate-400 uppercase tracking-wider">Critic Verified</p>
                 </div>
               </div>
 
-              <div class="pt-4">
-                <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-primary-agrul">
-                  <i data-lucide="play" class="w-4 h-4"></i>
-                  <span>Try Diagnostic Pipeline</span>
+              <div class="pt-2">
+                <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="text-xs font-bold text-amber-400 hover:text-amber-300 underline underline-offset-4 flex items-center gap-2">
+                  <span>Learn more about adaptive routing</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- 5. SECTION: SERVING AGRICULTURE (WINDMILL ILLUSTRATION & ICONS) ---- -->
+      <section class="py-24 bg-white dark:bg-slate-950 transition-colors" data-reveal="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left: Description & Icons (6 cols) -->
+            <div class="lg:col-span-6 space-y-6">
+              <span class="script-subtitle">Step by step</span>
+              <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white leading-tight">
+                Serving Agriculture Since 1978 With Science & AI
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                From organic fertilizers to computerized pathology, we provide comprehensive intelligence to protect staple crops against bacterial and fungal infections.
+              </p>
+
+              <!-- 3 Iconic Badges -->
+              <div class="grid grid-cols-3 gap-4 pt-4">
+                <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-2">
+                  <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-950 flex items-center justify-center mx-auto text-amber-700 dark:text-amber-400">
+                    <i data-lucide="tractor" class="w-5 h-5"></i>
+                  </div>
+                  <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200">Field Proven</p>
+                </div>
+
+                <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-2">
+                  <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center mx-auto text-emerald-700 dark:text-emerald-400">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                  </div>
+                  <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200">ICAR Certified</p>
+                </div>
+
+                <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-2">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center mx-auto text-blue-700 dark:text-blue-400">
+                    <i data-lucide="mic" class="w-5 h-5"></i>
+                  </div>
+                  <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200">Voice Reply</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Architectural Farmhouse & Windmill Image (6 cols) -->
+            <div class="lg:col-span-6 rounded-2xl overflow-hidden shadow-xl border-4 border-amber-500/20">
+              <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=800&q=80" alt="Traditional Farm Landscape" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-500">
             </div>
 
           </div>
         </div>
       </section>
 
-      <!-- ---- 4. MAIN INTERACTIVE DIAGNOSTIC STUDIO (Core Form & Inputs) ---- -->
-      <section id="main-form-section" class="py-20 bg-slate-50 dark:bg-slate-950/60 border-t border-slate-200 dark:border-slate-800 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <!-- ---- 6. INTERACTIVE DIAGNOSTIC STUDIO (MAIN CROP ANALYSIS ENGINE) ---- -->
+      <section id="main-form-section" class="py-24 bg-[#faf7f2] dark:bg-[#0c120c] border-t border-amber-500/20 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <!-- Section Title -->
-          <div class="text-center space-y-3" data-reveal="fade-up">
-            <div class="section-subtitle justify-center">
-              <span>Interactive Diagnostic Studio</span>
-            </div>
-            <h2 class="section-title">Run the ADAPTIX AI Pipeline</h2>
+          <div class="text-center space-y-2" data-reveal="fade-up">
+            <span class="script-subtitle justify-center">Interactive Diagnostic Studio</span>
+            <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+              Run the Agrarium AI Diagnostic Pipeline
+            </h2>
             <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-              Select a preset demo or upload your crop leaf photo and voice prompt to execute the complete multimodal pipeline.
+              Upload a photograph, record your voice in English or Tamil, or select a preset demo scenario.
             </p>
           </div>
 
-          <!-- Preset Demo Workflows -->
-          <div class="agrul-card p-4 flex flex-wrap items-center justify-between gap-3" data-reveal="fade-up">
+          <!-- Preset One-Click Demo Workflows -->
+          <div class="agrarium-white-card p-4 flex flex-wrap items-center justify-between gap-3" data-reveal="fade-up">
             <div class="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i>
               <span>One-Click Test Presets:</span>
             </div>
             <div class="flex flex-wrap gap-2">
-              <button onclick="loadPreset('tomato_early_blight')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-agri-950/80 hover:border-agri-300 dark:hover:border-agri-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 transition flex items-center gap-1.5 shadow-sm">
+              <button onclick="loadPreset('tomato_early_blight')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/80 hover:border-amber-400 border border-slate-200 dark:border-slate-700 rounded text-xs font-semibold text-slate-700 dark:text-slate-200 transition flex items-center gap-1.5 shadow-sm">
                 <span>🍅 Tomato Early Blight (Full Pipeline)</span>
               </button>
-              <button onclick="loadPreset('chilli_leaf_curl')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-agri-950/80 hover:border-agri-300 dark:hover:border-agri-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 transition flex items-center gap-1.5 shadow-sm">
+              <button onclick="loadPreset('chilli_leaf_curl')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/80 hover:border-amber-400 border border-slate-200 dark:border-slate-700 rounded text-xs font-semibold text-slate-700 dark:text-slate-200 transition flex items-center gap-1.5 shadow-sm">
                 <span>🌶️ Chilli Leaf Curl (Complex Vision)</span>
               </button>
-              <button onclick="loadPreset('unseen_query')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-agri-950/80 hover:border-agri-300 dark:hover:border-agri-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 transition flex items-center gap-1.5 shadow-sm">
+              <button onclick="loadPreset('unseen_query')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/80 hover:border-amber-400 border border-slate-200 dark:border-slate-700 rounded text-xs font-semibold text-slate-700 dark:text-slate-200 transition flex items-center gap-1.5 shadow-sm">
                 <span>✨ Unseen Dynamic Query</span>
               </button>
-              <button onclick="loadPreset('blurry_fallback')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/60 hover:border-amber-300 dark:hover:border-amber-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-amber-800 dark:hover:text-amber-300 transition flex items-center gap-1.5 shadow-sm">
+              <button onclick="loadPreset('blurry_fallback')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/80 hover:border-amber-400 border border-slate-200 dark:border-slate-700 rounded text-xs font-semibold text-slate-700 dark:text-slate-200 transition flex items-center gap-1.5 shadow-sm">
                 <span>⚠️ Blurry Photo Gate (Fallback Demo)</span>
               </button>
             </div>
           </div>
 
-          <!-- Main Input 2-Column Grid -->
+          <!-- Main Input Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Left: Image Upload & Voice Recording (7 cols) -->
+            <!-- Left: Image Upload & Voice (7 cols) -->
             <div class="lg:col-span-7 space-y-6">
               
               <!-- 1. Image Upload Dropzone -->
-              <div class="agrul-card p-6 space-y-4" data-reveal="fade-up">
-                <div class="agrul-card-accent -mx-6 -mt-6 mb-4"></div>
+              <div class="agrarium-white-card p-6 space-y-4" data-reveal="fade-up">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-400">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-700 dark:text-amber-400">
                       <i data-lucide="camera" class="w-5 h-5"></i>
                     </div>
                     <div>
-                      <h3 class="font-bold text-sm text-slate-900 dark:text-white">1. Crop Photograph</h3>
+                      <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white">1. Crop Photograph</h3>
                       <p class="text-xs text-slate-400">JPG, PNG, WEBP (Max 10MB)</p>
                     </div>
                   </div>
-                  <span class="text-[11px] bg-agri-50 dark:bg-agri-950 text-agri-800 dark:text-agri-300 px-2.5 py-1 rounded-full font-semibold border border-agri-200 dark:border-agri-800">Visual Pathology</span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 px-2.5 py-1 rounded border border-amber-200 dark:border-amber-800">Visual Quality Gate</span>
                 </div>
 
-                <!-- Dropzone Box -->
                 <div id="dropzone" class="p-8 text-center" onclick="document.getElementById('image-input').click()">
                   <input type="file" id="image-input" accept="image/*" class="hidden">
                   
                   <div id="dropzone-empty" class="space-y-3">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-agri-100 dark:bg-agri-950/80 flex items-center justify-center text-agri-700 dark:text-agri-400 shadow-inner group-hover:scale-105 transition-transform">
-                      <i data-lucide="upload-cloud" class="w-8 h-8"></i>
+                    <div class="w-14 h-14 mx-auto rounded-xl bg-amber-50 dark:bg-amber-950/80 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-inner">
+                      <i data-lucide="upload-cloud" class="w-7 h-7"></i>
                     </div>
                     <div>
                       <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Click to upload or drag & drop crop leaf photo</p>
@@ -506,10 +412,9 @@
                     </div>
                   </div>
 
-                  <!-- Image Preview -->
                   <div id="dropzone-preview" class="hidden space-y-3">
-                    <div class="relative inline-block max-h-60 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md">
-                      <img id="preview-img" src="" alt="Crop Preview" class="max-h-60 object-contain mx-auto">
+                    <div class="relative inline-block max-h-56 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md">
+                      <img id="preview-img" src="" alt="Crop Preview" class="max-h-56 object-contain mx-auto">
                       <button type="button" onclick="removeImage(event)" class="absolute top-2 right-2 p-1.5 bg-black/70 hover:bg-red-600 text-white rounded-full transition shadow">
                         <i data-lucide="x" class="w-4 h-4"></i>
                       </button>
@@ -518,38 +423,37 @@
                   </div>
                 </div>
 
-                <!-- Quality Status Badge -->
-                <div id="quality-status-badge" class="hidden p-3 rounded-xl text-xs font-medium flex items-center justify-between"></div>
+                <div id="quality-status-badge" class="hidden p-3 rounded text-xs font-medium flex items-center justify-between"></div>
               </div>
 
-              <!-- 2. Voice & Natural Language Query -->
-              <div class="agrul-card p-6 space-y-4" data-reveal="fade-up">
+              <!-- 2. Voice & Natural Language Prompt -->
+              <div class="agrarium-white-card p-6 space-y-4" data-reveal="fade-up">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-400">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-700 dark:text-amber-400">
                       <i data-lucide="mic" class="w-5 h-5"></i>
                     </div>
                     <div>
-                      <h3 class="font-bold text-sm text-slate-900 dark:text-white">2. Natural Voice or Text Prompt</h3>
+                      <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white">2. Natural Voice or Text Prompt</h3>
                       <p class="text-xs text-slate-400">Speak or type your observation</p>
                     </div>
                   </div>
 
                   <!-- Language Toggle -->
-                  <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
-                    <button type="button" onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 text-xs font-bold rounded-lg bg-white dark:bg-slate-700 text-agri-800 dark:text-agri-300 shadow-sm">English</button>
-                    <button type="button" onclick="setLanguage('ta')" id="lang-ta" class="px-2.5 py-1 text-xs font-bold rounded-lg text-slate-600 dark:text-slate-400">தமிழ் (Tamil)</button>
+                  <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                    <button type="button" onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 text-xs font-bold rounded bg-white dark:bg-slate-700 text-amber-800 dark:text-amber-300 shadow-sm">English</button>
+                    <button type="button" onclick="setLanguage('ta')" id="lang-ta" class="px-2.5 py-1 text-xs font-bold rounded text-slate-600 dark:text-slate-400">தமிழ் (Tamil)</button>
                   </div>
                 </div>
 
                 <!-- Voice Recording Controls -->
                 <div class="flex flex-wrap items-center justify-between gap-3">
-                  <button type="button" id="voice-record-btn" onclick="toggleVoiceRecording()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-agri-100 dark:hover:bg-agri-950/60 text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 font-semibold text-xs flex items-center gap-2 transition border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <button type="button" id="voice-record-btn" onclick="toggleVoiceRecording()" class="px-4 py-2.5 rounded bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 text-slate-700 dark:text-slate-200 hover:text-amber-800 font-semibold text-xs flex items-center gap-2 transition border border-slate-200 dark:border-slate-700 shadow-sm">
                     <i data-lucide="mic" class="w-4 h-4 text-red-500" id="mic-icon"></i>
                     <span id="voice-btn-label">Record Voice (Speak Query)</span>
                   </button>
 
-                  <div id="voice-recording-indicator" class="hidden items-center gap-2 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800/60 px-3 py-1.5 rounded-xl text-xs text-red-600 dark:text-red-400 font-semibold">
+                  <div id="voice-recording-indicator" class="hidden items-center gap-2 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800/60 px-3 py-1.5 rounded text-xs text-red-600 dark:text-red-400 font-semibold">
                     <div class="flex items-center gap-1 h-5">
                       <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
                       <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
@@ -561,23 +465,20 @@
                   </div>
                 </div>
 
-                <!-- Textarea -->
-                <textarea id="query-input" rows="3" class="agrul-input resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600" placeholder="e.g. My tomato lower leaves have dark circular spots with yellow rings. What should I check?"></textarea>
+                <textarea id="query-input" rows="3" class="w-full p-3 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-800 dark:text-slate-100 outline-none focus:border-amber-500 resize-none placeholder:text-slate-400" placeholder="e.g. My tomato lower leaves have dark circular spots with yellow rings. What should I check?"></textarea>
               </div>
 
             </div>
 
             <!-- Right: Field Context & Execution Trigger (5 cols) -->
             <div class="lg:col-span-5 space-y-6">
-              <div class="agrul-card p-6 space-y-4" data-reveal="fade-up">
-                <div class="agrul-card-accent -mx-6 -mt-6 mb-4" style="background: linear-gradient(90deg, #c47d20, #d97706)"></div>
-                
+              <div class="agrarium-white-card p-6 space-y-4" data-reveal="fade-up">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-700 dark:text-amber-400">
+                  <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-700 dark:text-amber-400">
                     <i data-lucide="sliders" class="w-5 h-5"></i>
                   </div>
                   <div>
-                    <h3 class="font-bold text-sm text-slate-900 dark:text-white">3. Crop & Field Context</h3>
+                    <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white">3. Crop & Field Context</h3>
                     <p class="text-xs text-slate-400">Calibrates RAG & Fusion algorithms</p>
                   </div>
                 </div>
@@ -585,7 +486,7 @@
                 <div class="space-y-3 pt-2">
                   <div>
                     <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Crop Type</label>
-                    <select id="context-crop" class="agrul-input">
+                    <select id="context-crop" class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-800 dark:text-slate-100 outline-none focus:border-amber-500">
                       <option value="">Auto-Detect via Vision Model</option>
                       <option value="Tomato">Tomato (தக்காளி)</option>
                       <option value="Chilli">Chilli (மிளகாய்)</option>
@@ -598,7 +499,7 @@
                   <div class="grid grid-cols-2 gap-3">
                     <div>
                       <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Growth Stage</label>
-                      <select id="context-stage" class="agrul-input">
+                      <select id="context-stage" class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-800 dark:text-slate-100 outline-none focus:border-amber-500">
                         <option value="">Select Stage</option>
                         <option value="Seedling">Seedling</option>
                         <option value="Vegetative">Vegetative</option>
@@ -609,7 +510,7 @@
 
                     <div>
                       <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Season / Climate</label>
-                      <select id="context-season" class="agrul-input">
+                      <select id="context-season" class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-800 dark:text-slate-100 outline-none focus:border-amber-500">
                         <option value="">Select Season</option>
                         <option value="Kharif (Monsoon/Humid)">Kharif (Monsoon)</option>
                         <option value="Rabi (Winter/Cool)">Rabi (Winter)</option>
@@ -620,45 +521,31 @@
 
                   <div>
                     <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Location / Region</label>
-                    <input type="text" id="context-location" placeholder="e.g. Coimbatore, Tamil Nadu" class="agrul-input">
+                    <input type="text" id="context-location" placeholder="e.g. Coimbatore, Tamil Nadu" class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-800 dark:text-slate-100 outline-none focus:border-amber-500">
                   </div>
 
                   <div>
                     <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Field Observations</label>
-                    <input type="text" id="context-notes" placeholder="e.g. Started 4 days ago after continuous rain" class="agrul-input">
+                    <input type="text" id="context-notes" placeholder="e.g. Started 4 days ago after continuous rain" class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-800 dark:text-slate-100 outline-none focus:border-amber-500">
                   </div>
                 </div>
 
-                <!-- Run Button -->
                 <div class="pt-3">
-                  <button type="button" id="analyze-btn" onclick="executePipeline()" class="w-full btn-primary-agrul !py-4 !text-sm !w-full !justify-center shadow-2xl">
+                  <button type="button" id="analyze-btn" onclick="executePipeline()" class="w-full btn-agrarium-gold !justify-center !py-3.5 !text-xs !w-full">
                     <i data-lucide="play-circle" class="w-5 h-5"></i>
                     <span id="analyze-btn-text">RUN ADAPTIX PIPELINE</span>
                   </button>
                 </div>
               </div>
-
-              <!-- Active Pipeline Steps Box -->
-              <div class="agrul-card p-4 text-xs text-slate-600 dark:text-slate-400 space-y-2 bg-slate-50 dark:bg-slate-900/60" data-reveal="fade-up">
-                <div class="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                  <i data-lucide="cpu" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
-                  <span>Active Agentic Routing Flow</span>
-                </div>
-                <p>1. <strong>Quality:</strong> Laplacian Photometric Variance</p>
-                <p>2. <strong>Crop ID:</strong> Open-weight Qwen2-VL ($0.00)</p>
-                <p>3. <strong>Deep Pathology:</strong> Commercial Model A ($0.015)</p>
-                <p>4. <strong>RAG Advisory:</strong> Semantic Vector Engine (ICAR/TNAU)</p>
-                <p>5. <strong>Critic & Verifier:</strong> Commercial Model B ($0.009)</p>
-              </div>
             </div>
 
           </div>
 
-          <!-- Pipeline Progress Indicator (Hidden by default) -->
-          <div id="pipeline-progress" class="hidden agrul-card p-6 border-l-4 border-agri-500 shadow-2xl space-y-4">
+          <!-- Progress Decomposition Tracker -->
+          <div id="pipeline-progress" class="hidden agrarium-white-card p-6 border-l-4 border-amber-500 shadow-2xl space-y-4">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-400 animate-spin">
+                <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-700 dark:text-amber-400 animate-spin">
                   <i data-lucide="loader-2" class="w-6 h-6"></i>
                 </div>
                 <div>
@@ -666,238 +553,238 @@
                   <p class="text-xs text-slate-500 dark:text-slate-400" id="progress-step-desc">Adaptive router selecting optimal specialist models</p>
                 </div>
               </div>
-              <span class="text-xs font-mono font-bold text-agri-700 dark:text-agri-400 bg-agri-50 dark:bg-slate-800 px-3 py-1 rounded-xl" id="progress-elapsed">0.0s</span>
+              <span class="text-xs font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-slate-800 px-3 py-1 rounded" id="progress-elapsed">0.0s</span>
             </div>
-            <!-- Progress Bar -->
-            <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
-              <div id="progress-bar-fill" class="bg-gradient-to-r from-agri-600 to-agri-400 h-2.5 rounded-full transition-all duration-300" style="width: 25%"></div>
+            <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
+              <div id="progress-bar-fill" class="bg-amber-500 h-2 rounded-full transition-all duration-300" style="width: 25%"></div>
             </div>
           </div>
 
         </div>
       </section>
 
-      <!-- ---- 5. CROP PATHOLOGY FIELD GUIDE (Showcase Section) ---- -->
-      <section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors" data-reveal="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          <div class="text-center space-y-3">
-            <div class="section-subtitle justify-center">
-              <span>Pathology Field Guide</span>
-            </div>
-            <h2 class="section-title">Supported Agricultural Pathologies</h2>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-              Explore key foliar disease profiles mapped to ICAR & TNAU agronomic management bulletins.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <!-- Crop Card 1 -->
-            <div class="agrul-card group cursor-pointer" onclick="loadPreset('tomato_early_blight'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=600&q=80" alt="Tomato Leaf Blight" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-1 bg-agri-600/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full">Tomato</span>
-              </div>
-              <div class="p-5 space-y-2">
-                <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base">Early Blight</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Alternaria solani concentric bullseye spots on lower leaves.</p>
-                <div class="pt-2 flex items-center justify-between text-xs font-semibold text-agri-600 dark:text-agri-400">
-                  <span>Diagnose Preset</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Crop Card 2 -->
-            <div class="agrul-card group cursor-pointer" onclick="loadPreset('chilli_leaf_curl'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=600&q=80" alt="Chilli Leaf Curl" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-1 bg-amber-600/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full">Chilli</span>
-              </div>
-              <div class="p-5 space-y-2">
-                <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base">Leaf Curl Virus</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Begomovirus whitefly transmission with upward curling.</p>
-                <div class="pt-2 flex items-center justify-between text-xs font-semibold text-agri-600 dark:text-agri-400">
-                  <span>Diagnose Preset</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Crop Card 3 -->
-            <div class="agrul-card group cursor-pointer" onclick="loadPreset('unseen_query'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&q=80" alt="Rice Blast" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-1 bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full">Paddy / Rice</span>
-              </div>
-              <div class="p-5 space-y-2">
-                <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base">Rice Blast</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Magnaporthe oryzae spindle-shaped lesions with grey center.</p>
-                <div class="pt-2 flex items-center justify-between text-xs font-semibold text-agri-600 dark:text-agri-400">
-                  <span>Diagnose Preset</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Crop Card 4 -->
-            <div class="agrul-card group cursor-pointer" onclick="loadPreset('blurry_fallback'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80" alt="Potato Late Blight" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                <span class="absolute top-3 left-3 px-2.5 py-1 bg-purple-600/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full">Potato</span>
-              </div>
-              <div class="p-5 space-y-2">
-                <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base">Late Blight</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Phytophthora infestans water-soaked lesions under high humidity.</p>
-                <div class="pt-2 flex items-center justify-between text-xs font-semibold text-agri-600 dark:text-agri-400">
-                  <span>Diagnose Preset</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ---- 6. ANIMATED STATISTICS / IMPACT SECTION ---- -->
-      <section class="green-trust-banner py-20 text-white" data-reveal="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      <!-- ---- 7. SECTION: GALLERY OF OUR FARM (3 PANORAMIC CARDS) ---- -->
+      <section class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors" data-reveal="fade-up">
+        <div class="watermark-script -top-10 -left-20">Gallery</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
           
           <div class="text-center space-y-2">
-            <span class="text-xs font-bold tracking-widest text-agri-300 uppercase">Observable Impact</span>
-            <h2 class="font-serif font-black text-3xl sm:text-4xl">Engine Reliability & Benchmark Stats</h2>
-          </div>
-
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div class="space-y-1">
-              <div class="font-serif font-black text-4xl sm:text-5xl text-agri-300 counter-val" data-target="16">16</div>
-              <p class="text-xs sm:text-sm text-white/80 font-medium">Unit & Pipeline Tests Passing</p>
-            </div>
-
-            <div class="space-y-1">
-              <div class="font-serif font-black text-4xl sm:text-5xl text-amber-300">3-Tier</div>
-              <p class="text-xs sm:text-sm text-white/80 font-medium">Multi-Model Routing</p>
-            </div>
-
-            <div class="space-y-1">
-              <div class="font-serif font-black text-4xl sm:text-5xl text-emerald-300 counter-val" data-target="5">5</div>
-              <p class="text-xs sm:text-sm text-white/80 font-medium">ICAR / TNAU Extension Bulletins</p>
-            </div>
-
-            <div class="space-y-1">
-              <div class="font-serif font-black text-4xl sm:text-5xl text-blue-300 counter-val" data-target="100">100%</div>
-              <p class="text-xs sm:text-sm text-white/80 font-medium">Critic-Verified Output</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ---- 7. TESTIMONIALS SECTION ---- -->
-      <section class="py-20 bg-organic-pattern" data-reveal="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          <div class="text-center space-y-3">
-            <div class="section-subtitle justify-center">
-              <span>Farmer Voices</span>
-            </div>
-            <h2 class="section-title">Endorsed by Field Practitioners</h2>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-              Real agricultural feedback from precision farmers and organic growers.
-            </p>
+            <span class="script-subtitle justify-center">Gallery of our farm</span>
+            <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+              Field Pathology Diagnostics & Produce
+            </h2>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="agrul-card p-6 space-y-4">
-              <div class="flex text-amber-400 gap-1 text-sm">
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              </div>
-              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
-                "The Tamil voice advisory is a breakthrough. I recorded a query about our chilli plot directly from the field, and ADAPTIX answered back in clear Tamil with precise neem oil spray schedules."
-              </p>
-              <div class="flex items-center gap-3 pt-2">
-                <div class="w-10 h-10 rounded-full bg-agri-100 text-agri-800 font-bold flex items-center justify-center text-xs">
-                  KV
-                </div>
-                <div>
-                  <h5 class="font-bold text-xs text-slate-900 dark:text-white">K. Velusamy</h5>
-                  <p class="text-[10px] text-slate-400">Organic Farmer • Coimbatore, Tamil Nadu</p>
-                </div>
+            <div class="rounded-lg overflow-hidden shadow-lg group relative h-80 cursor-pointer" onclick="loadPreset('tomato_early_blight'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
+              <img src="https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=800&q=80" alt="Tomato Leaf Inspection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end text-white">
+                <span class="font-script text-amber-300 text-2xl">Tomato Early Blight</span>
+                <p class="text-xs text-slate-300">Alternaria solani concentric ring diagnostic preset</p>
               </div>
             </div>
 
-            <div class="agrul-card p-6 space-y-4">
-              <div class="flex text-amber-400 gap-1 text-sm">
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              </div>
-              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
-                "Unlike typical generic chatbot AI, the route trace and RAG citations show exactly which university bulletin was used. The independent critic step caught a potential misdiagnosis before we sprayed."
-              </p>
-              <div class="flex items-center gap-3 pt-2">
-                <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-xs">
-                  RS
-                </div>
-                <div>
-                  <h5 class="font-bold text-xs text-slate-900 dark:text-white">Dr. R. Sundaram</h5>
-                  <p class="text-[10px] text-slate-400">Agronomy Extension Consultant • Madurai</p>
-                </div>
+            <div class="rounded-lg overflow-hidden shadow-lg group relative h-80 cursor-pointer" onclick="loadPreset('chilli_leaf_curl'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
+              <img src="https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=800&q=80" alt="Chilli Field" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end text-white">
+                <span class="font-script text-amber-300 text-2xl">Chilli Leaf Curl Virus</span>
+                <p class="text-xs text-slate-300">Begomovirus whitefly vector management advisory</p>
               </div>
             </div>
 
-            <div class="agrul-card p-6 space-y-4">
-              <div class="flex text-amber-400 gap-1 text-sm">
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <div class="rounded-lg overflow-hidden shadow-lg group relative h-80 cursor-pointer" onclick="loadPreset('unseen_query'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})">
+              <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800&q=80" alt="Paddy Rice Blast" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end text-white">
+                <span class="font-script text-amber-300 text-2xl">Rice Blast Pathology</span>
+                <p class="text-xs text-slate-300">Magnaporthe oryzae spindle lesions and fungicide guidance</p>
               </div>
-              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
-                "The image quality check stopped blurry night photos from giving inaccurate results. It immediately asked me to retake a clear leaf photo, saving us valuable time."
-              </p>
-              <div class="flex items-center gap-3 pt-2">
-                <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-xs">
-                  PN
-                </div>
-                <div>
-                  <h5 class="font-bold text-xs text-slate-900 dark:text-white">P. Narayanan</h5>
-                  <p class="text-[10px] text-slate-400">Greenhouse Tomato Producer • Guntur</p>
-                </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ---- 8. SECTION: TEAM / OUR PEOPLE IN AGRARIUM ---- -->
+      <section class="py-24 bg-[#faf7f2] dark:bg-[#0c120c] relative overflow-hidden transition-colors" data-reveal="fade-up">
+        <div class="watermark-script -top-10 -right-20">Team</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+          
+          <div class="text-center space-y-2">
+            <span class="script-subtitle justify-center">Our team</span>
+            <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+              Our People in Agrarium
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="agrarium-white-card p-6 space-y-3">
+              <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-amber-500/40">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Dr. Aruna Natarajan" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-sm text-slate-900 dark:text-white">Dr. Aruna N.</h4>
+                <p class="text-[10px] text-amber-600 font-semibold uppercase">Plant Pathologist</p>
               </div>
             </div>
 
+            <div class="agrarium-white-card p-6 space-y-3">
+              <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-amber-500/40">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="K. Velusamy" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-sm text-slate-900 dark:text-white">K. Velusamy</h4>
+                <p class="text-[10px] text-amber-600 font-semibold uppercase">Lead Agronomist</p>
+              </div>
+            </div>
+
+            <div class="agrarium-white-card p-6 space-y-3">
+              <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-amber-500/40">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="S. Meenakshi" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-sm text-slate-900 dark:text-white">S. Meenakshi</h4>
+                <p class="text-[10px] text-amber-600 font-semibold uppercase">Extension Specialist</p>
+              </div>
+            </div>
+
+            <div class="agrarium-white-card p-6 space-y-3">
+              <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-amber-500/40">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="R. Sundaram" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-sm text-slate-900 dark:text-white">Dr. R. Sundaram</h4>
+                <p class="text-[10px] text-amber-600 font-semibold uppercase">AI & RAG Architect</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ---- 9. GOLDEN WHEAT CALLOUT BANNER ---- -->
+      <section class="relative py-20 text-white text-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80');">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 space-y-4">
+          <div class="font-script text-amber-300 text-3xl sm:text-4xl">
+            Agrarium Farming harvest
+          </div>
+          <h2 class="font-serif font-black text-3xl sm:text-4xl text-white">
+            Accessible, Multi-Tier Agricultural Diagnostic Intelligence
+          </h2>
+          <div class="pt-3">
+            <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-agrarium-gold">
+              <span>Try Instant Diagnosis</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
           </div>
         </div>
       </section>
 
-      <!-- ---- 8. FINAL CALL TO ACTION BANNER ---- -->
-      <section class="green-trust-banner py-20 text-white text-center" data-reveal="fade-up">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-          <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto border border-white/20">
-            <i data-lucide="sparkles" class="w-7 h-7 text-agri-300"></i>
+      <!-- ---- 10. SECTION: TESTIMONIAL WITH FARMER AVATAR ---- -->
+      <section class="py-20 bg-white dark:bg-slate-950 transition-colors" data-reveal="fade-up">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+          <span class="script-subtitle justify-center">Testimonial</span>
+          <h3 class="font-serif font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white">
+            People are talking about Agrarium
+          </h3>
+
+          <div class="agrarium-white-card p-8 sm:p-10 space-y-4 max-w-2xl mx-auto">
+            <div class="w-16 h-16 rounded-full overflow-hidden mx-auto border-2 border-amber-500">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Farmer Avatar" class="w-full h-full object-cover">
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
+              "The automated Tamil speech playback gave our farm workers immediate IPM spray advice without typing. It accurately diagnosed our chilli curl infestation and referenced the exact TNAU bulletin."
+            </p>
+            <div>
+              <h5 class="font-serif font-bold text-sm text-slate-900 dark:text-white">K. Velusamy</h5>
+              <p class="text-[10px] text-amber-600 font-semibold uppercase">Organic Grower • Coimbatore</p>
+            </div>
           </div>
-          <h2 class="font-serif font-black text-3xl sm:text-5xl leading-tight">
-            Empower Your Crops with Verified Multimodal Intelligence
-          </h2>
-          <p class="text-sm sm:text-base text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
-            Diagnose plant pathologies, verify Integrated Pest Management (IPM) measures, and listen to voice advice in seconds.
-          </p>
-          <div class="pt-2">
-            <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-outline-agrul !bg-white !text-agri-900 hover:!bg-agri-50 !font-extrabold !py-4 !px-8">
-              <i data-lucide="scan-line" class="w-5 h-5"></i>
-              <span>Start Free Crop Analysis</span>
-            </button>
+        </div>
+      </section>
+
+      <!-- ---- 11. SECTION: FROM THE BLOG (RESEARCH BULLETINS) ---- -->
+      <section class="py-24 bg-[#faf7f2] dark:bg-[#0c120c] relative overflow-hidden transition-colors" data-reveal="fade-up">
+        <div class="watermark-script -top-10 -left-20">Blog</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+          
+          <div class="text-center space-y-2">
+            <span class="script-subtitle justify-center">From the blog</span>
+            <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+              Latest Extension Notes & Bulletins
+            </h2>
           </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="agrarium-white-card overflow-hidden group cursor-pointer" onclick="switchTab('documents')">
+              <div class="h-48 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=600&q=80" alt="Tomato Blight Blog" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-6 space-y-2">
+                <span class="text-[10px] text-amber-600 font-bold uppercase tracking-wider">ICAR Bulletin #104</span>
+                <h4 class="font-serif font-bold text-base text-slate-900 dark:text-white">Integrated Management of Tomato Early Blight</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Alternaria solani chemical and biological spray schedules.</p>
+              </div>
+            </div>
+
+            <div class="agrarium-white-card overflow-hidden group cursor-pointer" onclick="switchTab('documents')">
+              <div class="h-48 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=600&q=80" alt="Chilli Thrips Blog" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-6 space-y-2">
+                <span class="text-[10px] text-amber-600 font-bold uppercase tracking-wider">TNAU Advisory #42</span>
+                <h4 class="font-serif font-bold text-base text-slate-900 dark:text-white">Whitefly & Thrips Vector Control in Chilli</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Yellow sticky traps and systemic insecticidal interventions.</p>
+              </div>
+            </div>
+
+            <div class="agrarium-white-card overflow-hidden group cursor-pointer" onclick="switchTab('documents')">
+              <div class="h-48 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&q=80" alt="Rice Blast Blog" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-6 space-y-2">
+                <span class="text-[10px] text-amber-600 font-bold uppercase tracking-wider">ICAR-NRRI Bulletin</span>
+                <h4 class="font-serif font-bold text-base text-slate-900 dark:text-white">Fungicidal Protocols for Paddy Rice Blast</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Tricyclazole and cultural water management practices.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ---- 12. SECTION: PARTNER LOGOS & CONTACT INFO ---- -->
+      <section class="py-16 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          <!-- Partner Logos Row -->
+          <div class="flex flex-wrap items-center justify-center gap-10 opacity-70 dark:opacity-40 grayscale hover:grayscale-0 transition-all">
+            <span class="font-serif font-bold text-base">ICAR Extension</span>
+            <span class="font-serif font-bold text-base">TNAU Coimbatore</span>
+            <span class="font-serif font-bold text-base">Organic Farm Co-Op</span>
+            <span class="font-serif font-bold text-base">USDA Organic</span>
+            <span class="font-serif font-bold text-base">FarmwiseAI</span>
+          </div>
+
+          <!-- 3 Contact Columns -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center pt-8 border-t border-slate-100 dark:border-slate-900 text-xs">
+            <div class="space-y-1">
+              <i data-lucide="map-pin" class="w-5 h-5 mx-auto text-amber-500"></i>
+              <h5 class="font-bold text-slate-900 dark:text-white uppercase">Location</h5>
+              <p class="text-slate-500">Coimbatore & Madurai, Tamil Nadu, India</p>
+            </div>
+            <div class="space-y-1">
+              <i data-lucide="phone" class="w-5 h-5 mx-auto text-amber-500"></i>
+              <h5 class="font-bold text-slate-900 dark:text-white uppercase">Helpline</h5>
+              <p class="text-slate-500">+91 94432 00000 (Toll Free Extension)</p>
+            </div>
+            <div class="space-y-1">
+              <i data-lucide="mail" class="w-5 h-5 mx-auto text-amber-500"></i>
+              <h5 class="font-bold text-slate-900 dark:text-white uppercase">Email Advisory</h5>
+              <p class="text-slate-500">advisory@farmwiseai.org</p>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -907,122 +794,99 @@
          TAB 2: ASSESSMENT RESULTS
          ======================================================================= -->
     <div id="tab-results" class="tab-pane">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-8">
         
-        <div id="no-results-view" class="agrul-card p-16 text-center space-y-4">
-          <div class="w-20 h-20 rounded-3xl bg-slate-100 dark:bg-slate-800 mx-auto flex items-center justify-center text-slate-400">
-            <i data-lucide="clipboard-x" class="w-10 h-10"></i>
+        <div id="no-results-view" class="agrarium-white-card p-16 text-center space-y-4">
+          <div class="w-16 h-16 rounded-xl bg-amber-100 dark:bg-amber-950 mx-auto flex items-center justify-center text-amber-600">
+            <i data-lucide="clipboard-x" class="w-8 h-8"></i>
           </div>
-          <div class="section-subtitle justify-center">Assessment</div>
-          <h2 class="section-title">No Active Assessment</h2>
-          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
-            Upload a crop photograph or speak a question on the Dashboard to generate verified multimodal intelligence.
-          </p>
-          <button onclick="switchTab('dashboard')" class="btn-primary-agrul mx-auto">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            <span>Go to Dashboard</span>
-          </button>
+          <span class="script-subtitle justify-center">Assessment</span>
+          <h2 class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">No Active Assessment</h2>
+          <p class="text-xs text-slate-500 max-w-md mx-auto">Upload a crop leaf photograph or speak a question on the Dashboard to execute the multimodal pipeline.</p>
+          <button onclick="switchTab('dashboard')" class="btn-agrarium-gold mx-auto">Go to Dashboard</button>
         </div>
 
         <div id="results-view" class="hidden space-y-8">
-          <!-- Main Results Card -->
-          <div class="agrul-card p-8 space-y-6">
-            <div class="agrul-card-accent -mx-8 -mt-8 mb-6"></div>
-            
+          <div class="agrarium-white-card p-8 space-y-6">
             <div class="flex flex-wrap items-start justify-between gap-4">
               <div class="space-y-1">
-                <div class="flex items-center gap-2">
-                  <span class="section-subtitle text-xs">Crop Pathology Assessment</span>
-                  <span id="result-req-id" class="text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-0.5 rounded-lg">REQ-001</span>
-                </div>
-                <h2 id="result-condition-title" class="section-title">Possible Early Blight</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Crop: <span id="result-crop-name" class="font-semibold text-slate-700 dark:text-slate-200">Tomato</span></p>
+                <span class="script-subtitle text-xl">Crop Pathology Assessment</span>
+                <h2 id="result-condition-title" class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">Possible Early Blight</h2>
+                <p class="text-xs text-slate-500">Crop: <span id="result-crop-name" class="font-bold text-amber-600">Tomato</span> • ID: <span id="result-req-id" class="font-mono">REQ-001</span></p>
               </div>
 
-              <!-- Spoken Audio Button -->
-              <button onclick="playRecommendationAudio()" id="tts-play-btn" class="btn-primary-agrul !py-2.5 !px-5 !text-xs">
+              <button onclick="playRecommendationAudio()" id="tts-play-btn" class="btn-agrarium-gold !py-2.5 !px-5 !text-xs">
                 <i data-lucide="volume-2" class="w-4 h-4"></i>
                 <span id="tts-btn-text">🔊 Listen to Advice</span>
               </button>
             </div>
 
-            <!-- 3 Badges Row -->
+            <!-- 3 Badges -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+              <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div>
-                  <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">System Confidence</p>
-                  <p id="result-confidence-badge" class="text-lg font-serif font-extrabold text-agri-700 dark:text-agri-400 mt-0.5">HIGH (89%)</p>
+                  <p class="text-[11px] text-slate-400">Confidence</p>
+                  <p id="result-confidence-badge" class="font-serif font-black text-xl text-amber-600 dark:text-amber-400">HIGH (89%)</p>
                 </div>
-                <div class="w-11 h-11 rounded-2xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-400">
-                  <i data-lucide="shield-check" class="w-5 h-5"></i>
-                </div>
+                <i data-lucide="shield-check" class="w-6 h-6 text-amber-500"></i>
               </div>
 
-              <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+              <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div>
-                  <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Critic Verification</p>
-                  <p id="result-verification-badge" class="text-lg font-serif font-extrabold text-emerald-700 dark:text-emerald-400 mt-0.5">✓ Verified</p>
+                  <p class="text-[11px] text-slate-400">Verification</p>
+                  <p id="result-verification-badge" class="font-serif font-black text-xl text-emerald-600 dark:text-emerald-400">✓ Verified</p>
                 </div>
-                <div class="w-11 h-11 rounded-2xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
-                  <i data-lucide="check-circle" class="w-5 h-5"></i>
-                </div>
+                <i data-lucide="check-circle" class="w-6 h-6 text-emerald-500"></i>
               </div>
 
-              <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+              <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div>
-                  <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Pre-flight Quality</p>
-                  <p id="result-quality-badge" class="text-lg font-serif font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Passed</p>
+                  <p class="text-[11px] text-slate-400">Quality Gate</p>
+                  <p id="result-quality-badge" class="font-serif font-black text-xl text-slate-700 dark:text-slate-300">Passed</p>
                 </div>
-                <div class="w-11 h-11 rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300">
-                  <i data-lucide="camera" class="w-5 h-5"></i>
-                </div>
+                <i data-lucide="camera" class="w-6 h-6 text-slate-500"></i>
               </div>
             </div>
 
-            <!-- Spoken Voice Script Container -->
-            <div id="spoken-script-container" class="bg-gradient-to-r from-agri-50 to-emerald-50 dark:from-slate-950 dark:to-slate-900 border border-agri-200 dark:border-slate-800 rounded-2xl p-4 space-y-2">
-              <div class="flex items-center justify-between text-xs font-bold text-agri-800 dark:text-agri-300">
-                <span class="flex items-center gap-2">
-                  <i data-lucide="mic-2" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
-                  <span>Spoken Voice Advisory Script (English / தமிழ்)</span>
-                </span>
-                <span class="text-[10px] bg-white dark:bg-slate-800 px-2 py-0.5 rounded font-mono border border-agri-200 dark:border-slate-700">Synthesizer Active</span>
+            <!-- Spoken Script -->
+            <div class="p-4 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 space-y-2">
+              <div class="flex items-center gap-2 text-xs font-bold text-amber-900 dark:text-amber-300">
+                <i data-lucide="mic-2" class="w-4 h-4 text-amber-600"></i>
+                <span>Voice Advisory Script (English / தமிழ் Ready)</span>
               </div>
-              <p id="result-spoken-script-text" class="text-xs text-slate-700 dark:text-slate-300 italic font-medium leading-relaxed"></p>
+              <p id="result-spoken-script-text" class="text-xs text-slate-700 dark:text-slate-300 italic"></p>
             </div>
 
-            <!-- Safety Disclaimer -->
-            <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-2xl p-3.5 flex items-start gap-3 text-xs text-amber-900 dark:text-amber-200">
-              <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0"></i>
+            <!-- Disclaimer -->
+            <div class="p-3.5 rounded bg-amber-100/60 dark:bg-amber-950/60 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5">
+              <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
               <div>
                 <span class="font-bold">Responsible AI Advisory:</span>
-                <span id="result-safety-disclaimer"> This is an AI-assisted crop assessment based on visible foliar symptoms and university extension bulletins. Consult local extension officers before applying chemical treatments.</span>
+                <span id="result-safety-disclaimer"> Consult local extension officers before applying chemical treatments.</span>
               </div>
             </div>
           </div>
 
-          <!-- IPM Guidance & Preventative Grid -->
+          <!-- IPM Guidance -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="agrul-card p-6 space-y-4">
-              <div class="agrul-card-accent -mx-6 -mt-6 mb-4"></div>
+            <div class="agrarium-white-card p-6 space-y-4">
               <h3 class="font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2 text-base">
-                <i data-lucide="check-square" class="w-5 h-5 text-agri-600 dark:text-agri-400"></i>
+                <i data-lucide="check-square" class="w-5 h-5 text-amber-600"></i>
                 <span>Integrated Pest & Disease Management (IPM)</span>
               </h3>
               <ul id="result-management-list" class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300"></ul>
             </div>
 
-            <div class="agrul-card p-6 space-y-4">
-              <div class="agrul-card-accent -mx-6 -mt-6 mb-4" style="background: linear-gradient(90deg, #2563eb, #60a5fa)"></div>
+            <div class="agrarium-white-card p-6 space-y-4">
               <h3 class="font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2 text-base">
-                <i data-lucide="shield" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                <i data-lucide="shield" class="w-5 h-5 text-blue-600"></i>
                 <span>Preventative & Cultural Practices</span>
               </h3>
               <ul id="result-preventative-list" class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300"></ul>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
 
@@ -1030,21 +894,15 @@
          TAB 3: ROUTE TRACE
          ======================================================================= -->
     <div id="tab-trace" class="tab-pane">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
-        <div class="space-y-1">
-          <div class="section-subtitle">Execution Transparency</div>
-          <h2 class="section-title">Adaptive Route Trace Timeline</h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Multi-stage execution logs across vision classifier, commercial LLMs, RAG, and critic</p>
-        </div>
-
-        <div class="agrul-card p-6 space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
-            <div class="flex items-center gap-3 text-xs font-mono">
-              <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl text-slate-700 dark:text-slate-300">Total Latency: <strong id="trace-total-latency">0 ms</strong></span>
-              <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl text-slate-700 dark:text-slate-300">Estimated Cost: <strong id="trace-total-cost">$0.000</strong></span>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-6">
+        <span class="script-subtitle">Execution Transparency</span>
+        <h2 class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">Adaptive Route Trace Timeline</h2>
+        
+        <div class="agrarium-white-card p-6 space-y-4">
+          <div class="flex items-center gap-4 text-xs font-mono border-b border-slate-100 dark:border-slate-800 pb-3">
+            <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded text-slate-700 dark:text-slate-300">Total Latency: <strong id="trace-total-latency">0 ms</strong></span>
+            <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded text-slate-700 dark:text-slate-300">Estimated Cost: <strong id="trace-total-cost">$0.000</strong></span>
           </div>
-
           <div id="route-trace-timeline" class="space-y-4 pt-2"></div>
         </div>
       </div>
@@ -1054,135 +912,71 @@
          TAB 4: EVIDENCE FUSION MATRIX
          ======================================================================= -->
     <div id="tab-evidence" class="tab-pane">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
-        <div class="space-y-1">
-          <div class="section-subtitle">Cross-Verification</div>
-          <h2 class="section-title">Multi-Evidence Fusion Matrix</h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Triangulating Visual Pathology, University Bulletins (RAG), and Field Context</p>
-        </div>
-
-        <!-- 3-Stream Matrix Grid -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-6">
+        <span class="script-subtitle">Triangulation</span>
+        <h2 class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">Multi-Evidence Fusion Matrix</h2>
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="agrul-card p-5 space-y-3">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3"></div>
-            <div class="flex items-center gap-2 text-xs font-bold uppercase text-agri-700 dark:text-agri-400">
-              <i data-lucide="eye" class="w-4 h-4"></i>
-              <span>1. Visual Evidence</span>
-            </div>
-            <div id="evidence-visual-content" class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5 font-mono">
-              <p>No active visual analysis</p>
-            </div>
+          <div class="agrarium-white-card p-5 space-y-2">
+            <h4 class="font-bold text-xs uppercase text-amber-600">1. Visual Evidence</h4>
+            <div id="evidence-visual-content" class="text-xs text-slate-600 dark:text-slate-300 space-y-1 font-mono"></div>
           </div>
-
-          <div class="agrul-card p-5 space-y-3">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3" style="background: linear-gradient(90deg, #2563eb, #60a5fa)"></div>
-            <div class="flex items-center gap-2 text-xs font-bold uppercase text-blue-700 dark:text-blue-400">
-              <i data-lucide="book-open" class="w-4 h-4"></i>
-              <span>2. Advisory RAG Evidence</span>
-            </div>
-            <div id="evidence-rag-content" class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5 font-mono">
-              <p>No active RAG citations</p>
-            </div>
+          <div class="agrarium-white-card p-5 space-y-2">
+            <h4 class="font-bold text-xs uppercase text-blue-600">2. Advisory RAG Evidence</h4>
+            <div id="evidence-rag-content" class="text-xs text-slate-600 dark:text-slate-300 space-y-1 font-mono"></div>
           </div>
-
-          <div class="agrul-card p-5 space-y-3">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3" style="background: linear-gradient(90deg, #9333ea, #c084fc)"></div>
-            <div class="flex items-center gap-2 text-xs font-bold uppercase text-purple-700 dark:text-purple-400">
-              <i data-lucide="map-pin" class="w-4 h-4"></i>
-              <span>3. Field Context</span>
-            </div>
-            <div id="evidence-context-content" class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5 font-mono">
-              <p>No active field context</p>
-            </div>
+          <div class="agrarium-white-card p-5 space-y-2">
+            <h4 class="font-bold text-xs uppercase text-purple-600">3. Field Context</h4>
+            <div id="evidence-context-content" class="text-xs text-slate-600 dark:text-slate-300 space-y-1 font-mono"></div>
           </div>
         </div>
 
-        <!-- Retrieved Extension Citations -->
-        <div class="agrul-card p-6 space-y-4">
-          <h4 class="font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2 text-sm">
-            <i data-lucide="file-check" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
-            <span>Retrieved University & Extension Citations</span>
-          </h4>
+        <div class="agrarium-white-card p-6 space-y-4">
+          <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base">Retrieved University & Extension Bulletins</h4>
           <div id="citations-container" class="space-y-3"></div>
         </div>
       </div>
     </div>
 
     <!-- =======================================================================
-         TAB 5: ADVISORY DOCUMENTS & RAG
+         TAB 5: RAG DOCUMENTS
          ======================================================================= -->
     <div id="tab-documents" class="tab-pane">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
-        <div class="space-y-1">
-          <div class="section-subtitle">Extension Store</div>
-          <h2 class="section-title">Agricultural Knowledge RAG Indexer</h2>
-        </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-6">
+        <span class="script-subtitle">Knowledge Base</span>
+        <h2 class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">Agricultural Advisory RAG</h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <!-- Upload PDF Form (5 cols) -->
-          <div class="lg:col-span-5 space-y-5">
-            <div class="agrul-card p-6 space-y-4">
-              <div class="agrul-card-accent -mx-6 -mt-6 mb-4"></div>
-              <h3 class="font-serif font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
-                <i data-lucide="upload" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
-                <span>Upload Extension Advisory PDF</span>
-              </h3>
-              <p class="text-xs text-slate-400">Upload ICAR, TNAU, or State University bulletins to augment vector store.</p>
-
+          <div class="lg:col-span-5 space-y-6">
+            <div class="agrarium-white-card p-6 space-y-4">
+              <h3 class="font-serif font-bold text-sm text-slate-900 dark:text-white">Upload Advisory PDF</h3>
               <form id="doc-upload-form" onsubmit="uploadAdvisoryDoc(event)" class="space-y-3">
-                <div>
-                  <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Document File (PDF / TXT)</label>
-                  <input type="file" id="doc-file-input" accept=".pdf,.txt,.md" required class="w-full text-xs text-slate-500 dark:text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-agri-50 dark:file:bg-slate-800 file:text-agri-700 dark:file:text-agri-300 hover:file:bg-agri-100">
-                </div>
-                <div>
-                  <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Document Title</label>
-                  <input type="text" id="doc-title-input" placeholder="e.g. TNAU Chilli Thrips Advisory 2024" required class="agrul-input">
-                </div>
-                <div>
-                  <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Target Crop</label>
-                  <select id="doc-crop-select" class="agrul-input">
-                    <option value="Tomato">Tomato</option>
-                    <option value="Chilli">Chilli</option>
-                    <option value="Rice">Rice</option>
-                    <option value="Potato">Potato</option>
-                    <option value="Cotton">Cotton</option>
-                    <option value="General">General / Multi-crop</option>
-                  </select>
-                </div>
-                <button type="submit" id="doc-upload-btn" class="btn-primary-agrul w-full !justify-center !text-xs !py-3">
-                  <i data-lucide="plus-circle" class="w-4 h-4"></i>
-                  <span>Index Document Chunks</span>
-                </button>
+                <input type="file" id="doc-file-input" accept=".pdf,.txt,.md" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded file:border-0 file:bg-amber-100 file:text-amber-800">
+                <input type="text" id="doc-title-input" placeholder="Document Title" required class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs">
+                <select id="doc-crop-select" class="w-full p-2.5 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs">
+                  <option>Tomato</option><option>Chilli</option><option>Rice</option><option>Potato</option><option>Cotton</option><option>General</option>
+                </select>
+                <button type="submit" id="doc-upload-btn" class="btn-agrarium-gold w-full !justify-center !text-xs">Index Document Chunks</button>
               </form>
             </div>
 
-            <!-- Vector Test Search -->
-            <div class="agrul-card p-5 space-y-3">
-              <h4 class="font-serif font-bold text-slate-900 dark:text-white text-xs flex items-center gap-2">
-                <i data-lucide="search" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
-                <span>Test Semantic Vector Retrieval</span>
-              </h4>
+            <div class="agrarium-white-card p-5 space-y-3">
+              <h4 class="font-serif font-bold text-xs">Test Semantic Vector Search</h4>
               <div class="flex gap-2">
-                <input type="text" id="rag-test-query" placeholder="e.g. early blight concentric spots" class="agrul-input flex-1">
-                <button onclick="testRAGQuery()" class="px-4 py-2 bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition">Search</button>
+                <input type="text" id="rag-test-query" placeholder="e.g. early blight concentric spots" class="flex-1 p-2 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs">
+                <button onclick="testRAGQuery()" class="px-4 py-2 bg-slate-800 text-white rounded text-xs font-bold">Search</button>
               </div>
               <div id="rag-test-results" class="text-xs space-y-2 pt-1"></div>
             </div>
           </div>
 
-          <!-- Indexed Library (7 cols) -->
           <div class="lg:col-span-7">
-            <div class="agrul-card p-6 space-y-4">
-              <div class="flex items-center justify-between">
-                <div>
-                  <h3 class="font-serif font-bold text-slate-900 dark:text-white text-base">Indexed Extension Bulletins</h3>
-                  <p class="text-xs text-slate-400">Authoritative bulletins indexed in SQLite vector store</p>
-                </div>
-                <button onclick="loadDocumentList()" class="p-2 text-slate-400 hover:text-agri-600 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition">
-                  <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                </button>
+            <div class="agrarium-white-card p-6 space-y-4">
+              <div class="flex justify-between items-center">
+                <h3 class="font-serif font-bold text-base">Indexed Extension Bulletins</h3>
+                <button onclick="loadDocumentList()" class="p-2 text-slate-400 hover:text-amber-600"><i data-lucide="refresh-cw" class="w-4 h-4"></i></button>
               </div>
-              <div id="doc-chunks-list" class="space-y-3 max-h-[580px] overflow-y-auto pr-1"></div>
+              <div id="doc-chunks-list" class="space-y-3 max-h-[560px] overflow-y-auto pr-1"></div>
             </div>
           </div>
         </div>
@@ -1193,31 +987,28 @@
          TAB 6: HISTORY & AUDIT LOG
          ======================================================================= -->
     <div id="tab-history" class="tab-pane">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
-        <div class="flex flex-wrap items-end justify-between gap-4">
-          <div class="space-y-1">
-            <div class="section-subtitle">Audit Trails</div>
-            <h2 class="section-title">Analysis History Log</h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400">All diagnostic sessions persistently logged in SQLite</p>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-6">
+        <div class="flex justify-between items-end">
+          <div>
+            <span class="script-subtitle">Audit</span>
+            <h2 class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">Analysis History Log</h2>
           </div>
-          <button onclick="loadHistory()" class="flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-xl transition">
-            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh
-          </button>
+          <button onclick="loadHistory()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded text-xs font-semibold"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh</button>
         </div>
 
-        <div class="agrul-card overflow-hidden">
+        <div class="agrarium-white-card overflow-hidden">
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-600 dark:text-slate-300">
-              <thead class="bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 uppercase font-semibold border-b border-slate-200 dark:border-slate-800">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 uppercase font-bold border-b border-slate-200 dark:border-slate-800">
                 <tr>
-                  <th class="py-3.5 px-4">Request ID</th>
-                  <th class="py-3.5 px-4">Crop</th>
-                  <th class="py-3.5 px-4">Possible Condition</th>
-                  <th class="py-3.5 px-4">Confidence</th>
-                  <th class="py-3.5 px-4">Verification</th>
-                  <th class="py-3.5 px-4">Latency</th>
-                  <th class="py-3.5 px-4">Cost</th>
-                  <th class="py-3.5 px-4 text-right">Action</th>
+                  <th class="py-3 px-4">Request ID</th>
+                  <th class="py-3 px-4">Crop</th>
+                  <th class="py-3 px-4">Possible Condition</th>
+                  <th class="py-3 px-4">Confidence</th>
+                  <th class="py-3 px-4">Verification</th>
+                  <th class="py-3 px-4">Latency</th>
+                  <th class="py-3 px-4">Cost</th>
+                  <th class="py-3 px-4 text-right">Action</th>
                 </tr>
               </thead>
               <tbody id="history-table-body" class="divide-y divide-slate-100 dark:divide-slate-800"></tbody>
@@ -1231,44 +1022,37 @@
          TAB 7: OBSERVABILITY & METRICS
          ======================================================================= -->
     <div id="tab-metrics" class="tab-pane">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-        <div class="space-y-1">
-          <div class="section-subtitle">System Observability</div>
-          <h2 class="section-title">Performance & Cost Analytics</h2>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-8">
+        <div>
+          <span class="script-subtitle">Observability</span>
+          <h2 class="font-serif font-extrabold text-3xl text-slate-900 dark:text-white">System Performance & Cost Tracking</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div class="agrul-card p-5 space-y-1">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3"></div>
-            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Diagnoses</p>
-            <p id="metric-total-requests" class="text-3xl font-serif font-black text-slate-900 dark:text-white mt-1">0</p>
+          <div class="agrarium-white-card p-5 space-y-1">
+            <p class="text-xs text-slate-400">Total Diagnoses</p>
+            <p id="metric-total-requests" class="font-serif font-black text-3xl text-slate-900 dark:text-white">0</p>
           </div>
-
-          <div class="agrul-card p-5 space-y-1">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3" style="background: linear-gradient(90deg, #2563eb, #60a5fa)"></div>
-            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Average Latency</p>
-            <p id="metric-avg-latency" class="text-3xl font-serif font-black text-agri-700 dark:text-agri-400 mt-1">0 ms</p>
+          <div class="agrarium-white-card p-5 space-y-1">
+            <p class="text-xs text-slate-400">Average Latency</p>
+            <p id="metric-avg-latency" class="font-serif font-black text-3xl text-amber-600">0 ms</p>
           </div>
-
-          <div class="agrul-card p-5 space-y-1">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3" style="background: linear-gradient(90deg, #10b981, #34d399)"></div>
-            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Cumulative Cost</p>
-            <p id="metric-total-cost" class="text-3xl font-serif font-black text-emerald-700 dark:text-emerald-400 mt-1">$0.000</p>
+          <div class="agrarium-white-card p-5 space-y-1">
+            <p class="text-xs text-slate-400">Cumulative Cost</p>
+            <p id="metric-total-cost" class="font-serif font-black text-3xl text-emerald-600">$0.000</p>
           </div>
-
-          <div class="agrul-card p-5 space-y-1">
-            <div class="agrul-card-accent -mx-5 -mt-5 mb-3" style="background: linear-gradient(90deg, #c47d20, #d97706)"></div>
-            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">RAG Documents</p>
-            <p id="metric-rag-chunks" class="text-3xl font-serif font-black text-blue-700 dark:text-blue-400 mt-1">5</p>
+          <div class="agrarium-white-card p-5 space-y-1">
+            <p class="text-xs text-slate-400">RAG Documents</p>
+            <p id="metric-rag-chunks" class="font-serif font-black text-3xl text-blue-600">5</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div class="agrul-card p-6">
+          <div class="agrarium-white-card p-6">
             <h4 class="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 mb-3">Estimated Cost Distribution by Tier</h4>
             <div class="h-64"><canvas id="costChart"></canvas></div>
           </div>
-          <div class="agrul-card p-6">
+          <div class="agrarium-white-card p-6">
             <h4 class="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 mb-3">Latency Breakdown per Stage (ms)</h4>
             <div class="h-64"><canvas id="latencyChart"></canvas></div>
           </div>
@@ -1279,108 +1063,61 @@
   </main>
 
   <!-- =========================================================================
-       FOOTER
+       PANORAMIC VINEYARD FOOTER
        ========================================================================= -->
-  <footer class="bg-agri-950 dark:bg-black text-agri-200 py-16 mt-auto border-t border-agri-900/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <footer class="relative text-white py-16 mt-auto bg-cover bg-center" style="background-image: linear-gradient(rgba(10, 20, 10, 0.90), rgba(5, 12, 5, 0.98)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80');">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10 text-xs">
       
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        <!-- Brand & Summary (5 cols) -->
-        <div class="md:col-span-5 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-agri-600 to-agri-400 flex items-center justify-center text-white shadow-lg">
-              <i data-lucide="sprout" class="w-6 h-6"></i>
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded bg-amber-500 flex items-center justify-center text-black font-bold">
+              <i data-lucide="sprout" class="w-5 h-5"></i>
             </div>
-            <span class="font-serif font-black text-xl text-white">ADAPTIX<span class="text-agri-400">-FARM</span></span>
+            <span class="font-serif font-bold text-xl text-white">Agrarium <span class="text-amber-400 font-script text-2xl">Farming</span></span>
           </div>
-          <p class="text-xs sm:text-sm text-agri-300 font-light leading-relaxed max-w-sm">
-            Adaptive Multimodal AI for Accessible Crop Intelligence. Engineered for smallholder farmers with three-tier model routing and university-grounded verification.
+          <p class="text-slate-300 font-light max-w-sm leading-relaxed">
+            ADAPTIX-FARM — Adaptive Multimodal AI for Accessible Crop Intelligence. Built for farmers with three-tier model routing and ICAR/TNAU RAG verification.
           </p>
-          <div class="flex items-center gap-3 text-xs text-agri-400">
-            <span>Built for FarmwiseAI Task 1</span>
-            <span>•</span>
-            <span>ICAR/TNAU Grounded</span>
-          </div>
         </div>
 
-        <!-- Architecture Links (4 cols) -->
-        <div class="md:col-span-4 space-y-3 text-xs">
-          <h5 class="font-bold text-white uppercase tracking-wider text-xs">Architecture & Pipeline</h5>
-          <ul class="space-y-2 text-agri-300">
-            <li class="flex items-center gap-2">
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-agri-500"></i>
-              <span>Laplacian Image Quality Inspection Gate</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-agri-500"></i>
-              <span>3-Tier Multi-Objective Model Router</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-agri-500"></i>
-              <span>ICAR/TNAU Vector Semantic RAG Retrieval</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-agri-500"></i>
-              <span>Independent Critic Verifier & Conflict Resolver</span>
-            </li>
-          </ul>
+        <div class="md:col-span-4 space-y-2">
+          <h5 class="font-bold text-amber-400 uppercase tracking-wider">AI Architecture</h5>
+          <p>• Laplacian Photometric Image Quality Check</p>
+          <p>• 3-Tier Multi-Objective Model Router</p>
+          <p>• Semantic Vector RAG Retrieval</p>
+          <p>• Independent Critic & Conflict Resolver</p>
         </div>
 
-        <!-- Quick Access (3 cols) -->
-        <div class="md:col-span-3 space-y-3 text-xs">
-          <h5 class="font-bold text-white uppercase tracking-wider text-xs">Repository & Documentation</h5>
-          <ul class="space-y-2 text-agri-300">
-            <li>
-              <a href="http://127.0.0.1:8000" class="hover:text-white transition flex items-center gap-2">
-                <i data-lucide="external-link" class="w-3.5 h-3.5 text-agri-400"></i>
-                <span>Local Web Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/vasanth5419622-web/NEWADAPTIX_AI" target="_blank" class="hover:text-white transition flex items-center gap-2">
-                <i data-lucide="github" class="w-3.5 h-3.5 text-agri-400"></i>
-                <span>GitHub Repository</span>
-              </a>
-            </li>
-            <li>
-              <a href="http://127.0.0.1:8000/docs" target="_blank" class="hover:text-white transition flex items-center gap-2">
-                <i data-lucide="file-code" class="w-3.5 h-3.5 text-agri-400"></i>
-                <span>FastAPI Swagger Docs</span>
-              </a>
-            </li>
-          </ul>
+        <div class="md:col-span-3 space-y-2">
+          <h5 class="font-bold text-amber-400 uppercase tracking-wider">Quick Links</h5>
+          <p><a href="http://127.0.0.1:8000" class="hover:text-amber-300">Local Web Dashboard</a></p>
+          <p><a href="https://github.com/vasanth5419622-web/NEWADAPTIX_AI" target="_blank" class="hover:text-amber-300">GitHub Repository</a></p>
+          <p><a href="http://127.0.0.1:8000/docs" target="_blank" class="hover:text-amber-300">Swagger API Docs</a></p>
         </div>
-
       </div>
 
-      <div class="border-t border-agri-900/80 pt-6 flex flex-wrap items-center justify-between gap-3 text-xs text-agri-400">
-        <p>© 2026 ADAPTIX-FARM — Adaptive Multimodal AI for Accessible Crop Intelligence</p>
-        <div class="flex items-center gap-4">
-          <span>Python 3.12 + FastAPI</span>
-          <span>•</span>
-          <span>SQLite + Vector Store</span>
-          <span>•</span>
-          <span>Bilingual Spoken Speech</span>
-        </div>
+      <div class="border-t border-white/10 pt-6 flex flex-wrap items-center justify-between gap-3 text-slate-400 text-[11px]">
+        <p>© 2026 Agrarium Farming • ADAPTIX-FARM AI</p>
+        <p>ICAR / TNAU Grounded • English & தமிழ் Speech Synthesizer</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- Application Logic & Scripts -->
+  <!-- Application Logic -->
   <script src="/static/src/app.js"></script>
 
   <script>
     // Preloader Dismiss
     window.addEventListener('load', () => {
       setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) preloader.classList.add('done');
-      }, 600);
+        const p = document.getElementById('preloader');
+        if (p) p.classList.add('done');
+      }, 500);
     });
 
-    // Mobile Drawer Menu
+    // Mobile Drawer Navigation
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       const overlay = document.getElementById('mobile-overlay');
@@ -1390,14 +1127,14 @@
       }
     }
 
-    // Scroll Navbar Effect & Intersection Observer
+    // Scroll Navbar Effect
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('main-navbar');
       if (nav) {
         if (window.scrollY > 40) {
-          nav.classList.add('scrolled');
+          nav.classList.add('!bg-black/90', '!h-16', 'shadow-2xl');
         } else {
-          nav.classList.remove('scrolled');
+          nav.classList.remove('!bg-black/90', '!h-16', 'shadow-2xl');
         }
       }
     });
@@ -1409,31 +1146,9 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('revealed');
-            
-            // Animate counters if present
-            const counters = entry.target.querySelectorAll('.counter-val');
-            counters.forEach(counter => {
-              const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-              if (target && !counter.dataset.animated) {
-                counter.dataset.animated = "true";
-                let current = 0;
-                const increment = Math.max(1, Math.ceil(target / 40));
-                const timer = setInterval(() => {
-                  current += increment;
-                  if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                    counter.textContent = target === 100 ? '100%' : target + (target >= 16 ? '+' : '');
-                  } else {
-                    counter.textContent = current + (target >= 16 ? '+' : '');
-                  }
-                }, 30);
-              }
-            });
           }
         });
-      }, { threshold: 0.12 });
-
+      }, { threshold: 0.1 });
       reveals.forEach(el => observer.observe(el));
     });
   </script>
