@@ -1,0 +1,59 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "CHK-STD-tomato-4",
+      "document_name": "icar_tomato_advisory_2024.pdf",
+      "document_title": "ICAR-IIHR Tomato Disease Management Advisory Bulletin #42",
+      "page_number": 4,
+      "crop": "Tomato",
+      "disease": "ICAR-IIHR Tomato Disease Management Advisory Bulletin #42",
+      "growth_stage": "Vegetative / Fruiting",
+      "source": "icar_tomato_advisory_2024.pdf (p. 4)",
+      "content": "Tomato Early Blight (Alternaria solani): Symptoms typically manifest on older leaves as small, dark brown to black spots with distinct concentric rings creating a 'target-board' appearance. A yellow chlorotic halo frequently borders each lesion. Disease proliferation accelerates during warm (24-29°C) and humid weather. Recommended Integrated Pest Management (IPM): Remove infected lower foliage to reduce soil-borne splash inoculum. Ensure adequate plant spacing for aeration. Apply protective sprays like Mancozeb 75% WP @ 2g/L or Chlorothalonil at first sign of spotting, followed by systemic azoxystrobin/difenoconazole if lesions progress."
+    },
+    {
+      "chunk_id": "CHK-STD-tomato-12",
+      "document_name": "tnau_tomato_protection_guide.pdf",
+      "document_title": "TNAU Agronomy Protocol for Solanaceous Crops",
+      "page_number": 12,
+      "crop": "Tomato",
+      "disease": "TNAU Agronomy Protocol for Solanaceous Crops",
+      "growth_stage": "Vegetative / Fruiting",
+      "source": "tnau_tomato_protection_guide.pdf (p. 12)",
+      "content": "Tomato Target Spot (Corynespora cassiicola) vs Septoria Leaf Spot: Septoria spots are numerous, circular, with ash-grey centers and tiny dark pycnidia specks, unlike the larger concentric bullseye spots of Early Blight. Bacterial Spot (Xanthomonas) produces water-soaked lesions that turn necrotic without prominent concentric rings. Maintain drip irrigation and avoid overhead sprinkling to prevent canopy moisture buildup."
+    },
+    {
+      "chunk_id": "CHK-STD-chilli-7",
+      "document_name": "chilli_leaf_curl_and_thrips_bulletin.pdf",
+      "document_title": "National Horticulture Board Chilli Crop Protection Manual",
+      "page_number": 7,
+      "crop": "Chilli",
+      "disease": "National Horticulture Board Chilli Crop Protection Manual",
+      "growth_stage": "Vegetative / Fruiting",
+      "source": "chilli_leaf_curl_and_thrips_bulletin.pdf (p. 7)",
+      "content": "Chilli Leaf Curl Disease (Begomovirus transmitted by Bemisia tabaci whiteflies): Diagnostic symptoms include severe upward curling of leaf margins, puckering, reduced leaf size, and vein clearing. If curling is downward, it typically indicates Yellow Mite (Polyphagotarsonemus latus) infestation. Management strategy: Vector control is essential. Install yellow sticky traps (15-20/acre). Spray neem oil (10,000 ppm) @ 3ml/L or Diafenthiuron 50% WP @ 1g/L for whitefly management. Rogue out and destroy early infected viral plants."
+    },
+    {
+      "chunk_id": "CHK-STD-rice-15",
+      "document_name": "icar_rice_blast_management.pdf",
+      "document_title": "ICAR-NRRI Rice Pathology Advisory",
+      "page_number": 15,
+      "crop": "Rice",
+      "disease": "ICAR-NRRI Rice Pathology Advisory",
+      "growth_stage": "Vegetative / Fruiting",
+      "source": "icar_rice_blast_management.pdf (p. 15)",
+      "content": "Rice Blast (Magnaporthe oryzae): Leaf blast causes spindle-shaped elliptical lesions with gray or whitish centers and reddish-brown borders. Severe infections lead to leaf drying (blast appearance). Avoid excessive nitrogen application. Maintain balanced NPK (120:60:60 kg/ha) with split potash application. Foliar spray of Tricyclazole 75% WP @ 0.6g/L or Isoprothiolane 40% EC @ 1.5ml/L at initial lesion detection."
+    },
+    {
+      "chunk_id": "CHK-STD-potato-9",
+      "document_name": "potato_blight_bulletin.pdf",
+      "document_title": "CPRI Shimla Potato Advisory",
+      "page_number": 9,
+      "crop": "Potato",
+      "disease": "CPRI Shimla Potato Advisory",
+      "growth_stage": "Vegetative / Fruiting",
+      "source": "potato_blight_bulletin.pdf (p. 9)",
+      "content": "Potato Late Blight (Phytophthora infestans): Water-soaked lesions at leaf tips and margins, rapidly turning brown/black with white downy fungal growth on the underside during humid mornings. Prophylactic spray of Mancozeb @ 2.5g/L before canopy closure. Apply Cymoxanil + Mancozeb if wet cloudy weather persists."
+    }
+  ]
+}
