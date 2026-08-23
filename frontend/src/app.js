@@ -1,4 +1,4 @@
-// ADAPTIX-FARM — Interactive Client Application Engine
+// ADAPTIX-FARM — Interactive Client Application Engine with Dark Mode & Bilingual Voice
 
 let currentFile = null;
 let currentLanguage = 'en';
@@ -10,6 +10,7 @@ let costChartInstance = null;
 let latencyChartInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   if (window.lucide) {
     lucide.createIcons();
   }
@@ -21,11 +22,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
+// DARK / LIGHT THEME TOGGLE & PERSISTENCE
+// ==========================================
+function initTheme() {
+  const savedTheme = localStorage.getItem('adaptix_theme');
+  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}
+
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('adaptix_theme', isDark ? 'dark' : 'light');
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+  // Re-render charts with updated theme colors if on metrics tab
+  if (costChartInstance || latencyChartInstance) {
+    renderMetricsCharts();
+  }
+}
+
+// ==========================================
 // TAB NAVIGATION
 // ==========================================
 function switchTab(tabId) {
-  document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
-  document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(el => {
+    el.classList.add('hidden');
+    el.classList.remove('active');
+  });
   
   const target = document.getElementById(`tab-${tabId}`);
   if (target) {
@@ -63,16 +90,16 @@ function setupDropzone() {
 
   dropzone.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropzone.classList.add('border-agri-600', 'bg-agri-50/50');
+    dropzone.classList.add('border-agri-500', 'bg-agri-50/50', 'dark:bg-agri-950/40');
   });
 
   dropzone.addEventListener('dragleave', () => {
-    dropzone.classList.remove('border-agri-600', 'bg-agri-50/50');
+    dropzone.classList.remove('border-agri-500', 'bg-agri-50/50', 'dark:bg-agri-950/40');
   });
 
   dropzone.addEventListener('drop', (e) => {
     e.preventDefault();
-    dropzone.classList.remove('border-agri-600', 'bg-agri-50/50');
+    dropzone.classList.remove('border-agri-500', 'bg-agri-50/50', 'dark:bg-agri-950/40');
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFileSelection(e.dataTransfer.files[0]);
     }
@@ -96,11 +123,11 @@ function handleFileSelection(file) {
     
     // Show Pre-flight quality indicator
     const qBadge = document.getElementById('quality-status-badge');
-    qBadge.classList.remove('hidden', 'bg-amber-50', 'text-amber-800', 'border-amber-200', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
-    qBadge.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+    qBadge.classList.remove('hidden', 'bg-amber-50', 'dark:bg-amber-950/50', 'text-amber-800', 'dark:text-amber-300', 'border-amber-200');
+    qBadge.classList.add('bg-emerald-50', 'dark:bg-emerald-950/50', 'text-emerald-800', 'dark:text-emerald-300', 'border', 'border-emerald-200', 'dark:border-emerald-800');
     qBadge.innerHTML = `
       <div class="flex items-center space-x-2">
-        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
         <span>Image loaded (${(file.size / 1024).toFixed(1)} KB). Quality gate ready.</span>
       </div>
     `;
@@ -123,14 +150,21 @@ function removeImage(e) {
 // ==========================================
 function setLanguage(lang) {
   currentLanguage = lang;
-  document.getElementById('lang-en').className = lang === 'en' 
-    ? "px-2 py-0.5 text-xs font-semibold rounded bg-white text-agri-800 shadow-sm" 
-    : "px-2 py-0.5 text-xs font-semibold rounded text-slate-600";
+  
+  const isEn = lang === 'en';
+  document.getElementById('lang-en').className = isEn
+    ? "px-2.5 py-1 text-xs font-bold rounded-lg bg-white dark:bg-slate-700 text-agri-800 dark:text-agri-300 shadow-sm"
+    : "px-2.5 py-1 text-xs font-bold rounded-lg text-slate-600 dark:text-slate-400";
     
-  document.getElementById('lang-ta').className = lang === 'ta' 
-    ? "px-2 py-0.5 text-xs font-semibold rounded bg-white text-agri-800 shadow-sm" 
-    : "px-2 py-0.5 text-xs font-semibold rounded text-slate-600";
+  document.getElementById('lang-ta').className = !isEn
+    ? "px-2.5 py-1 text-xs font-bold rounded-lg bg-white dark:bg-slate-700 text-agri-800 dark:text-agri-300 shadow-sm"
+    : "px-2.5 py-1 text-xs font-bold rounded-lg text-slate-600 dark:text-slate-400";
     
+  const langLabel = document.getElementById('voice-listening-lang');
+  if (langLabel) {
+    langLabel.textContent = isEn ? "English" : "தமிழ்";
+  }
+
   if (speechRecognition) {
     speechRecognition.lang = lang === 'ta' ? 'ta-IN' : 'en-US';
   }
@@ -188,8 +222,8 @@ function startVoiceRecording() {
     setTimeout(() => {
       if (isRecording) {
         document.getElementById('query-input').value = currentLanguage === 'ta' 
-          ? "இந்த தக்காளி இலையில் மஞ்சள் புள்ளிகள் வருகிறது. என்ன பிரச்சனை?" 
-          : "My crop leaves have yellow spots and necrotic borders.";
+          ? "இந்த தக்காளி இலையில் மஞ்சள் புள்ளிகள் மற்றும் கருகிய பகுதிகள் வருகிறது. என்ன பிரச்சனை?" 
+          : "My tomato lower leaves have yellow rings with dark concentric spots.";
         stopVoiceRecording();
       }
     }, 2500);
@@ -220,8 +254,6 @@ function loadPreset(presetKey) {
     document.getElementById('context-notes').value = 'Spots appeared after continuous 3 days drizzle.';
     document.getElementById('query-input').value = 'Lower leaves showing dark spots with concentric bullseye rings and yellow halo.';
     setLanguage('en');
-    
-    // Create synthetic demo canvas image for tomato leaf
     createSyntheticLeafImage("tomato_leaf_early_blight.png", "#2e7d32", "concentric_spots");
   } 
   else if (presetKey === 'chilli_leaf_curl') {
@@ -333,11 +365,11 @@ function createSyntheticBlurryImage(filename) {
     
     // Update badge to alert user
     const qBadge = document.getElementById('quality-status-badge');
-    qBadge.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
-    qBadge.classList.add('bg-amber-50', 'text-amber-800', 'border', 'border-amber-200');
+    qBadge.classList.remove('hidden', 'bg-emerald-50', 'dark:bg-emerald-950/50', 'text-emerald-800');
+    qBadge.classList.add('bg-amber-50', 'dark:bg-amber-950/50', 'text-amber-800', 'dark:text-amber-300', 'border', 'border-amber-200', 'dark:border-amber-800');
     qBadge.innerHTML = `
       <div class="flex items-center space-x-2">
-        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
+        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
         <span>Pre-flight check: Image resolution is low (120x120px). Quality gate test loaded.</span>
       </div>
     `;
@@ -437,7 +469,7 @@ async function executePipeline() {
     setTimeout(() => {
       progress.classList.add('hidden');
       switchTab('results');
-    }, 600);
+    }, 500);
 
   } catch (err) {
     clearInterval(timer);
@@ -474,22 +506,29 @@ function renderResults(state) {
   const confLevel = conf.level || 'Moderate';
   confBadge.textContent = `${confLevel.toUpperCase()} (${confScore}%)`;
   confBadge.className = `text-lg font-heading font-extrabold mt-0.5 ${
-    confLevel === 'High' ? 'text-agri-700' : confLevel === 'Moderate' ? 'text-blue-700' : 'text-amber-700'
+    confLevel === 'High' ? 'text-agri-700 dark:text-agri-400' : confLevel === 'Moderate' ? 'text-blue-700 dark:text-blue-400' : 'text-amber-700 dark:text-amber-400'
   }`;
 
   // Verification Badge
   const verifBadge = document.getElementById('result-verification-badge');
   const isVerified = verif.verified;
   verifBadge.textContent = isVerified ? "✓ Verified" : "⚠️ Requires Review";
-  verifBadge.className = `text-lg font-heading font-extrabold mt-0.5 ${isVerified ? 'text-emerald-700' : 'text-amber-700'}`;
+  verifBadge.className = `text-lg font-heading font-extrabold mt-0.5 ${isVerified ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-700 dark:text-amber-400'}`;
 
   // Quality Badge
   const qualBadge = document.getElementById('result-quality-badge');
   if (quality) {
     qualBadge.textContent = quality.passed ? `Passed (${quality.blur_score.toFixed(0)} var)` : `Issues Flagged`;
-    qualBadge.className = `text-lg font-heading font-extrabold mt-0.5 ${quality.passed ? 'text-slate-700' : 'text-red-700'}`;
+    qualBadge.className = `text-lg font-heading font-extrabold mt-0.5 ${quality.passed ? 'text-slate-700 dark:text-slate-300' : 'text-red-700 dark:text-red-400'}`;
   } else {
     qualBadge.textContent = "Text / No Image";
+  }
+
+  // Spoken Script Box
+  const spokenTextEl = document.getElementById('result-spoken-script-text');
+  if (spokenTextEl) {
+    const spokenScript = finalRes.spoken_script || finalRes.assessment_summary || "Assessment complete.";
+    spokenTextEl.textContent = `"${spokenScript}"`;
   }
 
   // Management Checklist
@@ -497,9 +536,9 @@ function renderResults(state) {
   mList.innerHTML = '';
   (finalRes.management_advice || []).forEach(item => {
     const li = document.createElement('li');
-    li.className = 'flex items-start space-x-2.5 bg-slate-50 p-2.5 rounded-lg border border-slate-100';
+    li.className = 'flex items-start space-x-2.5 bg-slate-50 dark:bg-slate-950/60 p-3 rounded-2xl border border-slate-100 dark:border-slate-800';
     li.innerHTML = `
-      <i data-lucide="arrow-right-circle" class="w-4 h-4 text-agri-600 mt-0.5 shrink-0"></i>
+      <i data-lucide="arrow-right-circle" class="w-4 h-4 text-agri-600 dark:text-agri-400 mt-0.5 shrink-0"></i>
       <span>${item}</span>
     `;
     mList.appendChild(li);
@@ -510,9 +549,9 @@ function renderResults(state) {
   pList.innerHTML = '';
   (finalRes.preventative_measures || []).forEach(item => {
     const li = document.createElement('li');
-    li.className = 'flex items-start space-x-2.5 bg-slate-50 p-2.5 rounded-lg border border-slate-100';
+    li.className = 'flex items-start space-x-2.5 bg-slate-50 dark:bg-slate-950/60 p-3 rounded-2xl border border-slate-100 dark:border-slate-800';
     li.innerHTML = `
-      <i data-lucide="shield-check" class="w-4 h-4 text-blue-600 mt-0.5 shrink-0"></i>
+      <i data-lucide="shield-check" class="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0"></i>
       <span>${item}</span>
     `;
     pList.appendChild(li);
@@ -524,8 +563,8 @@ function renderResults(state) {
   if (userUsedVoice) {
     setTimeout(() => {
       playRecommendationAudio(true);
-      userUsedVoice = false; // Reset for next interaction
-    }, 500);
+      userUsedVoice = false;
+    }, 600);
   }
 }
 
@@ -542,25 +581,25 @@ function renderRouteTrace(state) {
   const traceList = state.route_trace || [];
   traceList.forEach((ev, idx) => {
     const card = document.createElement('div');
-    card.className = 'p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2 hover:border-agri-400 transition';
+    card.className = 'p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 space-y-2 hover:border-agri-400 dark:hover:border-agri-600 transition';
 
     card.innerHTML = `
       <div class="flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center space-x-2.5">
-          <span class="w-6 h-6 rounded-full bg-agri-100 text-agri-800 text-xs font-bold flex items-center justify-center">${ev.step_number || idx + 1}</span>
-          <h4 class="text-sm font-heading font-bold text-slate-900 capitalize">${(ev.task_type || '').replace(/_/g, ' ')}</h4>
-          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white border border-slate-200 text-slate-600">${ev.provider}</span>
+          <span class="w-6 h-6 rounded-full bg-agri-100 dark:bg-agri-950 text-agri-800 dark:text-agri-300 text-xs font-bold flex items-center justify-center">${ev.step_number || idx + 1}</span>
+          <h4 class="text-sm font-heading font-bold text-slate-900 dark:text-white capitalize">${(ev.task_type || '').replace(/_/g, ' ')}</h4>
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">${ev.provider}</span>
         </div>
-        <div class="flex items-center space-x-3 text-xs font-mono text-slate-500">
+        <div class="flex items-center space-x-3 text-xs font-mono text-slate-500 dark:text-slate-400">
           <span>⏱️ ${ev.latency_ms.toFixed(0)} ms</span>
           <span>💵 $${ev.estimated_cost.toFixed(4)}</span>
-          <span class="px-1.5 py-0.5 rounded ${ev.status === 'success' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'} text-[10px] font-bold uppercase">${ev.status}</span>
+          <span class="px-2 py-0.5 rounded ${ev.status === 'success' ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300' : 'bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300'} text-[10px] font-bold uppercase">${ev.status}</span>
         </div>
       </div>
-      <p class="text-xs text-slate-600 pl-8.5">${ev.reason}</p>
-      <div class="pl-8.5 text-[11px] text-slate-400 flex items-center space-x-3">
-        <span>Model: <strong class="text-slate-700">${ev.model_name}</strong></span>
-        <span>Routing Score: <strong class="text-slate-700">${ev.routing_score.toFixed(2)}</strong></span>
+      <p class="text-xs text-slate-600 dark:text-slate-400 pl-8.5">${ev.reason}</p>
+      <div class="pl-8.5 text-[11px] text-slate-400 dark:text-slate-500 flex items-center space-x-3">
+        <span>Model: <strong class="text-slate-700 dark:text-slate-300">${ev.model_name}</strong></span>
+        <span>Routing Score: <strong class="text-slate-700 dark:text-slate-300">${ev.routing_score.toFixed(2)}</strong></span>
       </div>
     `;
     container.appendChild(card);
@@ -580,25 +619,25 @@ function renderEvidence(state) {
   const vBox = document.getElementById('evidence-visual-content');
   const vis = fusion.visual_evidence || {};
   vBox.innerHTML = `
-    <p>• Condition: <span class="text-agri-800 font-semibold">${vis.possible_condition || vis.initial_assessment || 'N/A'}</span></p>
-    <p>• Detected Crop: <span class="text-slate-800">${vis.detected_crop || vis.crop || 'N/A'}</span></p>
-    <p>• Severity: <span class="text-slate-800">${vis.severity_level || 'Moderate'}</span></p>
+    <p>• Condition: <span class="text-agri-800 dark:text-agri-300 font-semibold">${vis.possible_condition || vis.initial_assessment || 'N/A'}</span></p>
+    <p>• Detected Crop: <span class="text-slate-800 dark:text-slate-200">${vis.detected_crop || vis.crop || 'N/A'}</span></p>
+    <p>• Severity: <span class="text-slate-800 dark:text-slate-200">${vis.severity_level || 'Moderate'}</span></p>
   `;
 
   // RAG
   const rBox = document.getElementById('evidence-rag-content');
   rBox.innerHTML = `
-    <p>• Matched Bulletins: <span class="text-blue-800 font-semibold">${retrieved.length}</span></p>
-    <p>• Top Source: <span class="text-slate-800 truncate block">${retrieved[0]?.document_title || 'N/A'}</span></p>
+    <p>• Matched Bulletins: <span class="text-blue-800 dark:text-blue-300 font-semibold">${retrieved.length}</span></p>
+    <p>• Top Source: <span class="text-slate-800 dark:text-slate-200 truncate block">${retrieved[0]?.document_title || 'N/A'}</span></p>
   `;
 
   // Context
   const cBox = document.getElementById('evidence-context-content');
   const ctx = state.context || {};
   cBox.innerHTML = `
-    <p>• Stated Crop: <span class="text-purple-800 font-semibold">${ctx.crop || 'Auto-Detected'}</span></p>
-    <p>• Growth Stage: <span class="text-slate-800">${ctx.growth_stage || 'Not specified'}</span></p>
-    <p>• Season: <span class="text-slate-800">${ctx.season || 'Not specified'}</span></p>
+    <p>• Stated Crop: <span class="text-purple-800 dark:text-purple-300 font-semibold">${ctx.crop || 'Auto-Detected'}</span></p>
+    <p>• Growth Stage: <span class="text-slate-800 dark:text-slate-200">${ctx.growth_stage || 'Not specified'}</span></p>
+    <p>• Season: <span class="text-slate-800 dark:text-slate-200">${ctx.season || 'Not specified'}</span></p>
   `;
 
   // Citations list
@@ -609,17 +648,17 @@ function renderEvidence(state) {
   } else {
     retrieved.forEach(src => {
       const card = document.createElement('div');
-      card.className = 'p-3 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5';
+      card.className = 'p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 space-y-1.5';
       card.innerHTML = `
         <div class="flex items-center justify-between text-xs">
-          <span class="font-bold text-slate-800 flex items-center space-x-1.5">
-            <i data-lucide="bookmark" class="w-3.5 h-3.5 text-agri-600"></i>
+          <span class="font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+            <i data-lucide="bookmark" class="w-3.5 h-3.5 text-agri-600 dark:text-agri-400"></i>
             <span>${src.document_title}</span>
           </span>
-          <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono text-[10px]">Relevance: ${(src.relevance_score * 100).toFixed(0)}%</span>
+          <span class="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded font-mono text-[10px]">Relevance: ${(src.relevance_score * 100).toFixed(0)}%</span>
         </div>
-        <p class="text-xs text-slate-600 italic">"${src.matched_text}"</p>
-        <p class="text-[10px] text-slate-400">Source: ${src.source_name} (Page ${src.page})</p>
+        <p class="text-xs text-slate-600 dark:text-slate-300 italic">"${src.matched_text}"</p>
+        <p class="text-[10px] text-slate-400 dark:text-slate-500">Source: ${src.source_name} (Page ${src.page})</p>
       `;
       citBox.appendChild(card);
     });
@@ -635,7 +674,6 @@ function playRecommendationAudio(autoTrigger = false) {
   if (!currentExecutionState) return;
   const finalRes = currentExecutionState.final_result || {};
   
-  // Use localized synthesized script if available, else construct fallback
   let textToSpeak = finalRes.spoken_script;
   if (!textToSpeak) {
     if (currentLanguage === 'ta') {
@@ -734,14 +772,14 @@ async function loadDocumentList() {
 
     (data.chunks || []).forEach(chk => {
       const card = document.createElement('div');
-      card.className = 'p-3 rounded-xl border border-slate-200 bg-slate-50 text-xs space-y-1.5';
+      card.className = 'p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-xs space-y-1.5';
       card.innerHTML = `
         <div class="flex items-center justify-between">
-          <span class="font-bold text-slate-800">${chk.document_title || chk.document_name}</span>
-          <span class="bg-agri-100 text-agri-800 px-2 py-0.5 rounded text-[10px] font-semibold">${chk.crop}</span>
+          <span class="font-bold text-slate-800 dark:text-slate-200">${chk.document_title || chk.document_name}</span>
+          <span class="bg-agri-100 dark:bg-agri-950 text-agri-800 dark:text-agri-300 px-2 py-0.5 rounded text-[10px] font-semibold">${chk.crop}</span>
         </div>
-        <p class="text-slate-600 line-clamp-3">${chk.content}</p>
-        <p class="text-[10px] text-slate-400">Page ${chk.page_number} • Chunk ID: ${chk.chunk_id}</p>
+        <p class="text-slate-600 dark:text-slate-400 line-clamp-3">${chk.content}</p>
+        <p class="text-[10px] text-slate-400 dark:text-slate-500">Page ${chk.page_number} • Chunk ID: ${chk.chunk_id}</p>
       `;
       container.appendChild(card);
     });
@@ -767,13 +805,13 @@ async function testRAGQuery() {
     
     (data.results || []).forEach(r => {
       const item = document.createElement('div');
-      item.className = 'p-2 bg-slate-100 rounded border border-slate-200';
+      item.className = 'p-2.5 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700';
       item.innerHTML = `
-        <div class="flex justify-between font-semibold text-slate-700">
+        <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300">
           <span>${r.document_title}</span>
-          <span class="text-blue-700 font-mono">${(r.relevance_score * 100).toFixed(0)}%</span>
+          <span class="text-blue-700 dark:text-blue-400 font-mono">${(r.relevance_score * 100).toFixed(0)}%</span>
         </div>
-        <p class="text-slate-600 mt-1 line-clamp-2">${r.matched_text}</p>
+        <p class="text-slate-600 dark:text-slate-400 mt-1 line-clamp-2">${r.matched_text}</p>
       `;
       resBox.appendChild(item);
     });
@@ -801,19 +839,19 @@ async function loadHistory() {
 
     list.forEach(row => {
       const tr = document.createElement('tr');
-      tr.className = 'hover:bg-slate-50 transition cursor-pointer';
+      tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/60 transition cursor-pointer';
       tr.onclick = () => loadHistoricalAnalysis(row.request_id);
 
       tr.innerHTML = `
-        <td class="py-3 px-4 font-mono font-semibold text-slate-800">${row.request_id}</td>
-        <td class="py-3 px-4">${row.crop || 'General'}</td>
-        <td class="py-3 px-4 font-medium text-slate-800">${row.possible_condition || 'N/A'}</td>
-        <td class="py-3 px-4 font-bold ${row.confidence_level === 'High' ? 'text-agri-700' : 'text-blue-700'}">${row.confidence_level}</td>
-        <td class="py-3 px-4">${row.verification_status || 'Verified'}</td>
-        <td class="py-3 px-4 font-mono">${(row.total_latency_ms || 0).toFixed(0)} ms</td>
-        <td class="py-3 px-4 font-mono">$${(row.total_estimated_cost || 0).toFixed(4)}</td>
-        <td class="py-3 px-4 text-right">
-          <button class="px-2.5 py-1 bg-slate-100 hover:bg-agri-100 text-slate-700 hover:text-agri-800 rounded font-semibold text-[10px]">View</button>
+        <td class="py-3.5 px-4 font-mono font-semibold text-slate-800 dark:text-slate-200">${row.request_id}</td>
+        <td class="py-3.5 px-4">${row.crop || 'General'}</td>
+        <td class="py-3.5 px-4 font-medium text-slate-800 dark:text-slate-200">${row.possible_condition || 'N/A'}</td>
+        <td class="py-3.5 px-4 font-bold ${row.confidence_level === 'High' ? 'text-agri-700 dark:text-agri-400' : 'text-blue-700 dark:text-blue-400'}">${row.confidence_level}</td>
+        <td class="py-3.5 px-4">${row.verification_status || 'Verified'}</td>
+        <td class="py-3.5 px-4 font-mono">${(row.total_latency_ms || 0).toFixed(0)} ms</td>
+        <td class="py-3.5 px-4 font-mono">$${(row.total_estimated_cost || 0).toFixed(4)}</td>
+        <td class="py-3.5 px-4 text-right">
+          <button class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-agri-100 dark:hover:bg-agri-900 text-slate-700 dark:text-slate-200 rounded-lg font-semibold text-[10px]">View</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -838,7 +876,7 @@ async function loadHistoricalAnalysis(requestId) {
 }
 
 // ==========================================
-// METRICS & CHARTS
+// METRICS & CHARTS (DARK/LIGHT AWARE)
 // ==========================================
 async function loadMetrics() {
   try {
@@ -857,6 +895,10 @@ async function loadMetrics() {
 }
 
 function renderMetricsCharts() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const textColor = isDark ? '#94a3b8' : '#64748b';
+  const gridColor = isDark ? 'rgba(51, 65, 85, 0.4)' : 'rgba(226, 232, 240, 0.8)';
+
   const ctxCost = document.getElementById('costChart')?.getContext('2d');
   const ctxLat = document.getElementById('latencyChart')?.getContext('2d');
 
@@ -868,13 +910,20 @@ function renderMetricsCharts() {
         labels: ['Open-Weight ($0.00)', 'Commercial A (~$0.015)', 'Commercial B (~$0.009)', 'RAG Engine ($0.0005)'],
         datasets: [{
           data: [0.000, 0.015, 0.009, 0.0005],
-          backgroundColor: ['#4ade80', '#3b82f6', '#a855f7', '#f59e0b']
+          backgroundColor: ['#4ade80', '#38bdf8', '#c084fc', '#fbbf24'],
+          borderColor: isDark ? '#0f172a' : '#ffffff',
+          borderWidth: 2
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom' } }
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: textColor, font: { family: 'Inter', size: 11 } }
+          }
+        }
       }
     });
   }
@@ -888,15 +937,25 @@ function renderMetricsCharts() {
         datasets: [{
           label: 'Latency (ms)',
           data: [120, 280, 1450, 180, 920],
-          backgroundColor: '#15803d',
-          borderRadius: 6
+          backgroundColor: isDark ? '#22c55e' : '#15803d',
+          borderRadius: 8
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true } }
+        scales: {
+          x: {
+            ticks: { color: textColor, font: { family: 'Inter', size: 10 } },
+            grid: { display: false }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { color: textColor, font: { family: 'Inter', size: 10 } },
+            grid: { color: gridColor }
+          }
+        }
       }
     });
   }

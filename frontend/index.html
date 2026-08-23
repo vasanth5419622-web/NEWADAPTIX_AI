@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADAPTIX-FARM — Adaptive Multimodal AI for Accessible Crop Intelligence</title>
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN with dark mode class strategy -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -13,10 +13,11 @@
   <!-- Google Fonts: Inter & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -44,66 +45,74 @@
   </script>
   <link rel="stylesheet" href="/static/src/styles.css">
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans min-h-screen flex flex-col transition-colors duration-200">
 
   <!-- Top Navigation Header -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 shadow-sm transition-colors duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
       <!-- Logo & Branding -->
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-agri-800 to-agri-500 flex items-center justify-center text-white shadow-md shadow-agri-600/20">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-agri-800 via-agri-600 to-agri-400 flex items-center justify-center text-white shadow-lg shadow-agri-600/30">
           <i data-lucide="sprout" class="w-6 h-6"></i>
         </div>
         <div>
           <div class="flex items-center space-x-2">
-            <span class="font-heading font-extrabold text-xl tracking-tight text-slate-900">ADAPTIX<span class="text-agri-600">-FARM</span></span>
-            <span class="px-2 py-0.5 text-xs font-semibold bg-agri-100 text-agri-800 rounded-full border border-agri-200">v1.0 Agentic AI</span>
+            <span class="font-heading font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">ADAPTIX<span class="text-agri-600 dark:text-agri-400">-FARM</span></span>
+            <span class="px-2 py-0.5 text-[11px] font-bold bg-agri-100 dark:bg-agri-950 text-agri-800 dark:text-agri-300 rounded-full border border-agri-200 dark:border-agri-800">Agentic AI</span>
           </div>
-          <p class="text-xs text-slate-500 hidden sm:block">Adaptive Multimodal AI for Accessible Crop Intelligence</p>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">Adaptive Multimodal AI for Accessible Crop Intelligence</p>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
       <nav class="hidden md:flex items-center space-x-1" id="main-nav">
-        <button onclick="switchTab('dashboard')" class="nav-btn active px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('dashboard')" class="nav-btn active px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
           <span>Dashboard</span>
         </button>
-        <button onclick="switchTab('results')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('results')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="clipboard-check" class="w-4 h-4"></i>
           <span>Assessment</span>
         </button>
-        <button onclick="switchTab('trace')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('trace')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="git-merge" class="w-4 h-4"></i>
           <span>Route Trace</span>
         </button>
-        <button onclick="switchTab('evidence')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('evidence')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="layers" class="w-4 h-4"></i>
           <span>Evidence Fusion</span>
         </button>
-        <button onclick="switchTab('documents')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('documents')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="file-text" class="w-4 h-4"></i>
           <span>Advisories (RAG)</span>
         </button>
-        <button onclick="switchTab('history')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('history')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="history" class="w-4 h-4"></i>
           <span>History</span>
         </button>
-        <button onclick="switchTab('metrics')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('metrics')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
           <span>Metrics</span>
         </button>
-        <button onclick="switchTab('settings')" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-agri-700 hover:bg-agri-50 flex items-center space-x-1.5 transition">
+        <button onclick="switchTab('settings')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-agri-700 dark:hover:text-agri-400 hover:bg-agri-50 dark:hover:bg-slate-800 flex items-center space-x-1.5 transition">
           <i data-lucide="settings" class="w-4 h-4"></i>
           <span>Settings</span>
         </button>
       </nav>
 
-      <!-- Status Indicator & Live Demo Pill -->
+      <!-- Right Controls: Theme Toggle & Online Pill -->
       <div class="flex items-center space-x-3">
-        <div class="hidden lg:flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full text-xs font-medium text-emerald-800">
+        <!-- Dark Mode Toggle Button -->
+        <button id="theme-toggle-btn" onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-amber-400 border border-slate-200 dark:border-slate-700 transition shadow-sm" title="Toggle Light/Dark Theme">
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-amber-500"></i>
+        </button>
+
+        <!-- Status Indicator Pill -->
+        <div class="hidden lg:flex items-center space-x-2 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 px-3 py-1 rounded-full text-xs font-medium text-emerald-800 dark:text-emerald-300">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span id="backend-status-pill">Agentic Engine Online</span>
+          <span id="backend-status-pill">Engine Online</span>
         </div>
       </div>
     </div>
@@ -117,40 +126,42 @@
     <!-- ================================================================= -->
     <div id="tab-dashboard" class="tab-pane active space-y-6">
       
-      <!-- Hero Banner -->
-      <div class="bg-gradient-to-r from-agri-900 via-agri-800 to-agri-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-        <div class="relative z-10 max-w-3xl">
-          <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-agri-200 mb-3">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+      <!-- Hero Banner with Modern Mesh Gradient -->
+      <div class="bg-gradient-to-r from-agri-950 via-slate-900 to-agri-900 dark:from-slate-950 dark:via-agri-950 dark:to-slate-900 border border-agri-800/40 dark:border-agri-800/30 rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden card-glow">
+        <div class="relative z-10 max-w-3xl space-y-3">
+          <div class="inline-flex items-center space-x-2 bg-agri-500/20 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-semibold text-agri-300 border border-agri-500/30">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-agri-400"></i>
             <span>Agentic Multimodal Crop Pathology & RAG Intelligence</span>
           </div>
-          <h1 class="text-2xl sm:text-4xl font-heading font-extrabold tracking-tight">Show the crop. Speak naturally. Get verified advice.</h1>
-          <p class="mt-2 text-agri-100 text-sm sm:text-base leading-relaxed">
-            ADAPTIX-FARM decomposes foliar symptoms, routes dynamically across open-weight and commercial AI models, retrieves university extension bulletins, and conducts independent critic verification to prevent false claims.
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight leading-tight">
+            Show the crop. Speak naturally. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-agri-400 via-emerald-300 to-green-200">Get verified advice.</span>
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-light">
+            ADAPTIX-FARM inspects image quality, decomposes foliar symptoms, routes dynamically across specialized AI models, retrieves university extension bulletins, and conducts independent critic verification to prevent false diagnoses.
           </p>
         </div>
-        <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+        <div class="absolute -right-8 -bottom-8 opacity-10 dark:opacity-5 pointer-events-none">
           <i data-lucide="leaf" class="w-96 h-96"></i>
         </div>
       </div>
 
       <!-- Quick Demo Scenarios Shortcut Bar -->
-      <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center space-x-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap items-center justify-between gap-3 transition-colors duration-200">
+        <div class="flex items-center space-x-2 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
           <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i>
-          <span>Preset Demo Workflows:</span>
+          <span>Preset Workflows:</span>
         </div>
         <div class="flex flex-wrap gap-2">
-          <button onclick="loadPreset('tomato_early_blight')" class="px-3 py-1.5 bg-slate-100 hover:bg-agri-50 hover:border-agri-300 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:text-agri-800 transition flex items-center space-x-1.5">
+          <button onclick="loadPreset('tomato_early_blight')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-agri-950/60 hover:border-agri-300 dark:hover:border-agri-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 transition flex items-center space-x-1.5">
             <span>🍅 Tomato Early Blight (Full Pipeline)</span>
           </button>
-          <button onclick="loadPreset('chilli_leaf_curl')" class="px-3 py-1.5 bg-slate-100 hover:bg-agri-50 hover:border-agri-300 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:text-agri-800 transition flex items-center space-x-1.5">
+          <button onclick="loadPreset('chilli_leaf_curl')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-agri-950/60 hover:border-agri-300 dark:hover:border-agri-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 transition flex items-center space-x-1.5">
             <span>🌶️ Chilli Leaf Curl (Complex Multimodal)</span>
           </button>
-          <button onclick="loadPreset('unseen_query')" class="px-3 py-1.5 bg-slate-100 hover:bg-agri-50 hover:border-agri-300 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:text-agri-800 transition flex items-center space-x-1.5">
+          <button onclick="loadPreset('unseen_query')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-agri-950/60 hover:border-agri-300 dark:hover:border-agri-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 transition flex items-center space-x-1.5">
             <span>✨ Unseen Dynamic Query (No Hardcoding)</span>
           </button>
-          <button onclick="loadPreset('blurry_fallback')" class="px-3 py-1.5 bg-slate-100 hover:bg-amber-50 hover:border-amber-300 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:text-amber-800 transition flex items-center space-x-1.5">
+          <button onclick="loadPreset('blurry_fallback')" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/60 hover:border-amber-300 dark:hover:border-amber-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-amber-800 dark:hover:text-amber-300 transition flex items-center space-x-1.5">
             <span>⚠️ Poor Image Quality Gate (Fallback Demo)</span>
           </button>
         </div>
@@ -163,37 +174,37 @@
         <div class="lg:col-span-7 space-y-6">
           
           <!-- Image Dropzone Card -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <label class="font-heading font-bold text-slate-900 flex items-center space-x-2">
-                <i data-lucide="camera" class="w-5 h-5 text-agri-600"></i>
+              <label class="font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                <i data-lucide="camera" class="w-5 h-5 text-agri-600 dark:text-agri-400"></i>
                 <span>1. Crop Photograph</span>
               </label>
               <span class="text-xs text-slate-400">JPG, PNG, WEBP (Max 10MB)</span>
             </div>
 
-            <div id="dropzone" class="border-2 border-dashed border-slate-300 hover:border-agri-500 rounded-xl p-6 text-center cursor-pointer transition bg-slate-50/50 hover:bg-agri-50/30 relative">
+            <div id="dropzone" class="border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-agri-500 dark:hover:border-agri-400 rounded-2xl p-6 text-center cursor-pointer transition bg-slate-50/50 dark:bg-slate-950/50 hover:bg-agri-50/30 dark:hover:bg-slate-800/30 relative group">
               <input type="file" id="image-input" accept="image/*" class="hidden">
               
               <div id="dropzone-empty" class="space-y-3">
-                <div class="w-14 h-14 mx-auto rounded-full bg-agri-100 flex items-center justify-center text-agri-700">
-                  <i data-lucide="upload-cloud" class="w-7 h-7"></i>
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-agri-100 dark:bg-agri-950/80 flex items-center justify-center text-agri-700 dark:text-agri-400 shadow-inner group-hover:scale-105 transition-transform">
+                  <i data-lucide="upload-cloud" class="w-8 h-8"></i>
                 </div>
                 <div>
-                  <p class="text-sm font-medium text-slate-700">Click to upload or drag & drop leaf photo</p>
-                  <p class="text-xs text-slate-500 mt-1">Capture a close, well-lit photo of the affected plant leaf or stem</p>
+                  <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Click to upload or drag & drop crop leaf photo</p>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Capture a close, well-lit photo of the affected plant leaf or stem</p>
                 </div>
               </div>
 
               <!-- Image Preview Container -->
               <div id="dropzone-preview" class="hidden space-y-3">
-                <div class="relative inline-block max-h-64 rounded-lg overflow-hidden border border-slate-200 shadow">
+                <div class="relative inline-block max-h-64 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md">
                   <img id="preview-img" src="" alt="Crop Preview" class="max-h-64 object-contain mx-auto">
                   <button type="button" onclick="removeImage(event)" class="absolute top-2 right-2 p-1.5 bg-black/70 hover:bg-red-600 text-white rounded-full transition shadow">
                     <i data-lucide="x" class="w-4 h-4"></i>
                   </button>
                 </div>
-                <p id="image-filename" class="text-xs text-slate-600 font-mono truncate max-w-sm mx-auto"></p>
+                <p id="image-filename" class="text-xs text-slate-600 dark:text-slate-300 font-mono truncate max-w-sm mx-auto"></p>
               </div>
             </div>
 
@@ -204,51 +215,59 @@
           </div>
 
           <!-- Natural Voice & Text Question Card -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <label class="font-heading font-bold text-slate-900 flex items-center space-x-2">
-                <i data-lucide="mic" class="w-5 h-5 text-agri-600"></i>
+              <label class="font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                <i data-lucide="mic" class="w-5 h-5 text-agri-600 dark:text-agri-400"></i>
                 <span>2. Speak Naturally or Ask a Question</span>
               </label>
               <!-- Language Switcher -->
-              <div class="flex items-center space-x-1 bg-slate-100 p-1 rounded-lg">
-                <button type="button" onclick="setLanguage('en')" id="lang-en" class="px-2 py-0.5 text-xs font-semibold rounded bg-white text-agri-800 shadow-sm">English</button>
-                <button type="button" onclick="setLanguage('ta')" id="lang-ta" class="px-2 py-0.5 text-xs font-semibold rounded text-slate-600">தமிழ் (Tamil)</button>
+              <div class="flex items-center space-x-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+                <button type="button" onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 text-xs font-bold rounded-lg bg-white dark:bg-slate-700 text-agri-800 dark:text-agri-300 shadow-sm">English</button>
+                <button type="button" onclick="setLanguage('ta')" id="lang-ta" class="px-2.5 py-1 text-xs font-bold rounded-lg text-slate-600 dark:text-slate-400">தமிழ் (Tamil)</button>
               </div>
             </div>
 
-            <!-- Voice Record Interactive Button -->
-            <div class="flex items-center space-x-3">
-              <button type="button" id="voice-record-btn" onclick="toggleVoiceRecording()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-agri-100 text-slate-700 hover:text-agri-800 font-medium text-xs flex items-center space-x-2 transition border border-slate-200">
+            <!-- Voice Record Interactive Button & Waveform Animation -->
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <button type="button" id="voice-record-btn" onclick="toggleVoiceRecording()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-agri-100 dark:hover:bg-agri-950/60 text-slate-700 dark:text-slate-200 hover:text-agri-800 dark:hover:text-agri-300 font-semibold text-xs flex items-center space-x-2 transition border border-slate-200 dark:border-slate-700 shadow-sm">
                 <i data-lucide="mic" class="w-4 h-4 text-red-500" id="mic-icon"></i>
                 <span id="voice-btn-label">Record Voice (Speak Query)</span>
               </button>
-              <div id="voice-recording-indicator" class="hidden items-center space-x-2 text-xs text-red-600 font-medium">
-                <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
-                <span>Listening... Speak now</span>
+
+              <!-- Animated Waveform Equalizer when listening -->
+              <div id="voice-recording-indicator" class="hidden items-center space-x-2 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800/60 px-3 py-1.5 rounded-xl text-xs text-red-600 dark:text-red-400 font-semibold">
+                <div class="flex items-center space-x-1 h-5">
+                  <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
+                  <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
+                  <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
+                  <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
+                  <span class="w-1 bg-red-500 waveform-bar rounded-full"></span>
+                </div>
+                <span>Listening in <strong id="voice-listening-lang">English</strong>... Speak now</span>
               </div>
             </div>
 
             <!-- Text Input Area -->
             <div>
-              <textarea id="query-input" rows="3" class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:ring-2 focus:ring-agri-500 focus:border-agri-500 outline-none placeholder:text-slate-400" placeholder="e.g. My tomato lower leaves have dark circular spots with yellow rings. What should I check?"></textarea>
+              <textarea id="query-input" rows="3" class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-3.5 text-sm text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-agri-500 focus:border-agri-500 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600 transition" placeholder="e.g. My tomato lower leaves have dark circular spots with yellow rings. What should I check?"></textarea>
             </div>
           </div>
         </div>
 
         <!-- Right: Field Context & Execution Trigger (5 cols) -->
         <div class="lg:col-span-5 space-y-6">
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 class="font-heading font-bold text-slate-900 flex items-center space-x-2">
-              <i data-lucide="sliders" class="w-5 h-5 text-agri-600"></i>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
+            <h3 class="font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+              <i data-lucide="sliders" class="w-5 h-5 text-agri-600 dark:text-agri-400"></i>
               <span>3. Crop & Field Context</span>
             </h3>
-            <p class="text-xs text-slate-500">Providing context improves multi-evidence fusion accuracy.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Providing context improves multi-evidence fusion accuracy.</p>
 
             <div class="space-y-3">
               <div>
-                <label class="text-xs font-semibold text-slate-700 block mb-1">Crop Type</label>
-                <select id="context-crop" class="w-full rounded-lg border border-slate-200 p-2.5 text-sm bg-white focus:ring-2 focus:ring-agri-500 outline-none">
+                <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Crop Type</label>
+                <select id="context-crop" class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-sm bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-agri-500 outline-none">
                   <option value="">Auto-Detect via Vision Model</option>
                   <option value="Tomato">Tomato (தக்காளி)</option>
                   <option value="Chilli">Chilli (மிளகாய்)</option>
@@ -260,8 +279,8 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="text-xs font-semibold text-slate-700 block mb-1">Growth Stage</label>
-                  <select id="context-stage" class="w-full rounded-lg border border-slate-200 p-2.5 text-sm bg-white focus:ring-2 focus:ring-agri-500 outline-none">
+                  <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Growth Stage</label>
+                  <select id="context-stage" class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-sm bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-agri-500 outline-none">
                     <option value="">Select Stage</option>
                     <option value="Seedling">Seedling</option>
                     <option value="Vegetative">Vegetative</option>
@@ -271,8 +290,8 @@
                 </div>
 
                 <div>
-                  <label class="text-xs font-semibold text-slate-700 block mb-1">Season / Climate</label>
-                  <select id="context-season" class="w-full rounded-lg border border-slate-200 p-2.5 text-sm bg-white focus:ring-2 focus:ring-agri-500 outline-none">
+                  <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Season / Climate</label>
+                  <select id="context-season" class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-sm bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-agri-500 outline-none">
                     <option value="">Select Season</option>
                     <option value="Kharif (Monsoon/Humid)">Kharif (Monsoon/Humid)</option>
                     <option value="Rabi (Winter/Cool)">Rabi (Winter/Cool)</option>
@@ -282,19 +301,19 @@
               </div>
 
               <div>
-                <label class="text-xs font-semibold text-slate-700 block mb-1">Location / Region (Optional)</label>
-                <input type="text" id="context-location" placeholder="e.g. Coimbatore, Tamil Nadu" class="w-full rounded-lg border border-slate-200 p-2.5 text-sm outline-none focus:ring-2 focus:ring-agri-500">
+                <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Location / Region (Optional)</label>
+                <input type="text" id="context-location" placeholder="e.g. Coimbatore, Tamil Nadu" class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-sm bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-agri-500">
               </div>
 
               <div>
-                <label class="text-xs font-semibold text-slate-700 block mb-1">Field Observations / Notes</label>
-                <input type="text" id="context-notes" placeholder="e.g. Started 4 days ago after heavy rainfall" class="w-full rounded-lg border border-slate-200 p-2.5 text-sm outline-none focus:ring-2 focus:ring-agri-500">
+                <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Field Observations / Notes</label>
+                <input type="text" id="context-notes" placeholder="e.g. Started 4 days ago after heavy rainfall" class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-sm bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-agri-500">
               </div>
             </div>
 
             <!-- Execution Action Button -->
             <div class="pt-3">
-              <button type="button" id="analyze-btn" onclick="executePipeline()" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-agri-700 to-agri-600 hover:from-agri-800 hover:to-agri-700 text-white font-heading font-bold text-base shadow-lg shadow-agri-600/30 flex items-center justify-center space-x-2 transition transform active:scale-98">
+              <button type="button" id="analyze-btn" onclick="executePipeline()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-agri-700 via-agri-600 to-agri-500 hover:from-agri-800 hover:to-agri-600 text-white font-heading font-extrabold text-base shadow-xl shadow-agri-600/30 flex items-center justify-center space-x-2 transition transform active:scale-98 cursor-pointer">
                 <i data-lucide="play-circle" class="w-5 h-5"></i>
                 <span id="analyze-btn-text">RUN ADAPTIX PIPELINE</span>
               </button>
@@ -302,9 +321,9 @@
           </div>
 
           <!-- Active Pipeline Architecture Box -->
-          <div class="bg-slate-100/80 rounded-2xl p-4 border border-slate-200 text-xs text-slate-600 space-y-2">
-            <div class="font-bold text-slate-800 flex items-center space-x-1.5">
-              <i data-lucide="cpu" class="w-4 h-4 text-agri-700"></i>
+          <div class="bg-slate-100/90 dark:bg-slate-900/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2">
+            <div class="font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+              <i data-lucide="cpu" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
               <span>Active Agentic Architecture</span>
             </div>
             <p>1. <strong>Quality Check:</strong> Laplacian Photometric Variance</p>
@@ -318,22 +337,22 @@
       </div>
 
       <!-- Execution Progress Indicator (Hidden by default) -->
-      <div id="pipeline-progress" class="hidden bg-white rounded-2xl p-6 border border-agri-200 shadow-md space-y-4">
+      <div id="pipeline-progress" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 border border-agri-300 dark:border-agri-800 shadow-xl space-y-4">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 rounded-lg bg-agri-100 flex items-center justify-center text-agri-700 animate-spin">
-              <i data-lucide="loader-2" class="w-5 h-5"></i>
+            <div class="w-10 h-10 rounded-xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-400 animate-spin">
+              <i data-lucide="loader-2" class="w-6 h-6"></i>
             </div>
             <div>
-              <h4 class="font-heading font-bold text-slate-900" id="progress-step-title">Decomposing Agricultural Query...</h4>
-              <p class="text-xs text-slate-500" id="progress-step-desc">Adaptive router selecting optimal specialist models</p>
+              <h4 class="font-heading font-bold text-slate-900 dark:text-white" id="progress-step-title">Decomposing Agricultural Query...</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400" id="progress-step-desc">Adaptive router selecting optimal specialist models</p>
             </div>
           </div>
-          <span class="text-xs font-mono font-semibold text-agri-700" id="progress-elapsed">0.0s</span>
+          <span class="text-xs font-mono font-bold text-agri-700 dark:text-agri-400 bg-agri-50 dark:bg-slate-800 px-3 py-1 rounded-lg" id="progress-elapsed">0.0s</span>
         </div>
         <!-- Progress Bar -->
-        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-          <div id="progress-bar-fill" class="bg-agri-600 h-2 rounded-full transition-all duration-300" style="width: 25%"></div>
+        <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
+          <div id="progress-bar-fill" class="bg-gradient-to-r from-agri-600 to-agri-400 h-2.5 rounded-full transition-all duration-300" style="width: 25%"></div>
         </div>
       </div>
 
@@ -343,33 +362,33 @@
     <!-- TAB 2: ANALYSIS ASSESSMENT RESULTS -->
     <!-- ================================================================= -->
     <div id="tab-results" class="tab-pane hidden space-y-6">
-      <div id="no-results-view" class="bg-white rounded-2xl p-12 text-center border border-slate-200 shadow-sm space-y-3">
-        <div class="w-16 h-16 rounded-full bg-slate-100 mx-auto flex items-center justify-center text-slate-400">
+      <div id="no-results-view" class="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 mx-auto flex items-center justify-center text-slate-400">
           <i data-lucide="clipboard-x" class="w-8 h-8"></i>
         </div>
-        <h3 class="font-heading font-bold text-slate-800 text-lg">No Active Assessment</h3>
-        <p class="text-sm text-slate-500 max-w-md mx-auto">Upload a crop photograph or ask a question in the Dashboard to generate AI-assisted agricultural intelligence.</p>
-        <button onclick="switchTab('dashboard')" class="px-4 py-2 bg-agri-600 text-white rounded-lg text-xs font-semibold hover:bg-agri-700 transition">Go to Dashboard</button>
+        <h3 class="font-heading font-bold text-slate-800 dark:text-white text-lg">No Active Assessment</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">Upload a crop photograph or ask a question in the Dashboard to generate AI-assisted agricultural intelligence.</p>
+        <button onclick="switchTab('dashboard')" class="px-4 py-2.5 bg-agri-600 text-white rounded-xl text-xs font-bold hover:bg-agri-700 transition">Go to Dashboard</button>
       </div>
 
       <div id="results-view" class="hidden space-y-6">
         
         <!-- Header Banner with Assessment & Disclaimers -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5 transition-colors duration-200">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div>
               <div class="flex items-center space-x-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Crop Assessment</span>
-                <span id="result-req-id" class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">REQ-001</span>
+                <span id="result-req-id" class="text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-0.5 rounded-lg">REQ-001</span>
               </div>
-              <h2 id="result-condition-title" class="text-2xl font-heading font-extrabold text-slate-900 mt-1">Possible Early Blight (Alternaria solani)</h2>
-              <p class="text-xs text-slate-500 mt-0.5">Crop: <span id="result-crop-name" class="font-semibold text-slate-700">Tomato</span></p>
+              <h2 id="result-condition-title" class="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white mt-1">Possible Early Blight (Alternaria solani)</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Crop: <span id="result-crop-name" class="font-semibold text-slate-700 dark:text-slate-200">Tomato</span></p>
             </div>
             
             <div class="flex items-center space-x-3">
               <!-- Text-to-Speech Listen Button -->
-              <button onclick="playRecommendationAudio()" id="tts-play-btn" class="px-4 py-2 rounded-xl bg-agri-50 hover:bg-agri-100 text-agri-800 border border-agri-200 font-semibold text-xs flex items-center space-x-2 shadow-sm transition">
-                <i data-lucide="volume-2" class="w-4 h-4 text-agri-700"></i>
+              <button onclick="playRecommendationAudio()" id="tts-play-btn" class="px-4 py-2.5 rounded-xl bg-agri-50 dark:bg-agri-950/80 hover:bg-agri-100 dark:hover:bg-agri-900 text-agri-800 dark:text-agri-300 border border-agri-200 dark:border-agri-800 font-bold text-xs flex items-center space-x-2 shadow-sm transition">
+                <i data-lucide="volume-2" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
                 <span id="tts-btn-text">🔊 Listen to Advice</span>
               </button>
             </div>
@@ -378,42 +397,56 @@
           <!-- Metric Badges Row: Confidence, Verification, Quality -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <!-- Confidence Meter -->
-            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 flex items-center justify-between">
+            <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
               <div>
-                <p class="text-xs font-semibold text-slate-500">System Confidence</p>
-                <p id="result-confidence-badge" class="text-lg font-heading font-extrabold text-agri-700 mt-0.5">HIGH (89%)</p>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">System Confidence</p>
+                <p id="result-confidence-badge" class="text-lg font-heading font-extrabold text-agri-700 dark:text-agri-400 mt-0.5">HIGH (89%)</p>
               </div>
-              <div class="w-10 h-10 rounded-full bg-agri-100 flex items-center justify-center text-agri-700">
+              <div class="w-11 h-11 rounded-xl bg-agri-100 dark:bg-agri-950 flex items-center justify-center text-agri-700 dark:text-agri-400">
                 <i data-lucide="shield-check" class="w-5 h-5"></i>
               </div>
             </div>
 
             <!-- Verification Badge -->
-            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 flex items-center justify-between">
+            <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
               <div>
-                <p class="text-xs font-semibold text-slate-500">Critic Verification</p>
-                <p id="result-verification-badge" class="text-lg font-heading font-extrabold text-emerald-700 mt-0.5">✓ Verified</p>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Critic Verification</p>
+                <p id="result-verification-badge" class="text-lg font-heading font-extrabold text-emerald-700 dark:text-emerald-400 mt-0.5">✓ Verified</p>
               </div>
-              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+              <div class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
                 <i data-lucide="check-circle" class="w-5 h-5"></i>
               </div>
             </div>
 
             <!-- Image Quality Score -->
-            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 flex items-center justify-between">
+            <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
               <div>
-                <p class="text-xs font-semibold text-slate-500">Pre-flight Quality</p>
-                <p id="result-quality-badge" class="text-lg font-heading font-extrabold text-slate-700 mt-0.5">Passed (84/100)</p>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Pre-flight Quality</p>
+                <p id="result-quality-badge" class="text-lg font-heading font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Passed (84/100)</p>
               </div>
-              <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-700">
+              <div class="w-11 h-11 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300">
                 <i data-lucide="camera" class="w-5 h-5"></i>
               </div>
             </div>
           </div>
 
+          <!-- Spoken Audio Script Container -->
+          <div id="spoken-script-container" class="bg-gradient-to-r from-agri-50 to-emerald-50 dark:from-slate-950 dark:to-slate-900 border border-agri-200 dark:border-slate-800 rounded-2xl p-4 space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold text-agri-800 dark:text-agri-300">
+              <span class="flex items-center space-x-2">
+                <i data-lucide="mic-2" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
+                <span>Spoken Voice Advisory Script (English / தமிழ்)</span>
+              </span>
+              <span class="text-[10px] bg-white dark:bg-slate-800 px-2 py-0.5 rounded font-mono border border-agri-200 dark:border-slate-700">Audio Synth Ready</span>
+            </div>
+            <p id="result-spoken-script-text" class="text-xs text-slate-700 dark:text-slate-300 italic font-medium leading-relaxed">
+              <!-- Dynamically populated with English or Tamil spoken text -->
+            </p>
+          </div>
+
           <!-- Mandatory AI Safety Disclaimer Banner -->
-          <div class="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-start space-x-3 text-xs text-amber-900">
-            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 mt-0.5 shrink-0"></i>
+          <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-2xl p-3.5 flex items-start space-x-3 text-xs text-amber-900 dark:text-amber-200">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0"></i>
             <div>
               <span class="font-bold">Responsible AI Advisory:</span>
               <span id="result-safety-disclaimer"> This is an AI-assisted crop assessment based on visible foliar symptoms and university extension bulletins. It is not a guaranteed diagnosis. Consult local agricultural extension officers before applying chemical treatments.</span>
@@ -424,23 +457,23 @@
         <!-- Detailed Actionable Management Guidance -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <!-- Immediate Action Steps -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 class="font-heading font-bold text-slate-900 flex items-center space-x-2">
-              <i data-lucide="check-square" class="w-5 h-5 text-agri-600"></i>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
+            <h3 class="font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+              <i data-lucide="check-square" class="w-5 h-5 text-agri-600 dark:text-agri-400"></i>
               <span>Integrated Pest & Disease Management (IPM)</span>
             </h3>
-            <ul id="result-management-list" class="space-y-2.5 text-sm text-slate-700">
+            <ul id="result-management-list" class="space-y-2.5 text-sm text-slate-700 dark:text-slate-300">
               <!-- Dynamically populated -->
             </ul>
           </div>
 
           <!-- Preventative Measures & Long-term Care -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 class="font-heading font-bold text-slate-900 flex items-center space-x-2">
-              <i data-lucide="shield" class="w-5 h-5 text-blue-600"></i>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
+            <h3 class="font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+              <i data-lucide="shield" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
               <span>Preventative & Cultural Practices</span>
             </h3>
-            <ul id="result-preventative-list" class="space-y-2.5 text-sm text-slate-700">
+            <ul id="result-preventative-list" class="space-y-2.5 text-sm text-slate-700 dark:text-slate-300">
               <!-- Dynamically populated -->
             </ul>
           </div>
@@ -453,15 +486,15 @@
     <!-- TAB 3: ROUTE TRACE -->
     <!-- ================================================================= -->
     <div id="tab-trace" class="tab-pane hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
           <div>
-            <h2 class="text-xl font-heading font-extrabold text-slate-900">Adaptive Route Trace</h2>
-            <p class="text-xs text-slate-500">Transparent step-by-step execution path across specialized AI models, RAG, and verifier</p>
+            <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Adaptive Route Trace</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Transparent step-by-step execution path across specialized AI models, RAG, and verifier</p>
           </div>
-          <div class="flex items-center space-x-4 text-xs font-mono">
-            <span class="bg-slate-100 px-3 py-1.5 rounded-lg text-slate-700">Total Latency: <strong id="trace-total-latency">0 ms</strong></span>
-            <span class="bg-slate-100 px-3 py-1.5 rounded-lg text-slate-700">Estimated Cost: <strong id="trace-total-cost">$0.000</strong></span>
+          <div class="flex items-center space-x-3 text-xs font-mono">
+            <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl text-slate-700 dark:text-slate-300">Total Latency: <strong id="trace-total-latency">0 ms</strong></span>
+            <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl text-slate-700 dark:text-slate-300">Estimated Cost: <strong id="trace-total-cost">$0.000</strong></span>
           </div>
         </div>
 
@@ -476,43 +509,43 @@
     <!-- TAB 4: EVIDENCE FUSION MATRIX -->
     <!-- ================================================================= -->
     <div id="tab-evidence" class="tab-pane hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5 transition-colors duration-200">
         <div>
-          <h2 class="text-xl font-heading font-extrabold text-slate-900">Multi-Evidence Fusion Matrix</h2>
-          <p class="text-xs text-slate-500">Cross-referencing Visual Pathology, Extension Bulletins (RAG), and Field Context</p>
+          <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Multi-Evidence Fusion Matrix</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Cross-referencing Visual Pathology, Extension Bulletins (RAG), and Field Context</p>
         </div>
 
         <!-- Tri-stream Comparison Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
           <!-- Visual Stream -->
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
-            <div class="flex items-center space-x-2 text-xs font-bold uppercase text-agri-700">
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="flex items-center space-x-2 text-xs font-bold uppercase text-agri-700 dark:text-agri-400">
               <i data-lucide="eye" class="w-4 h-4"></i>
               <span>1. Visual Evidence</span>
             </div>
-            <div id="evidence-visual-content" class="text-xs text-slate-700 space-y-1.5 font-mono">
+            <div id="evidence-visual-content" class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5 font-mono">
               <p>No active visual analysis</p>
             </div>
           </div>
 
           <!-- Advisory RAG Stream -->
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
-            <div class="flex items-center space-x-2 text-xs font-bold uppercase text-blue-700">
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="flex items-center space-x-2 text-xs font-bold uppercase text-blue-700 dark:text-blue-400">
               <i data-lucide="book-open" class="w-4 h-4"></i>
               <span>2. Advisory RAG Evidence</span>
             </div>
-            <div id="evidence-rag-content" class="text-xs text-slate-700 space-y-1.5 font-mono">
+            <div id="evidence-rag-content" class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5 font-mono">
               <p>No active RAG citations</p>
             </div>
           </div>
 
           <!-- Field Context Stream -->
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
-            <div class="flex items-center space-x-2 text-xs font-bold uppercase text-purple-700">
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="flex items-center space-x-2 text-xs font-bold uppercase text-purple-700 dark:text-purple-400">
               <i data-lucide="map-pin" class="w-4 h-4"></i>
               <span>3. Field Context</span>
             </div>
-            <div id="evidence-context-content" class="text-xs text-slate-700 space-y-1.5 font-mono">
+            <div id="evidence-context-content" class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5 font-mono">
               <p>No active field context</p>
             </div>
           </div>
@@ -520,8 +553,8 @@
 
         <!-- Retrieved Citations & Literature Sources -->
         <div class="pt-4 space-y-3">
-          <h4 class="text-sm font-heading font-bold text-slate-900 flex items-center space-x-2">
-            <i data-lucide="file-check" class="w-4 h-4 text-agri-600"></i>
+          <h4 class="text-sm font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <i data-lucide="file-check" class="w-4 h-4 text-agri-600 dark:text-agri-400"></i>
             <span>Retrieved University & Extension Bulletins</span>
           </h4>
           <div id="citations-container" class="space-y-2.5">
@@ -539,27 +572,27 @@
         
         <!-- Left: Upload PDF Advisory (5 cols) -->
         <div class="lg:col-span-5 space-y-4">
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 class="font-heading font-bold text-slate-900 flex items-center space-x-2">
-              <i data-lucide="upload" class="w-5 h-5 text-agri-600"></i>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
+            <h3 class="font-heading font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+              <i data-lucide="upload" class="w-5 h-5 text-agri-600 dark:text-agri-400"></i>
               <span>Upload Agricultural Advisory PDF</span>
             </h3>
-            <p class="text-xs text-slate-500">Upload ICAR, TNAU, or State University bulletins to augment vector store.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Upload ICAR, TNAU, or State University bulletins to augment vector store.</p>
 
             <form id="doc-upload-form" onsubmit="uploadAdvisoryDoc(event)" class="space-y-3">
               <div>
-                <label class="text-xs font-semibold text-slate-700 block mb-1">Document File (PDF / TXT)</label>
-                <input type="file" id="doc-file-input" accept=".pdf,.txt,.md" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-agri-50 file:text-agri-700 hover:file:bg-agri-100">
+                <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Document File (PDF / TXT)</label>
+                <input type="file" id="doc-file-input" accept=".pdf,.txt,.md" required class="w-full text-xs text-slate-500 dark:text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-agri-50 dark:file:bg-slate-800 file:text-agri-700 dark:file:text-agri-300 hover:file:bg-agri-100">
               </div>
 
               <div>
-                <label class="text-xs font-semibold text-slate-700 block mb-1">Document Title / Bulletin Name</label>
-                <input type="text" id="doc-title-input" placeholder="e.g. TNAU Chilli Thrips Advisory 2024" required class="w-full rounded-lg border border-slate-200 p-2.5 text-xs outline-none focus:ring-2 focus:ring-agri-500">
+                <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Document Title / Bulletin Name</label>
+                <input type="text" id="doc-title-input" placeholder="e.g. TNAU Chilli Thrips Advisory 2024" required class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-agri-500">
               </div>
 
               <div>
-                <label class="text-xs font-semibold text-slate-700 block mb-1">Target Crop</label>
-                <select id="doc-crop-select" class="w-full rounded-lg border border-slate-200 p-2.5 text-xs bg-white outline-none focus:ring-2 focus:ring-agri-500">
+                <label class="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">Target Crop</label>
+                <select id="doc-crop-select" class="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-agri-500">
                   <option value="Tomato">Tomato</option>
                   <option value="Chilli">Chilli</option>
                   <option value="Rice">Rice</option>
@@ -569,7 +602,7 @@
                 </select>
               </div>
 
-              <button type="submit" id="doc-upload-btn" class="w-full py-2.5 bg-agri-600 hover:bg-agri-700 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center justify-center space-x-1.5">
+              <button type="submit" id="doc-upload-btn" class="w-full py-3 bg-agri-600 hover:bg-agri-700 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center justify-center space-x-1.5">
                 <i data-lucide="plus-circle" class="w-4 h-4"></i>
                 <span>Index Document Chunks</span>
               </button>
@@ -577,14 +610,14 @@
           </div>
 
           <!-- Semantic Search Tester Box -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-            <h4 class="font-heading font-bold text-slate-900 text-sm flex items-center space-x-2">
-              <i data-lucide="search" class="w-4 h-4 text-blue-600"></i>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 transition-colors duration-200">
+            <h4 class="font-heading font-bold text-slate-900 dark:text-white text-sm flex items-center space-x-2">
+              <i data-lucide="search" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
               <span>Test Vector Semantic Search</span>
             </h4>
             <div class="flex space-x-2">
-              <input type="text" id="rag-test-query" placeholder="e.g. early blight concentric spots" class="flex-1 rounded-lg border border-slate-200 p-2 text-xs outline-none focus:ring-2 focus:ring-agri-500">
-              <button onclick="testRAGQuery()" class="px-3 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold transition">Search</button>
+              <input type="text" id="rag-test-query" placeholder="e.g. early blight concentric spots" class="flex-1 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-2 text-xs text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-agri-500">
+              <button onclick="testRAGQuery()" class="px-3.5 py-2 bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold transition">Search</button>
             </div>
             <div id="rag-test-results" class="text-xs space-y-2 pt-2"></div>
           </div>
@@ -592,13 +625,13 @@
 
         <!-- Right: Indexed Chunks Library (7 cols) -->
         <div class="lg:col-span-7 space-y-4">
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="font-heading font-bold text-slate-900">Indexed Advisory Library</h3>
-                <p class="text-xs text-slate-500">Authoritative extension knowledge indexed in vector store</p>
+                <h3 class="font-heading font-bold text-slate-900 dark:text-white">Indexed Advisory Library</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Authoritative extension knowledge indexed in vector store</p>
               </div>
-              <button onclick="loadDocumentList()" class="p-1.5 text-slate-400 hover:text-agri-600 rounded-lg hover:bg-slate-50 transition">
+              <button onclick="loadDocumentList()" class="p-2 text-slate-400 hover:text-agri-600 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                 <i data-lucide="refresh-cw" class="w-4 h-4"></i>
               </button>
             </div>
@@ -616,33 +649,33 @@
     <!-- TAB 6: HISTORY -->
     <!-- ================================================================= -->
     <div id="tab-history" class="tab-pane hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 transition-colors duration-200">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
           <div>
-            <h2 class="text-xl font-heading font-extrabold text-slate-900">Analysis History & Audit Log</h2>
-            <p class="text-xs text-slate-500">Complete historical records persisted in local SQLite database</p>
+            <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Analysis History & Audit Log</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Complete historical records persisted in local SQLite database</p>
           </div>
-          <button onclick="loadHistory()" class="px-3 py-1.5 bg-slate-100 hover:bg-agri-50 text-slate-700 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition">
+          <button onclick="loadHistory()" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-agri-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-xl flex items-center space-x-1.5 transition">
             <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
             <span>Refresh</span>
           </button>
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs text-slate-600">
-            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold border-b border-slate-200">
+          <table class="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+            <thead class="bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 uppercase font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
-                <th class="py-3 px-4">Request ID</th>
-                <th class="py-3 px-4">Crop</th>
-                <th class="py-3 px-4">Possible Condition</th>
-                <th class="py-3 px-4">Confidence</th>
-                <th class="py-3 px-4">Verification</th>
-                <th class="py-3 px-4">Latency</th>
-                <th class="py-3 px-4">Cost</th>
-                <th class="py-3 px-4 text-right">Action</th>
+                <th class="py-3.5 px-4">Request ID</th>
+                <th class="py-3.5 px-4">Crop</th>
+                <th class="py-3.5 px-4">Possible Condition</th>
+                <th class="py-3.5 px-4">Confidence</th>
+                <th class="py-3.5 px-4">Verification</th>
+                <th class="py-3.5 px-4">Latency</th>
+                <th class="py-3.5 px-4">Cost</th>
+                <th class="py-3.5 px-4 text-right">Action</th>
               </tr>
             </thead>
-            <tbody id="history-table-body" class="divide-y divide-slate-100">
+            <tbody id="history-table-body" class="divide-y divide-slate-100 dark:divide-slate-800">
               <!-- Dynamically populated -->
             </tbody>
           </table>
@@ -654,42 +687,42 @@
     <!-- TAB 7: METRICS & OBSERVABILITY -->
     <!-- ================================================================= -->
     <div id="tab-metrics" class="tab-pane hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 transition-colors duration-200">
         <div>
-          <h2 class="text-xl font-heading font-extrabold text-slate-900">System Metrics & Cost Observability</h2>
-          <p class="text-xs text-slate-500">Live latency breakdown, model cost tracking, and routing distribution</p>
+          <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">System Metrics & Cost Observability</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Live latency breakdown, model cost tracking, and routing distribution</p>
         </div>
 
         <!-- Metric KPI Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <p class="text-xs font-semibold text-slate-500">Total Analyzed</p>
-            <p id="metric-total-requests" class="text-2xl font-heading font-extrabold text-slate-900 mt-1">0</p>
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Analyzed</p>
+            <p id="metric-total-requests" class="text-2xl font-heading font-black text-slate-900 dark:text-white mt-1">0</p>
           </div>
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <p class="text-xs font-semibold text-slate-500">Average Latency</p>
-            <p id="metric-avg-latency" class="text-2xl font-heading font-extrabold text-agri-700 mt-1">0 ms</p>
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Average Latency</p>
+            <p id="metric-avg-latency" class="text-2xl font-heading font-black text-agri-700 dark:text-agri-400 mt-1">0 ms</p>
           </div>
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <p class="text-xs font-semibold text-slate-500">Cumulative Cost</p>
-            <p id="metric-total-cost" class="text-2xl font-heading font-extrabold text-emerald-700 mt-1">$0.000</p>
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Cumulative Cost</p>
+            <p id="metric-total-cost" class="text-2xl font-heading font-black text-emerald-700 dark:text-emerald-400 mt-1">$0.000</p>
           </div>
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <p class="text-xs font-semibold text-slate-500">RAG Chunks</p>
-            <p id="metric-rag-chunks" class="text-2xl font-heading font-extrabold text-blue-700 mt-1">5</p>
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">RAG Chunks</p>
+            <p id="metric-rag-chunks" class="text-2xl font-heading font-black text-blue-700 dark:text-blue-400 mt-1">5</p>
           </div>
         </div>
 
         <!-- Charts Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <h4 class="text-xs font-bold uppercase text-slate-600 mb-3">Estimated Cost by Model Role</h4>
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+            <h4 class="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 mb-3">Estimated Cost by Model Role</h4>
             <div class="h-64">
               <canvas id="costChart"></canvas>
             </div>
           </div>
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <h4 class="text-xs font-bold uppercase text-slate-600 mb-3">Latency Breakdown per Stage (ms)</h4>
+          <div class="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+            <h4 class="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 mb-3">Latency Breakdown per Stage (ms)</h4>
             <div class="h-64">
               <canvas id="latencyChart"></canvas>
             </div>
@@ -702,66 +735,66 @@
     <!-- TAB 8: SETTINGS & MODEL CONFIGURATION -->
     <!-- ================================================================= -->
     <div id="tab-settings" class="tab-pane hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 transition-colors duration-200">
         <div>
-          <h2 class="text-xl font-heading font-extrabold text-slate-900">Model Providers & Configuration</h2>
-          <p class="text-xs text-slate-500">Configurable multi-model architecture supporting Open-Weight, Commercial A, and Commercial B</p>
+          <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">Model Providers & Configuration</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Configurable multi-model architecture supporting Open-Weight, Commercial A, and Commercial B</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Model 1 -->
-          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3">
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-agri-700 uppercase">Model 1: Open-Weight</span>
-              <span class="text-[10px] bg-agri-100 text-agri-800 px-1.5 py-0.5 rounded font-mono">Fast / $0.00</span>
+              <span class="text-xs font-bold text-agri-700 dark:text-agri-400 uppercase">Model 1: Open-Weight</span>
+              <span class="text-[10px] bg-agri-100 dark:bg-agri-950 text-agri-800 dark:text-agri-300 px-2 py-0.5 rounded font-mono">Fast / $0.00</span>
             </div>
-            <p class="text-xs text-slate-500">Crop identification & initial anomaly localization.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Crop identification & initial anomaly localization.</p>
             <div class="space-y-2 text-xs">
               <div>
-                <label class="block font-medium text-slate-700 mb-0.5">Model Name</label>
-                <input type="text" value="qwen-vl-small" disabled class="w-full bg-white border border-slate-200 rounded p-1.5 text-xs text-slate-600">
+                <label class="block font-medium text-slate-700 dark:text-slate-300 mb-0.5">Model Name</label>
+                <input type="text" value="qwen-vl-small" disabled class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 text-xs text-slate-600 dark:text-slate-400">
               </div>
               <div>
-                <label class="block font-medium text-slate-700 mb-0.5">Provider</label>
-                <input type="text" value="Local / Ollama / HF" disabled class="w-full bg-white border border-slate-200 rounded p-1.5 text-xs text-slate-600">
+                <label class="block font-medium text-slate-700 dark:text-slate-300 mb-0.5">Provider</label>
+                <input type="text" value="Local / Ollama / HF" disabled class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 text-xs text-slate-600 dark:text-slate-400">
               </div>
             </div>
           </div>
 
           <!-- Model 2 -->
-          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3">
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-blue-700 uppercase">Model 2: Commercial A</span>
-              <span class="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-mono">Reasoning / ~$0.015</span>
+              <span class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase">Model 2: Commercial A</span>
+              <span class="text-[10px] bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded font-mono">Reasoning / ~$0.015</span>
             </div>
-            <p class="text-xs text-slate-500">Deep multimodal reasoning for complex lesion patterns.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Deep multimodal reasoning for complex lesion patterns.</p>
             <div class="space-y-2 text-xs">
               <div>
-                <label class="block font-medium text-slate-700 mb-0.5">Model Name</label>
-                <input type="text" value="gpt-4o-mini" disabled class="w-full bg-white border border-slate-200 rounded p-1.5 text-xs text-slate-600">
+                <label class="block font-medium text-slate-700 dark:text-slate-300 mb-0.5">Model Name</label>
+                <input type="text" value="gpt-4o-mini" disabled class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 text-xs text-slate-600 dark:text-slate-400">
               </div>
               <div>
-                <label class="block font-medium text-slate-700 mb-0.5">Provider</label>
-                <input type="text" value="OpenAI / Commercial API" disabled class="w-full bg-white border border-slate-200 rounded p-1.5 text-xs text-slate-600">
+                <label class="block font-medium text-slate-700 dark:text-slate-300 mb-0.5">Provider</label>
+                <input type="text" value="OpenAI / Commercial API" disabled class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 text-xs text-slate-600 dark:text-slate-400">
               </div>
             </div>
           </div>
 
           <!-- Model 3 -->
-          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3">
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-purple-700 uppercase">Model 3: Commercial B</span>
-              <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-mono">Critic / ~$0.009</span>
+              <span class="text-xs font-bold text-purple-700 dark:text-purple-400 uppercase">Model 3: Commercial B</span>
+              <span class="text-[10px] bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 px-2 py-0.5 rounded font-mono">Critic / ~$0.009</span>
             </div>
-            <p class="text-xs text-slate-500">Independent verifier checking evidence consistency.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Independent verifier checking evidence consistency.</p>
             <div class="space-y-2 text-xs">
               <div>
-                <label class="block font-medium text-slate-700 mb-0.5">Model Name</label>
-                <input type="text" value="claude-3-5-sonnet" disabled class="w-full bg-white border border-slate-200 rounded p-1.5 text-xs text-slate-600">
+                <label class="block font-medium text-slate-700 dark:text-slate-300 mb-0.5">Model Name</label>
+                <input type="text" value="claude-3-5-sonnet" disabled class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 text-xs text-slate-600 dark:text-slate-400">
               </div>
               <div>
-                <label class="block font-medium text-slate-700 mb-0.5">Provider</label>
-                <input type="text" value="Anthropic / Critic Engine" disabled class="w-full bg-white border border-slate-200 rounded p-1.5 text-xs text-slate-600">
+                <label class="block font-medium text-slate-700 dark:text-slate-300 mb-0.5">Provider</label>
+                <input type="text" value="Anthropic / Critic Engine" disabled class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 text-xs text-slate-600 dark:text-slate-400">
               </div>
             </div>
           </div>
@@ -772,7 +805,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-4 mt-auto text-xs text-slate-500">
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-5 mt-auto text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2">
       <p>© 2026 ADAPTIX-FARM — Adaptive Multimodal AI for Accessible Crop Intelligence (FarmwiseAI Task 1)</p>
       <div class="flex items-center space-x-4">
