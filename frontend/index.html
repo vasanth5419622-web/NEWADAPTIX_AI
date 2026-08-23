@@ -76,36 +76,36 @@
         </div>
       </a>
 
-      <!-- Center Navigation Links (With Down Chevron matching reference) -->
+      <!-- Center Navigation Links with Suitable Project Titles -->
       <nav class="hidden lg:flex items-center gap-6" id="desktop-nav">
         
         <button onclick="switchTab('dashboard')" class="agrul-nav-item active" data-tab="dashboard">
-          <span>HOME</span>
+          <span>DASHBOARD</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70"></i>
         </button>
 
         <button onclick="switchTab('dashboard'); document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'})" class="agrul-nav-item">
-          <span>PAGES</span>
+          <span>ABOUT AI</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70"></i>
         </button>
 
         <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="agrul-nav-item">
-          <span>PROJECTS</span>
+          <span>DIAGNOSIS</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70"></i>
         </button>
 
         <button onclick="switchTab('results')" class="agrul-nav-item" data-tab="results">
-          <span>SERVICES</span>
+          <span>ASSESSMENT</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70"></i>
         </button>
 
         <button onclick="switchTab('documents')" class="agrul-nav-item" data-tab="documents">
-          <span>BLOG</span>
+          <span>RAG ADVISORY</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70"></i>
         </button>
 
         <button onclick="switchTab('metrics')" class="agrul-nav-item" data-tab="metrics">
-          <span>SHOP</span>
+          <span>METRICS</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70"></i>
         </button>
       </nav>
@@ -145,21 +145,21 @@
           <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white">
             <i data-lucide="leaf" class="w-4 h-4"></i>
           </div>
-          <span class="font-heading font-bold text-slate-900 dark:text-white text-lg">AGRUL Menu</span>
+          <span class="font-heading font-bold text-slate-900 dark:text-white text-lg">ADAPTIX-FARM</span>
         </div>
         <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-5 h-5 text-slate-500"></i></button>
       </div>
       
       <div class="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-        <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Home</button>
-        <button onclick="switchTab('dashboard'); document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Pages / About</button>
-        <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Projects / Diagnosis</button>
-        <button onclick="switchTab('results'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Services / Assessment</button>
+        <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Dashboard</button>
+        <button onclick="switchTab('dashboard'); document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">About AI</button>
+        <button onclick="switchTab('dashboard'); document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Crop Diagnosis</button>
+        <button onclick="switchTab('results'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Assessment Results</button>
         <button onclick="switchTab('trace'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Route Trace</button>
         <button onclick="switchTab('evidence'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Evidence Fusion</button>
-        <button onclick="switchTab('documents'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Blog / RAG Library</button>
+        <button onclick="switchTab('documents'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">RAG Advisory Library</button>
         <button onclick="switchTab('history'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">History</button>
-        <button onclick="switchTab('metrics'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Shop / Metrics</button>
+        <button onclick="switchTab('metrics'); toggleMobileMenu()" class="w-full text-left py-3 px-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 block">Metrics & Analytics</button>
       </div>
     </div>
     <div id="mobile-overlay" onclick="toggleMobileMenu()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"></div>
@@ -192,19 +192,19 @@
         <!-- Center Content -->
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-28 relative z-10 space-y-8">
           
-          <!-- Exact Headline: "Ultimate Products & Customers" -->
+          <!-- Suitable Project Headline -->
           <h1 class="font-heading font-black text-5xl sm:text-7xl lg:text-8xl leading-none text-white tracking-tight drop-shadow-lg">
-            Ultimate Products <br> & Customers
+            Adaptive AI <br> & Crop Intelligence
           </h1>
 
           <p class="text-sm sm:text-base text-slate-100 max-w-xl mx-auto font-medium leading-relaxed drop-shadow">
-            Adaptive Multimodal AI for Accessible Crop Intelligence. Decomposing foliar symptoms, routing across specialized open-weight and commercial models, and verifying Integrated Pest Management.
+            Accessible Multimodal AI for Crop Pathology. Decomposing foliar symptoms, routing across specialized open-weight and commercial models, and verifying Integrated Pest Management in English & தமிழ்.
           </p>
 
-          <!-- Exact Golden CTA Button: "Discover More" -->
+          <!-- Golden CTA Button: "Start Crop Diagnosis" -->
           <div class="pt-2">
             <button onclick="document.getElementById('main-form-section')?.scrollIntoView({behavior:'smooth'})" class="btn-agrul-gold">
-              <span>Discover More</span>
+              <span>Start Crop Diagnosis</span>
             </button>
           </div>
 
