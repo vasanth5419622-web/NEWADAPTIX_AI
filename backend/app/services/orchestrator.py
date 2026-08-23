@@ -324,9 +324,14 @@ class MasterAgriculturalOrchestrator:
                 "Ensure proper soil drainage to avoid root hypoxia."
             ]
 
-        # Localized voice synthesis script
-        tts_text = f"Assessment for {crop_display}: Possible condition is {condition_display}. System confidence is {conf_eval.level.value}. Please review IPM guidelines and verify with agricultural officers."
-        voice_data = voice_service.synthesize(tts_text, language=user_input.language)
+        # Localized voice synthesis script (Tamil or English)
+        voice_data = voice_service.synthesize_advisory(
+            crop=crop_display,
+            condition=condition_display,
+            confidence_level=conf_eval.level.value,
+            management_advice=management_advice,
+            language=user_input.language
+        )
 
         summary_text = (
             f"AI-assisted multimodal assessment indicates possible {condition_display} on {crop_display}. "
@@ -340,6 +345,8 @@ class MasterAgriculturalOrchestrator:
             assessment_summary=summary_text,
             management_advice=management_advice,
             preventative_measures=preventative,
+            spoken_script=voice_data.get("text"),
+            voice_language=user_input.language,
             requires_human_review=requires_review
         )
 

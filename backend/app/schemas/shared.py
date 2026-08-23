@@ -124,6 +124,8 @@ class FinalRecommendation(BaseModel):
         "Consult local agricultural extension officers before applying treatments."
     )
     voice_audio_url: Optional[str] = None
+    spoken_script: Optional[str] = None
+    voice_language: str = "en"
     requires_human_review: bool = False
 
 class ExecutionState(BaseModel):

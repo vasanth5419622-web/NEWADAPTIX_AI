@@ -3,6 +3,7 @@
 let currentFile = null;
 let currentLanguage = 'en';
 let isRecording = false;
+let userUsedVoice = false;
 let speechRecognition = null;
 let currentExecutionState = null;
 let costChartInstance = null;
@@ -170,6 +171,7 @@ function toggleVoiceRecording() {
 
 function startVoiceRecording() {
   isRecording = true;
+  userUsedVoice = true;
   document.getElementById('voice-btn-label').textContent = 'Stop Recording';
   document.getElementById('voice-recording-indicator').classList.remove('hidden');
   document.getElementById('voice-recording-indicator').classList.add('flex');
@@ -517,6 +519,14 @@ function renderResults(state) {
   });
 
   if (window.lucide) lucide.createIcons();
+
+  // If farmer used voice recording, automatically speak out the advice in selected language
+  if (userUsedVoice) {
+    setTimeout(() => {
+      playRecommendationAudio(true);
+      userUsedVoice = false; // Reset for next interaction
+    }, 500);
+  }
 }
 
 // ==========================================
@@ -619,32 +629,59 @@ function renderEvidence(state) {
 }
 
 // ==========================================
-// VOICE TEXT-TO-SPEECH PLAYBACK
+// VOICE TEXT-TO-SPEECH PLAYBACK (ENGLISH & TAMIL)
 // ==========================================
-function playRecommendationAudio() {
+function playRecommendationAudio(autoTrigger = false) {
   if (!currentExecutionState) return;
   const finalRes = currentExecutionState.final_result || {};
-  const textToSpeak = `${finalRes.crop}. Possible condition is ${finalRes.possible_condition}. ${finalRes.assessment_summary}`;
+  
+  // Use localized synthesized script if available, else construct fallback
+  let textToSpeak = finalRes.spoken_script;
+  if (!textToSpeak) {
+    if (currentLanguage === 'ta') {
+      textToSpeak = `வணக்கம் விவசாயி அவர்களே. பயிர்: ${finalRes.crop}. கண்டறியப்பட்ட பாதிப்பு: ${finalRes.possible_condition}. கணினி நம்பகத்தன்மை: ${currentExecutionState.confidence?.level || 'உயர் நிலை'}. மேலதிக விவரங்களுக்கு வேளாண் அதிகாரியை அணுகவும்.`;
+    } else {
+      textToSpeak = `${finalRes.crop}. Possible condition is ${finalRes.possible_condition}. ${finalRes.assessment_summary}`;
+    }
+  }
 
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = currentLanguage === 'ta' ? 'ta-IN' : 'en-US';
-    utterance.rate = 0.95;
+    const targetLang = currentLanguage === 'ta' ? 'ta-IN' : 'en-US';
+    utterance.lang = targetLang;
+    utterance.rate = currentLanguage === 'ta' ? 0.90 : 0.96;
+    utterance.pitch = 1.0;
+
+    // Pick best available voice for language
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length > 0) {
+      if (currentLanguage === 'ta') {
+        const tamilVoice = voices.find(v => v.lang === 'ta-IN' || v.lang === 'ta' || (v.name && v.name.toLowerCase().includes('tamil')));
+        if (tamilVoice) utterance.voice = tamilVoice;
+      } else {
+        const engVoice = voices.find(v => (v.lang === 'en-US' || v.lang === 'en-IN' || v.lang.startsWith('en')) && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Desktop')));
+        if (engVoice) utterance.voice = engVoice;
+      }
+    }
 
     const btnText = document.getElementById('tts-btn-text');
-    btnText.textContent = "🔊 Playing Audio...";
+    if (btnText) {
+      btnText.textContent = currentLanguage === 'ta' ? "🔊 குரல் வழிகாட்டல் ஒலிக்கிறது..." : "🔊 Playing Spoken Reply...";
+    }
     
     utterance.onend = () => {
-      btnText.textContent = "🔊 Listen to Advice";
+      if (btnText) {
+        btnText.textContent = currentLanguage === 'ta' ? "🔊 தமிழில் கேட்க (Listen)" : "🔊 Listen to Advice";
+      }
     };
     utterance.onerror = () => {
-      btnText.textContent = "🔊 Listen to Advice";
+      if (btnText) {
+        btnText.textContent = currentLanguage === 'ta' ? "🔊 தமிழில் கேட்க (Listen)" : "🔊 Listen to Advice";
+      }
     };
 
     window.speechSynthesis.speak(utterance);
-  } else {
-    alert("Audio playback: " + textToSpeak);
   }
 }
 
