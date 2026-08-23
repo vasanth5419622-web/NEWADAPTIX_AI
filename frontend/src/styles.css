@@ -44,6 +44,39 @@ body {
 }
 
 /* ==========================================================================
+   CONTINUOUS AUTOMATIC SLIDING CROP CAROUSEL
+   ========================================================================== */
+
+@keyframes continuousCropSlide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.auto-slide-track {
+  display: flex;
+  width: 200%;
+  animation: continuousCropSlide 18s linear infinite;
+  will-change: transform;
+}
+
+.auto-slide-track:hover {
+  animation-play-state: paused;
+}
+
+/* Individual Crop Slide Card in Track */
+.crop-track-card {
+  width: 50%;
+  flex-shrink: 0;
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+/* ==========================================================================
    TOP TORN PAPER / RAGGED BRUSH DIVIDER
    ========================================================================== */
 
@@ -69,7 +102,7 @@ body {
 
 /* ==========================================================================
    AGRUL BUTTONS
-   ========================================================================== */
+   ========================================================================= */
 
 .btn-agrul-gold {
   background-color: var(--agrul-gold);
@@ -118,7 +151,7 @@ body {
 
 /* ==========================================================================
    NAVBAR INTERACTIONS
-   ========================================================================== */
+   ========================================================================= */
 
 .agrul-nav-item {
   font-weight: 700;

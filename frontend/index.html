@@ -265,78 +265,97 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- Left: Animated Crop Carousel (Rice, Maize, Barley, Oats) (5 cols) -->
+            <!-- Left: Continuous Automatic Sliding Crop Showcase (Rice, Maize, Barley, Oats) (5 cols) -->
             <div class="lg:col-span-5 relative" data-reveal="fade-right">
-              <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 relative bg-slate-900 h-[420px]" id="crop-carousel-container">
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 relative bg-slate-950 h-[420px] group">
                 
-                <!-- Crop Slide 1: Rice -->
-                <div class="crop-slide active absolute inset-0 transition-all duration-700 ease-in-out opacity-100 scale-100">
-                  <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800&q=80" 
-                       onerror="this.src='https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80'"
-                       alt="Rice Crop Field" class="w-full h-full object-cover">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                    <span class="px-2.5 py-1 bg-emerald-600/90 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Rice (Paddy)</span>
-                    <h4 class="font-heading font-black text-lg text-white">Blast & Blight Protection</h4>
-                    <p class="text-[11px] text-slate-300 font-light">Magnaporthe oryzae spindle lesion detection</p>
+                <!-- Seamless Auto-Sliding Infinite Track -->
+                <div class="auto-slide-track flex h-full">
+                  
+                  <!-- 1. Rice -->
+                  <div class="crop-track-card w-[50%] h-full relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80'"
+                         alt="Rice Crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                      <span class="px-2.5 py-1 bg-emerald-600/95 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Rice (Paddy)</span>
+                      <h4 class="font-heading font-black text-lg text-white">Blast & Blight Protection</h4>
+                      <p class="text-[11px] text-slate-300 font-light">Magnaporthe oryzae spindle lesion detection</p>
+                    </div>
                   </div>
-                </div>
 
-                <!-- Crop Slide 2: Maize (Corn) -->
-                <div class="crop-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-0 scale-95 pointer-events-none">
-                  <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800&q=80" 
-                       onerror="this.src='https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=800&q=80'"
-                       alt="Maize Crop Field" class="w-full h-full object-cover">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                    <span class="px-2.5 py-1 bg-amber-600/90 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌽 Maize (Corn)</span>
-                    <h4 class="font-heading font-black text-lg text-white">Southern Corn Leaf Blight</h4>
-                    <p class="text-[11px] text-slate-300 font-light">Bipolaris maydis foliar necrosis assessment</p>
+                  <!-- 2. Maize -->
+                  <div class="crop-track-card w-[50%] h-full relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=800&q=80'"
+                         alt="Maize Crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                      <span class="px-2.5 py-1 bg-amber-600/95 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌽 Maize (Corn)</span>
+                      <h4 class="font-heading font-black text-lg text-white">Southern Corn Leaf Blight</h4>
+                      <p class="text-[11px] text-slate-300 font-light">Bipolaris maydis foliar necrosis assessment</p>
+                    </div>
                   </div>
-                </div>
 
-                <!-- Crop Slide 3: Barley -->
-                <div class="crop-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-0 scale-95 pointer-events-none">
-                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80" 
-                       onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80'"
-                       alt="Barley Crop Field" class="w-full h-full object-cover">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                    <span class="px-2.5 py-1 bg-yellow-600/90 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Barley</span>
-                    <h4 class="font-heading font-black text-lg text-white">Scald & Net Blotch</h4>
-                    <p class="text-[11px] text-slate-300 font-light">Rhynchosporium secalis early symptom detection</p>
+                  <!-- 3. Barley -->
+                  <div class="crop-track-card w-[50%] h-full relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80'"
+                         alt="Barley Crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                      <span class="px-2.5 py-1 bg-yellow-600/95 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Barley</span>
+                      <h4 class="font-heading font-black text-lg text-white">Scald & Net Blotch</h4>
+                      <p class="text-[11px] text-slate-300 font-light">Rhynchosporium secalis early detection</p>
+                    </div>
                   </div>
-                </div>
 
-                <!-- Crop Slide 4: Oats -->
-                <div class="crop-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-0 scale-95 pointer-events-none">
-                  <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80" 
-                       onerror="this.src='https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800&q=80'"
-                       alt="Oats Crop Field" class="w-full h-full object-cover">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                    <span class="px-2.5 py-1 bg-orange-600/90 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Oats</span>
-                    <h4 class="font-heading font-black text-lg text-white">Crown Rust & Helminthosporium</h4>
-                    <p class="text-[11px] text-slate-300 font-light">Puccinia coronata pustule identification</p>
+                  <!-- 4. Oats -->
+                  <div class="crop-track-card w-[50%] h-full relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800&q=80'"
+                         alt="Oats Crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                      <span class="px-2.5 py-1 bg-orange-600/95 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Oats</span>
+                      <h4 class="font-heading font-black text-lg text-white">Crown Rust & Helminthosporium</h4>
+                      <p class="text-[11px] text-slate-300 font-light">Puccinia coronata pustule identification</p>
+                    </div>
                   </div>
+
+                  <!-- 5. Repeat: Rice -->
+                  <div class="crop-track-card w-[50%] h-full relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80'"
+                         alt="Rice Crop Duplicate" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                      <span class="px-2.5 py-1 bg-emerald-600/95 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌾 Rice (Paddy)</span>
+                      <h4 class="font-heading font-black text-lg text-white">Blast & Blight Protection</h4>
+                      <p class="text-[11px] text-slate-300 font-light">Magnaporthe oryzae spindle lesion detection</p>
+                    </div>
+                  </div>
+
+                  <!-- 6. Repeat: Maize -->
+                  <div class="crop-track-card w-[50%] h-full relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800&q=80" 
+                         onerror="this.src='https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=800&q=80'"
+                         alt="Maize Crop Duplicate" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                      <span class="px-2.5 py-1 bg-amber-600/95 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider rounded-full inline-block">🌽 Maize (Corn)</span>
+                      <h4 class="font-heading font-black text-lg text-white">Southern Corn Leaf Blight</h4>
+                      <p class="text-[11px] text-slate-300 font-light">Bipolaris maydis foliar necrosis assessment</p>
+                    </div>
+                  </div>
+
                 </div>
 
-                <!-- Carousel Controls & Slide Indicators -->
-                <div class="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
-                  <button onclick="prevCropSlide(event)" class="w-6 h-6 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition text-xs">
-                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
-                  </button>
-                  <button onclick="nextCropSlide(event)" class="w-6 h-6 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition text-xs">
-                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-                  </button>
-                </div>
-
-                <!-- Carousel Indicator Dots -->
-                <div class="absolute bottom-3 right-6 z-20 flex items-center gap-1.5">
-                  <span onclick="setCropSlide(0)" class="crop-dot w-2 h-2 rounded-full bg-white cursor-pointer transition-all"></span>
-                  <span onclick="setCropSlide(1)" class="crop-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer transition-all"></span>
-                  <span onclick="setCropSlide(2)" class="crop-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer transition-all"></span>
-                  <span onclick="setCropSlide(3)" class="crop-dot w-2 h-2 rounded-full bg-white/40 cursor-pointer transition-all"></span>
+                <!-- Auto-Sliding Status Pill Badge -->
+                <div class="absolute top-4 left-4 z-20 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-300">Auto-Monitoring Feed</span>
                 </div>
 
               </div>
