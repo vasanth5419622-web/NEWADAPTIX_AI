@@ -58,15 +58,17 @@ function switchTab(tabId) {
   if (target) {
     target.classList.remove('hidden');
     target.classList.add('active');
+    // Scroll smoothly to top of main content when switching tabs
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-  const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(btn => 
-    btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)
+  // Support both nav-btn and nav-link-item
+  document.querySelectorAll('.nav-btn, .nav-link-item').forEach(btn => btn.classList.remove('active'));
+  const activeBtns = Array.from(document.querySelectorAll('.nav-btn, .nav-link-item')).filter(btn => 
+    (btn.getAttribute('data-tab') && btn.getAttribute('data-tab') === tabId) ||
+    (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId))
   );
-  if (activeBtn) {
-    activeBtn.classList.add('active');
-  }
+  activeBtns.forEach(btn => btn.classList.add('active'));
 
   if (tabId === 'metrics') {
     loadMetrics();
