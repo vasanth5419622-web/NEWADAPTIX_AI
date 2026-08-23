@@ -1,35 +1,33 @@
 /* ==========================================================================
-   ADAPTIX-FARM — Agrarium Editorial Farm & Calligraphy Luxury Theme
+   AGRUL — Modern Organic Agriculture & Crop Intelligence Design System
    ========================================================================== */
 
 :root {
-  --primary-gold: #eab308;
-  --primary-amber: #d97706;
-  --primary-green: #2d8c2d;
-  --primary-deep: #143514;
-  --bg-cream: #faf7f2;
-  --bg-pure: #ffffff;
-  --card-bg: #ffffff;
-  --card-dark: #151a14;
-  --text-dark: #1f291f;
-  --text-muted: #5f6f5f;
-  --border-subtle: rgba(45, 140, 45, 0.12);
-  --border-gold: rgba(234, 179, 8, 0.35);
+  --agrul-green: #2d8c2d;
+  --agrul-green-dark: #154e15;
+  --agrul-leaf: #34a853;
+  --agrul-gold: #f0b849;
+  --agrul-gold-hover: #e5a732;
+  --agrul-bg-light: #ffffff;
+  --agrul-bg-cream: #fbf9f4;
+  --agrul-card: #ffffff;
+  --agrul-text: #1a1e1a;
+  --agrul-muted: #5e6d5e;
+  --agrul-border: rgba(45, 140, 45, 0.12);
 }
 
 .dark {
-  --primary-gold: #facc15;
-  --primary-amber: #fbbf24;
-  --primary-green: #4ade80;
-  --primary-deep: #081008;
-  --bg-cream: #0c120c;
-  --bg-pure: #111811;
-  --card-bg: #141c14;
-  --card-dark: #0a0e0a;
-  --text-dark: #f0fdf0;
-  --text-muted: #94a894;
-  --border-subtle: rgba(74, 222, 128, 0.15);
-  --border-gold: rgba(250, 204, 21, 0.3);
+  --agrul-green: #4ade80;
+  --agrul-green-dark: #0f2e0f;
+  --agrul-leaf: #86efac;
+  --agrul-gold: #facc15;
+  --agrul-gold-hover: #eab308;
+  --agrul-bg-light: #0d140d;
+  --agrul-bg-cream: #080f08;
+  --agrul-card: #111a11;
+  --agrul-text: #f0fdf0;
+  --agrul-muted: #95a895;
+  --agrul-border: rgba(74, 222, 128, 0.15);
   color-scheme: dark;
 }
 
@@ -38,200 +36,200 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-cream);
-  color: var(--text-dark);
-  transition: background-color 0.35s ease, color 0.35s ease;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background-color: var(--agrul-bg-cream);
+  color: var(--agrul-text);
   overflow-x: hidden;
-}
-
-/* Calligraphy & Script Class */
-.font-script {
-  font-family: 'Caveat', 'Alex Brush', cursive;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ==========================================================================
-   TORN PAPER & ORGANIC BRUSH EDGES
+   TOP TORN PAPER / RAGGED BRUSH DIVIDER
    ========================================================================== */
 
-.torn-paper-bottom {
+.torn-paper-top {
   position: relative;
 }
 
-.torn-paper-bottom::after {
+.torn-paper-top::before {
   content: '';
   position: absolute;
-  bottom: -1px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L20,38 L40,15 L60,45 L80,20 L100,48 L120,25 L140,52 L160,22 L180,44 L200,18 L220,50 L240,28 L260,45 L280,20 L300,55 L320,30 L340,48 L360,22 L380,42 L400,15 L420,52 L440,28 L460,45 L480,20 L500,50 L520,30 L540,48 L560,22 L580,44 L600,18 L620,50 L640,28 L660,45 L680,20 L700,55 L720,30 L740,48 L760,22 L780,42 L800,15 L820,52 L840,28 L860,45 L880,20 L900,50 L920,30 L940,48 L960,22 L980,44 L1000,18 L1020,50 L1040,28 L1060,45 L1080,20 L1100,55 L1120,30 L1140,48 L1160,22 L1180,42 L1200,15 L1200,60 L0,60 Z' fill='%23faf7f2'/%3E%3C/svg%3E") bottom/cover no-repeat;
+  height: 24px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 24' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1200,0 L1200,8 L1180,18 L1160,5 L1140,20 L1120,7 L1100,19 L1080,4 L1060,18 L1040,6 L1020,22 L1000,8 L980,20 L960,5 L940,19 L920,8 L900,22 L880,6 L860,18 L840,4 L820,20 L800,7 L780,19 L760,5 L740,21 L720,8 L700,20 L680,6 L660,18 L640,4 L620,22 L600,7 L580,19 L560,5 L540,21 L520,8 L500,20 L480,6 L460,18 L440,4 L420,22 L400,7 L380,19 L360,5 L340,21 L320,8 L300,20 L280,6 L260,18 L240,4 L220,22 L200,7 L180,19 L160,5 L140,21 L120,8 L100,20 L80,6 L60,18 L40,4 L20,20 L0,8 Z' fill='%23ffffff'/%3E%3C/svg%3E") top/cover no-repeat;
   z-index: 20;
   pointer-events: none;
 }
 
-.dark .torn-paper-bottom::after {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L20,38 L40,15 L60,45 L80,20 L100,48 L120,25 L140,52 L160,22 L180,44 L200,18 L220,50 L240,28 L260,45 L280,20 L300,55 L320,30 L340,48 L360,22 L380,42 L400,15 L420,52 L440,28 L460,45 L480,20 L500,50 L520,30 L540,48 L560,22 L580,44 L600,18 L620,50 L640,28 L660,45 L680,20 L700,55 L720,30 L740,48 L760,22 L780,42 L800,15 L820,52 L840,28 L860,45 L880,20 L900,50 L920,30 L940,48 L960,22 L980,44 L1000,18 L1020,50 L1040,28 L1060,45 L1080,20 L1100,55 L1120,30 L1140,48 L1160,22 L1180,42 L1200,15 L1200,60 L0,60 Z' fill='%230c120c'/%3E%3C/svg%3E") bottom/cover no-repeat;
-}
-
-/* Watermark Background Calligraphy */
-.watermark-script {
-  position: absolute;
-  font-family: 'Caveat', cursive;
-  font-size: clamp(6rem, 16vw, 14rem);
-  font-weight: 700;
-  color: rgba(45, 140, 45, 0.05);
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  z-index: 0;
-  white-space: nowrap;
-}
-
-.dark .watermark-script {
-  color: rgba(74, 222, 128, 0.04);
+.dark .torn-paper-top::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 24' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1200,0 L1200,8 L1180,18 L1160,5 L1140,20 L1120,7 L1100,19 L1080,4 L1060,18 L1040,6 L1020,22 L1000,8 L980,20 L960,5 L940,19 L920,8 L900,22 L880,6 L860,18 L840,4 L820,20 L800,7 L780,19 L760,5 L740,21 L720,8 L700,20 L680,6 L660,18 L640,4 L620,22 L600,7 L580,19 L560,5 L540,21 L520,8 L500,20 L480,6 L460,18 L440,4 L420,22 L400,7 L380,19 L360,5 L340,21 L320,8 L300,20 L280,6 L260,18 L240,4 L220,22 L200,7 L180,19 L160,5 L140,21 L120,8 L100,20 L80,6 L60,18 L40,4 L20,20 L0,8 Z' fill='%230d140d'/%3E%3C/svg%3E") top/cover no-repeat;
 }
 
 /* ==========================================================================
-   AGRARIUM BUTTONS
+   AGRUL BUTTONS
    ========================================================================== */
 
-.btn-agrarium-gold {
-  background: #eab308;
-  color: #1a1e14 !important;
+.btn-agrul-gold {
+  background-color: var(--agrul-gold);
+  color: #111827 !important;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 0.88rem;
-  padding: 12px 30px;
-  border-radius: 4px;
+  font-size: 0.95rem;
+  padding: 14px 38px;
+  border-radius: 8px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 8px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 20px -4px rgba(234, 179, 8, 0.4);
+  box-shadow: 0 8px 25px -4px rgba(240, 184, 73, 0.45);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-agrarium-gold:hover {
-  background: #ca8a04;
-  color: #ffffff !important;
+.btn-agrul-gold:hover {
+  background-color: var(--agrul-gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(234, 179, 8, 0.55);
+  box-shadow: 0 12px 30px -4px rgba(240, 184, 73, 0.6);
 }
 
-.btn-agrarium-outline {
-  background: transparent;
+.btn-agrul-outline-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 0.88rem;
-  padding: 11px 28px;
-  border-radius: 4px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  justify-content: center;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-.btn-agrarium-outline:hover {
-  background: #ffffff;
-  color: #143514;
+.btn-agrul-outline-circle:hover {
+  background: rgba(255, 255, 255, 0.25);
   border-color: #ffffff;
-  transform: translateY(-2px);
+  transform: scale(1.08);
 }
 
 /* ==========================================================================
-   AGRARIUM DARK OVERLAY CARD
+   NAVBAR INTERACTIONS
    ========================================================================== */
 
-.agrarium-dark-card {
-  background: #151d15;
-  color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid rgba(234, 179, 8, 0.2);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+.agrul-nav-item {
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1a1e1a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  position: relative;
 }
 
-.dark .agrarium-dark-card {
-  background: #0d140d;
-  border-color: rgba(250, 204, 21, 0.25);
+.dark .agrul-nav-item {
+  color: #f0fdf0;
+}
+
+.agrul-nav-item:hover,
+.agrul-nav-item.active {
+  color: var(--agrul-green);
+}
+
+.dark .agrul-nav-item:hover,
+.dark .agrul-nav-item.active {
+  color: var(--agrul-leaf);
 }
 
 /* ==========================================================================
-   CARD & SECTION STYLES
+   CARDS & CONTAINERS
    ========================================================================== */
 
-.agrarium-white-card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.agrul-card {
+  background: var(--agrul-card);
+  border: 1px solid var(--agrul-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.agrarium-white-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+.agrul-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.09);
+  border-color: rgba(45, 140, 45, 0.3);
 }
 
-/* Handwritten Script Section Subtitles */
-.script-subtitle {
-  font-family: 'Caveat', cursive;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary-amber);
-  line-height: 1;
-  display: block;
+.dark .agrul-card:hover {
+  border-color: rgba(74, 222, 128, 0.35);
 }
 
-/* Big Gold Headline Script */
-.script-highlight {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  font-weight: 700;
-  color: #ca8a04;
-  line-height: 1.1;
+/* Section Eyebrow Subtitles */
+.agrul-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--agrul-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.dark .script-highlight {
-  color: #facc15;
+.dark .agrul-eyebrow {
+  color: var(--agrul-leaf);
 }
 
-/* Scroll Trigger Animations */
-[data-reveal] {
-  opacity: 0;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+.agrul-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: currentColor;
 }
 
-[data-reveal="fade-up"] { transform: translateY(32px); }
-[data-reveal="fade-left"] { transform: translateX(-36px); }
-[data-reveal="fade-right"] { transform: translateX(36px); }
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translate(0);
+/* Section Title */
+.agrul-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  color: var(--agrul-text);
+  letter-spacing: -0.02em;
 }
 
-/* Waveform Bounce */
+/* Waveform Equalizer */
 .waveform-bar {
-  animation: waveBounce 1.2s ease-in-out infinite alternate;
+  animation: waveEqualizer 1.2s ease-in-out infinite alternate;
 }
 .waveform-bar:nth-child(2) { animation-delay: 0.15s; }
 .waveform-bar:nth-child(3) { animation-delay: 0.30s; }
 .waveform-bar:nth-child(4) { animation-delay: 0.45s; }
 .waveform-bar:nth-child(5) { animation-delay: 0.60s; }
 
-@keyframes waveBounce {
+@keyframes waveEqualizer {
   0% { height: 4px; }
-  100% { height: 22px; }
+  100% { height: 24px; }
+}
+
+/* Scroll Animations */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="fade-up"] { transform: translateY(30px); }
+[data-reveal="fade-left"] { transform: translateX(-35px); }
+[data-reveal="fade-right"] { transform: translateX(35px); }
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translate(0);
 }
 
 /* Preloader */
@@ -239,11 +237,15 @@ body {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: #111e11;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.dark #preloader {
+  background: #0d140d;
 }
 
 #preloader.done {
@@ -252,14 +254,14 @@ body {
   pointer-events: none;
 }
 
-/* Tab Panes */
+/* Tab Switching */
 .tab-pane { display: none; }
 .tab-pane.active {
   display: block;
-  animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInTab 0.35s ease-out forwards;
 }
 
-@keyframes tabFadeIn {
+@keyframes fadeInTab {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
